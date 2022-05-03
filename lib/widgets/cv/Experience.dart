@@ -17,7 +17,7 @@ class Experience extends StatelessWidget {
           children: [
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text("Work experience - 6 years and 6 months", style: Theme.of(context).textTheme.displayLarge),
+                Text("Work experience - 6 years and 6 months", style: Theme.of(context).textTheme.displayMedium),
                 Divider(),
                 SizedBox(
                     height: MediaQuery.of(context).size.height * 0.5,
@@ -26,6 +26,7 @@ class Experience extends StatelessWidget {
                       children: [
                         JobRostelecom(),
                         Divider(),
+                        JobRostelecom(),
                       ],
                     ))),
               ]),
