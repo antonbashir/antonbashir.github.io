@@ -1,3 +1,5 @@
+import 'package:cv/theme/Theme.dart';
+import 'package:cv/widgets/cv/Description.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,9 +13,8 @@ class Resume extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Resume',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      darkTheme: DARK_THEME,
+      debugShowCheckedModeBanner: false,
       home: const ResumePage(),
     );
   }
@@ -26,7 +27,11 @@ class ResumePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Column(),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.shortestSide,
+        height: MediaQuery.of(context).size.shortestSide,
+        child: Column(children: [Description()]),
+      ),
     ));
   }
 }
