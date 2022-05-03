@@ -28,14 +28,10 @@ class ResumePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.7,
-        height: MediaQuery.of(context).size.height * 0.7,
-        child: Column(children: [
-          Description(),
-          Experience(),
-        ]),
-      ),
+      child: Column(children: [
+        Description(),
+        Experience(),
+      ]),
     ));
   }
 }
