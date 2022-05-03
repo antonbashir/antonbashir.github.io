@@ -1,5 +1,6 @@
 import 'package:cv/theme/Theme.dart';
 import 'package:cv/widgets/cv/Description.dart';
+import 'package:cv/widgets/cv/Experience.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,11 +27,14 @@ class ResumePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
+        body: SafeArea(
       child: SizedBox(
-        width: MediaQuery.of(context).size.shortestSide,
-        height: MediaQuery.of(context).size.shortestSide,
-        child: Column(children: [Description()]),
+        width: MediaQuery.of(context).size.width * 0.7,
+        height: MediaQuery.of(context).size.height * 0.7,
+        child: Column(children: [
+          Description(),
+          Experience(),
+        ]),
       ),
     ));
   }

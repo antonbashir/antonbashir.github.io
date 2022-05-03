@@ -1,5 +1,6 @@
 import 'package:cv/theme/Theme.dart';
 import 'package:cv/widgets/common/CardContent.dart';
+import 'package:cv/widgets/common/DescriptionParameter.dart';
 import 'package:flutter/material.dart';
 
 class Description extends StatelessWidget {
@@ -26,38 +27,47 @@ class Description extends StatelessWidget {
                   ),
                   Text("Bashirov Anton Stanislavovich", style: Theme.of(context).textTheme.displayLarge)
                 ]),
+                Text("Software Developer", style: Theme.of(context).textTheme.displayMedium),
                 DescriptionParameter(
                   name: "Gender: ",
                   value: Icon(Icons.male, size: 24),
                 ),
                 DescriptionParameter(
                   name: "Age: ",
-                  value: Text("24", style: Theme.of(context).textTheme.displaySmall),
+                  value: SelectableText("24", style: Theme.of(context).textTheme.displaySmall),
                 ),
                 DescriptionParameter(
                   name: "Birthdate: ",
-                  value: Text("23 June 1997", style: Theme.of(context).textTheme.displaySmall),
+                  value: SelectableText("23 June 1997", style: Theme.of(context).textTheme.displaySmall),
                 ),
                 DescriptionParameter(
                   name: "Contact: ",
-                  value: Text("+7(977)1186919", style: Theme.of(context).textTheme.displaySmall),
+                  value: SelectableText("+7(977)1186919", style: Theme.of(context).textTheme.displaySmall),
                 ),
                 DescriptionParameter(
                   name: "Email: ",
-                  value: Text("anton.sh.local@gmail.com", style: Theme.of(context).textTheme.displaySmall),
+                  value: SelectableText("anton.sh.local@gmail.com", style: Theme.of(context).textTheme.displaySmall),
                 ),
                 DescriptionParameter(
                   name: "Telegram: ",
-                  value: Text("https://t.me/a_bashirov", style: Theme.of(context).textTheme.displaySmall),
+                  value: SelectableText("https://t.me/a_bashirov", style: Theme.of(context).textTheme.displaySmall),
                 ),
                 DescriptionParameter(
                   name: "Reside in: ",
-                  value: Text("Moscow", style: Theme.of(context).textTheme.displaySmall),
+                  value: SelectableText("Moscow", style: Theme.of(context).textTheme.displaySmall),
                 ),
                 DescriptionParameter(
                   name: "Relocation: ",
-                  value: Text("Ready to relocate, ready for business trips",
+                  value: SelectableText("Ready to relocate, ready for business trips",
                       style: Theme.of(context).textTheme.displaySmall),
+                ),
+                DescriptionParameter(
+                  name: "Employment: ",
+                  value: SelectableText("Full Time", style: Theme.of(context).textTheme.displaySmall),
+                ),
+                DescriptionParameter(
+                  name: "Work schedule: ",
+                  value: SelectableText("Full Day", style: Theme.of(context).textTheme.displaySmall),
                 ),
               ],
             ),
@@ -66,24 +76,4 @@ class Description extends StatelessWidget {
       ),
     );
   }
-}
-
-class DescriptionParameter extends StatelessWidget {
-  final name;
-  final value;
-
-  const DescriptionParameter({
-    Key? key,
-    required this.name,
-    required this.value,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: EdgeInsets.symmetric(vertical: Spacings.MEDIUM),
-        child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Text(name, style: Theme.of(context).textTheme.displaySmall),
-          value,
-        ]),
-      );
 }
