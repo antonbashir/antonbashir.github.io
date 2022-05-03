@@ -60,43 +60,40 @@ class JobRostelecom extends StatelessWidget {
                 DescriptionParameter(
                     name: "Role: ",
                     value: SelectableText("Architect & Developer", style: Theme.of(context).textTheme.displaySmall)),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Wrap(runSpacing: Spacings.MEDIUM, spacing: Spacings.MEDIUM, children: [
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Kotlin")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("ktor")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("netty")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("dart")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("gradle")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("flutter")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Nexus API")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("MINIO API")),
-                  ]),
-                )
+                Wrap(runSpacing: Spacings.MEDIUM, spacing: Spacings.MEDIUM, children: [
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Kotlin")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("ktor")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("netty")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("dart")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("gradle")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("flutter")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Nexus API")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("MINIO API")),
+                ])
               ]),
             ),
           ),
@@ -111,99 +108,96 @@ class JobRostelecom extends StatelessWidget {
                 DescriptionParameter(
                     name: "Role: ",
                     value: SelectableText("Architect & Developer", style: Theme.of(context).textTheme.displaySmall)),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Wrap(runSpacing: Spacings.MEDIUM, spacing: Spacings.MEDIUM, children: [
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Native specific CPU architecture (Assembler)")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("CLion")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("GCC")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("GDB")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Clang")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Java")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Groovy")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Scala")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Kotlin")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Python")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("FFmpeg")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Kurento Media Server")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("GStreamer")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("MongoDB")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Redis")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Native Coroutines (fcontext, ucontext)")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Linux")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Reindexer")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("TypeScript")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("MeteorJS")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("ReactJS")),
-                    Chip(
-                        side: BorderSide(color: ThemeColors.TERTIARY),
-                        backgroundColor: ThemeColors.GREYSCALE.shade90,
-                        label: Text("Ruby")),
-                  ]),
-                )
+                Wrap(runSpacing: Spacings.MEDIUM, spacing: Spacings.MEDIUM, children: [
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Native specific CPU architecture (Assembler)")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("CLion")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("GCC")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("GDB")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Clang")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Java")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Groovy")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Scala")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Kotlin")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Python")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("FFmpeg")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Kurento Media Server")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("GStreamer")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("MongoDB")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Redis")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Native Coroutines (fcontext, ucontext)")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Linux")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Reindexer")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("TypeScript")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("MeteorJS")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("ReactJS")),
+                  Chip(
+                      side: BorderSide(color: ThemeColors.TERTIARY),
+                      backgroundColor: ThemeColors.GREYSCALE.shade90,
+                      label: Text("Ruby")),
+                ])
               ]),
             ),
           ),
