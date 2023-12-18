@@ -22,4 +22,5 @@ body {
   display: block;
   background: lightsalmon;
   position: relative;
+  @apply rounded-lg;
 }
