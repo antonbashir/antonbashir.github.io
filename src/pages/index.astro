@@ -1,5 +1,6 @@
 ---
-import Card from "../components/Card.astro";
+import "../styles/index.css";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <html lang="en">
@@ -10,5 +11,8 @@ import Card from "../components/Card.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Anton Bashirov</title>
   </head>
-  <body> </body>
+  <body>
+    <button class="button">Click me</button>
+    <Layout />
+  </body>
 </html>
