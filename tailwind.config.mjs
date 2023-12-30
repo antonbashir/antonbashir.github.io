@@ -8,7 +8,15 @@ export default {
   ],
 
   daisyui: {
-    themes: ["dark"],
+    themes: [{
+      dark: {
+        ...require("daisyui/src/theming/themes")["dark"],
+        "base": "fffff",
+        "base-100": "fffff",
+        "base-200": "fffff",
+        "base-300": "fffff",
+      }
+    }],
     base: true,
     styled: true,
     utils: true,
