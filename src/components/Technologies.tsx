@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Grid, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import '../styles/swiper.css';
 
 type Properties = {
   spaceBetween: number
@@ -12,14 +13,14 @@ type Properties = {
 export const Technologies = (properties: Properties) => {
   return <Swiper
     loop
+    freeMode
+    className='swiper-container'
     slidesPerView={properties.slidesPerView}
-    centeredSlides={true}
+    speed={5000}
     autoplay={{
-      delay: 0,
+      delay: 1,
       disableOnInteraction: false,
-      waitForTransition: true,
     }}
-    cssMode
     spaceBetween={properties.spaceBetween}
     modules={[Grid, Autoplay, Pagination]}>
     {properties.technologies.map((technology) => <SwiperSlide>
