@@ -5,8 +5,8 @@ interface Props {
   page?: string;
 }
 const { page = "" } = Astro.props;
-var activeButton = `tab-button-active`;
-var inactiveButton = `tab-button`;
+const activeButton = `tab-button-active`;
+const inactiveButton = `tab-button`;
 ---
 
 <div class="navbar">
@@ -23,6 +23,7 @@ var inactiveButton = `tab-button`;
       <span>Experience</span>
       <div class="wave"></div>
     </a>
+
     <a
       class={page == "projects" ? activeButton : inactiveButton}
       href="/projects/"
@@ -30,10 +31,12 @@ var inactiveButton = `tab-button`;
       <span>Projects</span>
       <div class="wave"></div>
     </a>
+
     <a class={page == "blog" ? activeButton : inactiveButton} href="/blog/">
       <span>Blog</span>
       <div class="wave"></div>
     </a>
+
     <a
       class={page == "contact" ? activeButton : inactiveButton}
       href="/contact/"

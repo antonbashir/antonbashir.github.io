@@ -1,9 +1,9 @@
 ---
-import { CatAnimation } from "../components/Cat";
+import { FoxAnimation } from "../components/Fox";
 import Navigation from "../layouts/Navigation.astro";
 ---
 
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -13,9 +13,10 @@ import Navigation from "../layouts/Navigation.astro";
   </head>
   <body>
     <Navigation />
-    <div class="flex mx-56">
+    <div class="flex place-content-center place-items-center">
+      <FoxAnimation client:only />
       <article class="prose max-h-none max-w-none">
-        <h1>👋 Greetings</h1>
+        <h2>👋 Greetings</h2>
         <h2>👤 Welcome to my personal site and blog</h2>
         <h2>🧑‍💻️ I am multifunctional software developer</h2>
         <h2>💻 Currently working with Dart, Flutter and C</h2>
