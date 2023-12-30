@@ -1,10 +1,11 @@
 ---
+import "../styles/tab-button.css";
 interface Props {
   page?: string;
 }
 const { page = "" } = Astro.props;
-var activeButton = `btn btn-wide btn-ghost btn-active`;
-var inactiveButton = `btn btn-wide btn-ghost`;
+var activeButton = `tab-button-active`;
+var inactiveButton = `tab-button`;
 ---
 
 <div class="navbar pl-8 pr-8 pt-8">
@@ -14,20 +15,28 @@ var inactiveButton = `btn btn-wide btn-ghost`;
     </div>
   </div>
   <div class="navbar-center hidden lg:flex gap-8">
-    <a class={page == "path" ? activeButton : inactiveButton} href="/path/"
-      >Path</a
-    >
+    <a class={page == "path" ? activeButton : inactiveButton} href="/path/">
+      <span>Path</span>
+      <div class="wave"></div>
+    </a>
     <a
       class={page == "projects" ? activeButton : inactiveButton}
-      href="/projects/">Projects</a
+      href="/projects/"
     >
-    <a class={page == "blog" ? activeButton : inactiveButton} href="/blog/"
-      >Blog</a
-    >
+      <span>Projects</span>
+      <div class="wave"></div>
+    </a>
+    <a class={page == "blog" ? activeButton : inactiveButton} href="/blog/">
+      <span>Blog</span>
+      <div class="wave"></div>
+    </a>
     <a
       class={page == "contacts" ? activeButton : inactiveButton}
-      href="/contacts/">Contacts</a
+      href="/contacts/"
     >
+      <span>Contacts</span>
+      <div class="wave"></div>
+    </a>
   </div>
   <div class="navbar-end"></div>
 </div>

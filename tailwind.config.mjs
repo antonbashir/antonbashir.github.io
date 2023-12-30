@@ -26,9 +26,9 @@ export default {
         'neutral-focus': '#4d4d4d',
         'neutral-content': '#ffffff',
 
-        'base-100': '#000000',
-        'base-200': '#333333',
-        'base-300': '#4d4d4d',
+        'base-100': '#17181C',
+        'base-200': '#0F0F0F',
+        'base-300': '#ffffff',
         'base-content': '#ffffff',
 
         'info': '#0000ff',
