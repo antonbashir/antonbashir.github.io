@@ -14,7 +14,14 @@ import "../styles/index.css";
   </head>
   <body>
     <Navigation page="projects" />
-    <p class="text-3xl font-bold p-4">There are my projects</p>
+    <div class="flex place-items-center">
+      <p class="text-3xl font-bold p-4">Check out my projects</p>
+      <input
+        type="text"
+        placeholder="Search..."
+        class="input input-bordered w-full max-w-xs"
+      />
+    </div>
     <div class="divider"></div>
     <div class="flex flex-col place-content-justify gap-2">
       <ProjectCard
