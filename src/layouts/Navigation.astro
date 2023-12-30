@@ -7,15 +7,11 @@ var activeButton = `btn btn-wide btn-ghost btn-active`;
 var inactiveButton = `btn btn-wide btn-ghost`;
 ---
 
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-/>
 <div class="navbar pl-8 pr-8 pt-8">
   <div class="navbar-start">
-    <a class="btn btn-circle btn-outline" href="/">
-      <span class="material-symbols-outlined">home</span>
-    </a>
+    <div class="flex place-items-center place-content-center btn-lg">
+      <a href="/"> 🦊</a>
+    </div>
   </div>
   <div class="navbar-center hidden lg:flex gap-8">
     <a class={page == "path" ? activeButton : inactiveButton} href="/path/"
