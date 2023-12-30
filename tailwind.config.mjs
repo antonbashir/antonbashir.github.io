@@ -7,7 +7,7 @@ export default {
   ],
 
   daisyui: {
-    themes: ["dark"],
+    themes: ["black"],
     base: true,
     styled: true,
     utils: true,
