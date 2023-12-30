@@ -10,16 +10,14 @@ var inactiveButton = `tab-button`;
 
 <div class="navbar pl-8 pr-8 pt-8">
   <div class="navbar-start">
-    <div class="flex place-items-center place-content-center">
-      <a href="/">
-        <img
-          width="64"
-          height="64"
-          src="https://img.icons8.com/external-justicon-flat-justicon/64/external-fox-christmas-avatar-justicon-flat-justicon.png"
-          alt="external-fox-christmas-avatar-justicon-flat-justicon"
-        />
-      </a>
-    </div>
+    <a href="/">
+      <img
+        width="64"
+        height="64"
+        src="https://img.icons8.com/external-justicon-flat-justicon/64/external-fox-christmas-avatar-justicon-flat-justicon.png"
+        alt="external-fox-christmas-avatar-justicon-flat-justicon"
+      />
+    </a>
   </div>
   <div class="navbar-center hidden lg:flex gap-8">
     <a class={page == "path" ? activeButton : inactiveButton} href="/path/">
