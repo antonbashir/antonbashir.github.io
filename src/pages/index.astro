@@ -1,5 +1,6 @@
 ---
 import { FoxAnimation } from "../components/Fox";
+import { Technologies } from "../components/Technologies";
 import Navigation from "../layouts/Navigation.astro";
 ---
 
@@ -21,6 +22,40 @@ import Navigation from "../layouts/Navigation.astro";
         <h2>🧑‍💻️ I am multifunctional software developer</h2>
         <h2>💻 Currently working with Dart, Flutter and C</h2>
       </article>
+    </div>
+
+    <div class="my-4">
+      <Technologies
+        slidesPerView={4}
+        technologies={["Dart", "Java", "Kotlin", "Python", "TS", "JS", "C"]}
+        spaceBetween={8}
+        client:only="react"
+      />
+    </div>
+
+    <div class="my-4">
+      <Technologies
+        slidesPerView={8}
+        technologies={[
+          "Flutter",
+          "Linux",
+          "IO Uring",
+          "RSocket",
+          "Groovy",
+          "E2K",
+          "React",
+          "Astro",
+          "Tailwind",
+          "CMake",
+          "Tailscale",
+          "OKD",
+          "Ansible",
+          "Langchain",
+          "Gradle",
+        ]}
+        spaceBetween={8}
+        client:only="react"
+      />
     </div>
   </body>
 </html>
