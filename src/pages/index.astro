@@ -24,10 +24,11 @@ import Navigation from "../layouts/Navigation.astro";
       </article>
     </div>
 
-    <div class="my-4">
+    <div>
       <Technologies
         mode={TechnologyMode.languages}
         slidesPerView={4}
+        spaceBetween={16}
         technologies={[
           "Dart",
           "Java",
@@ -40,15 +41,13 @@ import Navigation from "../layouts/Navigation.astro";
           "Scala",
           "Lua",
         ]}
-        spaceBetween={8}
         client:only="react"
       />
     </div>
 
-    <div class="my-4">
+    <div class="my-8">
       <Technologies
         mode={TechnologyMode.applications}
-        slidesPerView={8}
         technologies={[
           "Flutter",
           "Linux",
@@ -78,8 +77,22 @@ import Navigation from "../layouts/Navigation.astro";
           "EFK",
           "ELK",
           "Grafana",
+          "JSON",
+          "MessagePack",
+          "YAML",
+          "HOCON",
+          "Maven",
+          "Ant",
+          "Netty",
+          "GraalVM",
+          "JVM",
+          "Tarantool",
+          "Kafka",
+          "JBoss/WF",
+          "Postgres",
         ]}
-        spaceBetween={8}
+        slidesPerView={8}
+        spaceBetween={16}
         client:only="react"
       />
     </div>
