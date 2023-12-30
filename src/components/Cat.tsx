@@ -14,6 +14,6 @@ export const CatAnimation = (props: Properties) => {
 
   return (
     <RiveComponent
-      style={{ height: "150px", width: "150px" }}
+      style={{ height: "150px", width: "200px" }}
     />)
 }
