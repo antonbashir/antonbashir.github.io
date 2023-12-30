@@ -1,8 +1,7 @@
 ---
+import { ProjectCard } from "../components/Projects";
 import Navigation from "../layouts/Navigation.astro";
-interface Props {}
-
-const {} = Astro.props;
+import "../styles/index.css";
 ---
 
 <html lang="en">
@@ -15,12 +14,15 @@ const {} = Astro.props;
   </head>
   <body>
     <Navigation page="projects" />
-    <div class="flex place-content-center">
-      <article class="prose prose-zinc max-w-none">
-        <h1>Greetings</h1>
-        <h2>My is Anton Bashirov and this is my personal site and blog</h2>
-        <p>Text</p>
-      </article>
+    <p class="text-3xl font-bold p-4">There are my projects</p>
+    <div class="divider"></div>
+    <div class="flex flex-col place-content-justify gap-2">
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
     </div>
   </body>
 </html>
