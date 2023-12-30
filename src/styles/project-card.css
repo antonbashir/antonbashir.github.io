@@ -1,8 +1,8 @@
 .project-card {
   @apply bg-gradient-to-r;
-  @apply from-pink-500;
-  @apply via-red-500;
-  @apply to-yellow-500;
+  @apply from-indigo-500;
+  @apply via-blue-500;
+  @apply to-purple-500;
   @apply card;
   background-size: 400%;
   -webkit-animation: animation 3s ease infinite;
