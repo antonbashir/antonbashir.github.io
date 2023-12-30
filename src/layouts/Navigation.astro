@@ -3,12 +3,8 @@ interface Props {
   page?: string;
 }
 const { page = "" } = Astro.props;
-var pathClass = `btn btn-wide btn-ghost`;
-if (page == "path") pathClass += " btn-active";
-var projectsClass = `btn btn-wide btn-ghost`;
-if (page == "projects") projectsClass += " btn-active";
-var contactsClass = `btn btn-wide btn-ghost`;
-if (page == "contacts") contactsClass += " btn-active";
+var activeButton = `btn btn-wide btn-ghost btn-active`;
+var inactiveButton = `btn btn-wide btn-ghost`;
 ---
 
 <div class="navbar pl-8 pr-8 pt-8">
@@ -16,9 +12,20 @@ if (page == "contacts") contactsClass += " btn-active";
     <img src="/favicon.png" class="object-fill h-16 w-16" />
   </div>
   <div class="navbar-center hidden lg:flex gap-8">
-    <a class={pathClass} href="/path/">Path</a>
-    <a class={projectsClass} href="/projects/">Projects</a>
-    <a class={contactsClass}>Contacts</a>
+    <a class={page == "path" ? activeButton : inactiveButton} href="/path/"
+      >Path</a
+    >
+    <a
+      class={page == "projects" ? activeButton : inactiveButton}
+      href="/projects/">Projects</a
+    >
+    <a class={page == "blog" ? activeButton : inactiveButton} href="/blog/"
+      >Blog</a
+    >
+    <a
+      class={page == "contacts" ? activeButton : inactiveButton}
+      href="/contacts/">Contacts</a
+    >
   </div>
   <div class="navbar-end"></div>
 </div>
