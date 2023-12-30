@@ -1,6 +1,8 @@
 ---
-import "../styles/index.css";
 import Navigation from "../layouts/Navigation.astro";
+interface Props {}
+
+const {} = Astro.props;
 ---
 
 <html lang="en">
@@ -12,7 +14,7 @@ import Navigation from "../layouts/Navigation.astro";
     <title>Anton Bashirov</title>
   </head>
   <body>
-    <Navigation />
+    <Navigation page="projects" />
     <div class="flex place-content-center">
       <article class="prose prose-zinc max-w-none">
         <h1>Greetings</h1>
