@@ -24,8 +24,9 @@ import Navigation from "../layouts/Navigation.astro";
       </article>
     </div>
 
-    <div class="flex flex-col justify-items-end">
-      <div class="flex-1">
+    <div class="flex flex-col">
+      <div class="flex-1"></div>
+      <div class="flex-grow-0">
         <Technologies
           mode={TechnologyMode.languages}
           slidesPerView={6}
@@ -46,7 +47,7 @@ import Navigation from "../layouts/Navigation.astro";
         />
       </div>
 
-      <div class="my-8 flex-1">
+      <div class="my-8 flex-grow-0">
         <Technologies
           mode={TechnologyMode.applications}
           technologies={[
