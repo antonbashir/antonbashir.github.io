@@ -1,6 +1,6 @@
 ---
 import { FoxAnimation } from "../components/Fox";
-import { Technologies } from "../components/Technologies";
+import { Technologies, TechnologyMode } from "../components/Technologies";
 import Navigation from "../layouts/Navigation.astro";
 ---
 
@@ -26,8 +26,20 @@ import Navigation from "../layouts/Navigation.astro";
 
     <div class="my-4">
       <Technologies
+        mode={TechnologyMode.languages}
         slidesPerView={4}
-        technologies={["Dart", "Java", "Kotlin", "Python", "TS", "JS", "C"]}
+        technologies={[
+          "Dart",
+          "Java",
+          "Kotlin",
+          "Python",
+          "TS",
+          "JS",
+          "C",
+          "C++",
+          "Scala",
+          "Lua",
+        ]}
         spaceBetween={8}
         client:only="react"
       />
@@ -35,6 +47,7 @@ import Navigation from "../layouts/Navigation.astro";
 
     <div class="my-4">
       <Technologies
+        mode={TechnologyMode.applications}
         slidesPerView={8}
         technologies={[
           "Flutter",
@@ -52,6 +65,19 @@ import Navigation from "../layouts/Navigation.astro";
           "Ansible",
           "Langchain",
           "Gradle",
+          "Kaniko",
+          "FFMpeg",
+          "GRPC",
+          "Kurento",
+          "Terraform",
+          "Istio",
+          "Envoy",
+          "Nginx",
+          "Haproxy",
+          "Jenkins",
+          "EFK",
+          "ELK",
+          "Grafana",
         ]}
         spaceBetween={8}
         client:only="react"
