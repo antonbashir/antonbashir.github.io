@@ -4,11 +4,12 @@ type ProjectCardProperties = {
   description: string
   documentation?: string
   code?: string
+  todo?: boolean
 }
 
 export const ProjectCard = (props: ProjectCardProperties) => {
   return (
-    <div className={`project-card`}>
+    <div className={props.todo != true ? `project-card` : `card bg-base-200`}>
       <div className="card-body">
         <h1 className="card-title text-2xl font-bold">{props.name}</h1>
         <p className="py-4 text-xl">
