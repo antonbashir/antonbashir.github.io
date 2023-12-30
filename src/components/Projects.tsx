@@ -1,9 +1,9 @@
 
-type Properties = {
+type ProjectCardProperties = {
 
 }
 
-export const ProjectCard = (props: Properties) => {
+export const ProjectCard = (props: ProjectCardProperties) => {
   return (
     <div className="card mx-4 elevation-5">
       <div className="card-body">
