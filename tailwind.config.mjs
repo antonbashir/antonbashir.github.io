@@ -6,7 +6,6 @@ export default {
     require('tailwindcss-elevation'),
     require('@tailwindcss/typography'),
   ],
-
   daisyui: {
     themes: [{
       'black': {
@@ -57,4 +56,13 @@ export default {
     logs: true,
     themeRoot: ":root",
   },
+  theme: {
+    extend: {
+      dropShadow: {
+        glow: [
+          "0 0 8px #eab308",
+        ]
+      }
+    }
+  }
 }

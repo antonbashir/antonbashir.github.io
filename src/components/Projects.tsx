@@ -4,11 +4,12 @@ type ProjectCardProperties = {
   description: string
   documentation?: string
   code?: string
+  gradient?: string
 }
 
 export const ProjectCard = (props: ProjectCardProperties) => {
   return (
-    <div className="card elevation-3 bg-base-200">
+    <div className={`card elevation-3 bg-base-200 ${props.gradient}`}>
       <div className="card-body">
         <h1 className="card-title text-2xl font-bold">{props.name}</h1>
         <p className="py-4 text-xl">
