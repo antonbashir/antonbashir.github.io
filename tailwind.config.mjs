@@ -11,10 +11,9 @@ export default {
     themes: [{
       dark: {
         ...require("daisyui/src/theming/themes")["dark"],
-        "base": "fffff",
-        "base-100": "fffff",
-        "base-200": "fffff",
-        "base-300": "fffff",
+        "base-100": "#000000",
+        "base-200": "#e6e6e6",
+        "base-300": "000000",
       }
     }],
     base: true,
