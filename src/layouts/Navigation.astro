@@ -1,4 +1,5 @@
 ---
+import { CatAnimation } from "../components/Cat";
 import "../styles/tab-button.css";
 interface Props {
   page?: string;
@@ -11,12 +12,7 @@ var inactiveButton = `tab-button`;
 <div class="navbar pl-8 pr-8 pt-8">
   <div class="navbar-start">
     <a href="/">
-      <img
-        width="64"
-        height="64"
-        src="https://img.icons8.com/external-justicon-flat-justicon/64/external-fox-christmas-avatar-justicon-flat-justicon.png"
-        alt="external-fox-christmas-avatar-justicon-flat-justicon"
-      />
+      <CatAnimation client:load />
     </a>
   </div>
   <div class="navbar-center hidden lg:flex gap-8">
