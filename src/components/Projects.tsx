@@ -8,7 +8,7 @@ type Properties = {
   todo?: boolean
 }
 
-export const ProjectCard = (props: Properties) =>
+const ProjectCard = (props: Properties) =>
   <div className={props.todo != true ? `project-card` : `card bg-base-200`}>
     <div className="card-body">
       <h1 className="card-title text-2xl font-bold">{props.name}</h1>
@@ -29,3 +29,39 @@ export const ProjectCard = (props: Properties) =>
       </div>
     </div>
   </div>
+
+export const ProjectList = () => <>
+  <ProjectCard
+    name="ART"
+    description="Make art no code"
+    code="https://github.com/art-community"
+  />
+  <ProjectCard
+    name="Dart Linux Interactor"
+    description="Dart ❤️ Linux"
+    documentation="https://antonbashir.github.io/dart-linux-interactor/"
+    code="https://github.com/antonbashir/dart-linux-interactor/"
+  />
+  <ProjectCard
+    name="Dart Reactive Transport"
+    description="Dart ❤️ Rsocket"
+    documentation="https://antonbashir.github.io/dart-reactive-transport/"
+    code="https://github.com/antonbashir/dart-reactive-transport/"
+  />
+  <ProjectCard
+    name="Dart IOUring Transport"
+    description="Dart ❤️ IOUring"
+    documentation="https://antonbashir.github.io/dart-iouring-transport/"
+    code="https://github.com/antonbashir/dart-iouring-transport/"
+  />
+  <ProjectCard
+    name="Dart Tarantool Storage"
+    description="Dart ❤️ Tarantool"
+    documentation="https://antonbashir.github.io/dart-tarantool-storage/"
+    code="https://github.com/antonbashir/dart-tarantool-storage/"
+  />
+  <ProjectCard name="Lucifer" description="TODO" todo />
+  <ProjectCard name="Eva" description="TODO" todo />
+  <ProjectCard name="Adam" description="TODO" todo />
+  <ProjectCard name="Angel" description="TODO" todo />
+</>

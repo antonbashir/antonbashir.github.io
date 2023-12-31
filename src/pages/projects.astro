@@ -1,5 +1,5 @@
 ---
-import { ProjectCard } from "../components/Projects";
+import { ProjectList } from "../components/Projects";
 import Navigation from "../layouts/Navigation.astro";
 import Head from "../layouts/Head.astro";
 ---
@@ -17,7 +17,7 @@ import Head from "../layouts/Head.astro";
     <div class="flex place-items-center">
       <div class="flex place-items-center flex-1 px-8 py-4">
         <span
-          class="material-symbols-outlined text-3xl drop-shadow-glow text-yellow-100"
+          class="material-symbols-outlined text-3xl drop-shadow-glow text-yellow-300"
           >lightbulb</span
         >
         <p class="text-3xl font-bold px-4">Check out my projects</p>
@@ -30,39 +30,7 @@ import Head from "../layouts/Head.astro";
     </div>
     <div class="divider"></div>
     <div class="grid mx-8 grid-cols-3 gap-8">
-      <ProjectCard
-        name="ART"
-        description="Make art no code"
-        code="https://github.com/art-community"
-      />
-      <ProjectCard
-        name="Dart Linux Interactor"
-        description="Dart ❤️ Linux"
-        documentation="https://antonbashir.github.io/dart-linux-interactor/"
-        code="https://github.com/antonbashir/dart-linux-interactor/"
-      />
-      <ProjectCard
-        name="Dart Reactive Transport"
-        description="Dart ❤️ Rsocket"
-        documentation="https://antonbashir.github.io/dart-reactive-transport/"
-        code="https://github.com/antonbashir/dart-reactive-transport/"
-      />
-      <ProjectCard
-        name="Dart IOUring Transport"
-        description="Dart ❤️ IOUring"
-        documentation="https://antonbashir.github.io/dart-iouring-transport/"
-        code="https://github.com/antonbashir/dart-iouring-transport/"
-      />
-      <ProjectCard
-        name="Dart Tarantool Storage"
-        description="Dart ❤️ Tarantool"
-        documentation="https://antonbashir.github.io/dart-tarantool-storage/"
-        code="https://github.com/antonbashir/dart-tarantool-storage/"
-      />
-      <ProjectCard name="Lucifer" description="TODO" todo />
-      <ProjectCard name="Eva" description="TODO" todo />
-      <ProjectCard name="Adam" description="TODO" todo />
-      <ProjectCard name="Angel" description="TODO" todo />
+      <ProjectList />
     </div>
   </body>
 </html>

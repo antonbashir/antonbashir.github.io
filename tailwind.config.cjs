@@ -60,6 +60,11 @@ module.exports = withMT({
   },
   theme: {
     extend: {
+      dropShadow: {
+        glow: [
+          "0 0 8px #eab308",
+        ]
+      }
     }
   }
 })
