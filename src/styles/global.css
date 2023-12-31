@@ -1,0 +1,21 @@
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #000000 #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+}
+
+*::-webkit-scrollbar-thumb {
+  position: absolute;
+  inset-inline-end: 1px;
+  width: 5px;
+  background-color: rgba(255, 255, 255, .2);
+  cursor: default;
+  opacity: 0;
+  border-radius: 8px;
+}

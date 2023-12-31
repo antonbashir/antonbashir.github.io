@@ -4,6 +4,7 @@ import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
 import { Article } from "../components/Blog";
 export const articles = await getCollection("blog");
+import "../styles/global.css";
 ---
 
 <html lang="en">
