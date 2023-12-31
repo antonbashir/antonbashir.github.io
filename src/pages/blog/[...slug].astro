@@ -24,12 +24,12 @@ const url = Astro.request.url;
       document.addEventListener("clipboard-copy", function (event) {
         document
           .querySelector("#notification")
-          ?.classList.replace("opacity-0", "opacity-100");
+          ?.classList.remove("translate-x-full");
         setTimeout(
           () =>
             document
               .querySelector("#notification")
-              ?.classList.replace("opacity-100", "opacity-0"),
+              ?.classList.add("translate-x-full"),
           1000,
         );
       });
@@ -59,7 +59,7 @@ const url = Astro.request.url;
     <div
       id="notification"
       role="alert"
-      class={`alert fixed top-0 right-0 h-14 w-96 m-8 transition-opacity ease-in duration-700 opacity-0`}
+      class={`alert fixed top-0 right-0 h-14 w-96 my-8 transition-transform ease-in duration-500 translate-x-full`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
