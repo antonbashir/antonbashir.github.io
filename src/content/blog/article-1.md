@@ -1,5 +1,6 @@
 ---
 title: Hello, World
+description: Description
 ---
 
 # Hi there!

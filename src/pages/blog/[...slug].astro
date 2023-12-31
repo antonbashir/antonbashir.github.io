@@ -1,19 +1,20 @@
 ---
+// @ts-ignore
+import { ClipboardCopy } from "@astro-github-elements/clipboard-copy";
 import { getCollection } from "astro:content";
 import Navigation from "../../layouts/Navigation.astro";
 import Head from "../../layouts/Head.astro";
+
 export async function getStaticPaths() {
   return (await getCollection("blog")).map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }
+
 const { post } = Astro.props;
 const { Content } = await post.render();
 const url = Astro.request.url;
-import { ClipboardCopy } from "@astro-github-elements/clipboard-copy";
-import { getEntry } from "astro:content";
-const entry = await getEntry("blog", post.slug);
 ---
 
 <html lang="en">
@@ -27,17 +28,16 @@ const entry = await getEntry("blog", post.slug);
   <body>
     <Navigation page="blog" />
     <div class="divider"></div>
-
-    <div class="prose max-w-none w-2/3 m-auto">
+    <div class="prose max-w-none w-1/2 m-auto">
       <ClipboardCopy value={url}>
-        <div class="flex flex-row gap-2">
-          <h1>
-            {entry.data.title}
-          </h1>
-          <span class="material-symbols-outlined">content_copy</span>
+        <div class="inline-flex flex-row gap-2 items-center">
+          <p class="text-5xl font-bold text-white">
+            {post.data.title}
+          </p>
+          <span class="material-symbols-outlined text-3xl">content_copy</span>
         </div>
       </ClipboardCopy>
-      <Content client:load />
+      <Content />
     </div>
   </body>
 </html>

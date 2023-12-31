@@ -1,9 +1,9 @@
 ---
-import { Article } from "../components/Blog";
+import { getCollection, getEntry } from "astro:content";
 import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
-import { getCollection } from "astro:content";
-const blogEntries = await getCollection("blog");
+import { Article } from "../components/Blog";
+export const articles = await getCollection("blog");
 ---
 
 <html lang="en">
@@ -15,8 +15,12 @@ const blogEntries = await getCollection("blog");
     <div class="divider"></div>
     <div class="flex flex-col gap-4 p-4">
       {
-        blogEntries.map((blogPostEntry) => (
-          <Article reference={blogPostEntry.slug} />
+        articles.map((post) => (
+          <Article
+            title={post.data.title}
+            description={post.data.description}
+            reference={post.slug}
+          />
         ))
       }
     </div>
