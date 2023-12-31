@@ -64,9 +64,7 @@ export const ContactForm = () => {
             className="radio"
           />
         </label>
-        site: 'https://antonbashir.github.io',
-        site: 'https://antonbashir.github.io',
-<label className="label cursor-pointer">
+        <label className="label cursor-pointer">
           <span className="label-text text-sm">Hiring</span>
           <input type="radio"
             name="case"
