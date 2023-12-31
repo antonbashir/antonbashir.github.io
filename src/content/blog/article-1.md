@@ -1,14 +1,9 @@
 ---
 title: Hello, World
-description: Description
+description: First article in my blog
 ---
 
-# Hi there!
+# Why ?
 
-This Markdown file creates a page at `your-domain.com/page-1/`
 
-It probably isn't styled much, but Markdown does support:
-- **bold** and _italics._
-- lists
-- [links](https://astro.build)
-- and more!
+Let's talk about the "why" question.

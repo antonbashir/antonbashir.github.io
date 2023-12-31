@@ -28,7 +28,7 @@ const url = Astro.request.url;
   <body>
     <Navigation page="blog" />
     <div class="divider"></div>
-    <div class="prose max-w-none w-1/2 m-auto">
+    <div class="max-w-none w-1/2 m-auto">
       <ClipboardCopy value={url}>
         <div class="inline-flex flex-row gap-2 items-center">
           <p class="text-5xl font-bold text-white">
@@ -37,7 +37,9 @@ const url = Astro.request.url;
           <span class="material-symbols-outlined text-3xl">content_copy</span>
         </div>
       </ClipboardCopy>
-      <Content />
+      <div class="prose prose-p:text-white prose-p:text-lg py-8">
+        <Content />
+      </div>
     </div>
   </body>
 </html>
