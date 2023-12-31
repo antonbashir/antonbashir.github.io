@@ -3,8 +3,8 @@
   height: 300px;
   position: relative;
   display: block;
-  text-decoration: none;
   overflow: hidden;
+  text-decoration: none;
   
   @apply btn;
 
@@ -27,7 +27,7 @@
     position: absolute;
     left: 0;
     top: -120px;
-    transition: 0.4s;
+    transition: 0.5s;
 
     &::before, &::after {
       width: 200%;

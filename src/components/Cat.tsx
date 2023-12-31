@@ -1,9 +1,7 @@
 import Rive from '@rive-app/react-canvas';
 import { useRive } from '@rive-app/react-canvas';
 
-type Properties = {
-
-}
+type Properties = {}
 
 export const CatAnimation = (props: Properties) => {
   const { rive, RiveComponent } = useRive({
@@ -11,9 +9,5 @@ export const CatAnimation = (props: Properties) => {
     stateMachines: "State Machine 1",
     autoplay: true,
   });
-
-  return (
-    <RiveComponent
-      style={{ height: "150px", width: "200px" }}
-    />)
+  return <RiveComponent style={{ height: "150px", width: "200px" }} />
 }
