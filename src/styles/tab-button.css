@@ -1,16 +1,15 @@
 .tab-button {
-  width: 300px;
-  height: 300px;
+  width: 200px;
   position: relative;
   display: block;
-  overflow: hidden;
   text-decoration: none;
+  overflow: hidden;
   
   @apply btn;
 
   &:hover {
     .wave {
-      top: -220px;
+      top: -120px;
     }
   }
 
@@ -21,13 +20,13 @@
   }
 
   .wave {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     background-color: black;
     position: absolute;
     left: 0;
-    top: -120px;
-    transition: 0.5s;
+    top: -80px;
+    transition: 0.4s;
 
     &::before, &::after {
       width: 200%;
@@ -54,7 +53,7 @@
 }
 
 .tab-button-active {
-  width: 300px;
+  width: 200px;
   @apply btn;
   @apply btn-primary;
 }

@@ -29,7 +29,7 @@ const Technologies = (properties: Properties) => <Swiper
   }}
   spaceBetween={properties.spaceBetween}
   modules={[Grid, Autoplay, Pagination]}>
-  {properties.technologies.map((technology) => <SwiperSlide>
+  {properties.technologies.map((technology) => <SwiperSlide key={technology}>
     {properties.mode == TechnologyMode.languages
       ? <div className="rounded-3xl p-0.5 bg-gradient-to-r from-light-blue-500 via-blue-500 to-indigo-500">
         <div className='flex place-content-center p-8 rounded-3xl bg-base-200'>
