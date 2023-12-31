@@ -8,7 +8,7 @@ export const FoxAnimation = (properties: Properties) => {
   const options = {
     animationData: foxAnimation,
     loop: true,
-    style: { width: "45rem" }
+    style: { width: "35rem", height: "35rem" }
   };
   const { View } = useLottie(options);
   return <>{View}</>
