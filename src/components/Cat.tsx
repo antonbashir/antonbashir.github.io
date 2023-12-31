@@ -12,7 +12,7 @@ export const CatAnimation = (props: Properties) => {
       alignment: Alignment.TopLeft
     })
   });
-  return <div className="w-32 h-32">
+  return <div className="w-20 h-20">
     <RiveComponent />
   </div>
 }
