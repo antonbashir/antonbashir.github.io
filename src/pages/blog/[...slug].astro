@@ -20,6 +20,21 @@ const url = Astro.request.url;
 
 <html lang="en">
   <head>
+    <script>
+      document.addEventListener("clipboard-copy", function (event) {
+        console.log(document.querySelector("#notification"));
+        document
+          .querySelector("#notification")
+          ?.classList.replace("opacity-0", "opacity-100");
+        setTimeout(
+          () =>
+            document
+              .querySelector("#notification")
+              ?.classList.replace("opacity-100", "opacity-0"),
+          1000,
+        );
+      });
+    </script>
     <Head title="🦊 Anton Bashirov | Blog" />
     <link
       rel="stylesheet"
@@ -41,6 +56,24 @@ const url = Astro.request.url;
       <div class="prose prose-p:text-white prose-p:text-lg">
         <Content />
       </div>
+    </div>
+    <div
+      id="notification"
+      role="alert"
+      class={`alert absolute top-0 right-0 h-14 w-96 m-8 transition-opacity ease-in duration-700 opacity-0`}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+      >
+      <span>Link copied</span>
     </div>
   </body>
 </html>

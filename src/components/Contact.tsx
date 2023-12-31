@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+import { showAlert } from 'tailwind-toastify';
 
 class Hiring {
   companyName: string
@@ -216,6 +215,7 @@ export const ContactForm = () => {
     "",
   ));
   const [error, setError] = useState(false);
+  const [notification, setNotification] = useState(false);
 
   const hasError = () => !name || (messageCase == "hiring" ? !hiring.valid() : false);
 
@@ -235,7 +235,8 @@ export const ContactForm = () => {
 ${messageCase == 'hiring' ? hiring.format() : message}`
         })
         setError(false);
-        toast("Thank you for your message!");
+        setNotification(true);
+        setTimeout(() => setNotification(false), 1000);
         return;
       }
       setError(true);
@@ -340,12 +341,9 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
 
       <button type="submit" className="btn my-8 btn-wide btn-lg">Submit</button>
     </div>
-    <ToastContainer
-      hideProgressBar
-      toastClassName={"bg-black relative flex p-2 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"}
-      bodyClassName={() => "bg-black text-white text-sm block p-4"}
-      toastStyle={{ background: "black" }}
-      bodyStyle={{ background: "black" }}
-    />
-  </form>
+    <div role="alert" className={`alert absolute top-0 right-0 h-14 w-96 m-8 transition-opacity ease-in duration-700 ${notification ? 'opacity-100' : 'opacity-0'}`}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>Thank you for your message</span>
+    </div>
+  </form >
 }

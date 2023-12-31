@@ -617,6 +617,18 @@
   resolved "https://registry.yarnpkg.com/@github/time-elements/-/time-elements-3.6.0.tgz#c61cbab56e9defd3faa3f24bd87afac00deeccd4"
   integrity sha512-MRt9TJztej6idLMvmuZbWc75TJrpl+1kgxWPFzCti4Md7kFtOFTRjXSGKmpc4vFT1NR3SgjHqTfI2Cnr9dJ7Wg==
 
+"@headlessui/react@^1.7.17":
+  version "1.7.17"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.17.tgz#a0ec23af21b527c030967245fd99776aa7352bc6"
+  integrity sha512-4am+tzvkqDSSgiwrsEpGWqgGo9dz8qU5M3znCkC4PgkpY4HcCZzEDEvozltGGGHIKl9jbXbZPSH5TWn4sWJdow==
+  dependencies:
+    client-only "^0.0.1"
+
+"@heroicons/react@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-1.0.6.tgz#35dd26987228b39ef2316db3b1245c42eb19e324"
+  integrity sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==
+
 "@iarna/toml@^2.2.5":
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
@@ -1545,6 +1557,11 @@ cli-spinners@^2.9.0:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.9.2.tgz#1773a8f4b9c4d6ac31563df53b3fc1d79462fe41"
   integrity sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==
+
+client-only@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"
+  integrity sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==
 
 cliui@^8.0.1:
   version "8.0.1"
@@ -4035,6 +4052,14 @@ tailwind-merge@1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.8.1.tgz#0e56c8afbab2491f72e06381043ffec8b720ba04"
   integrity sha512-+fflfPxvHFr81hTJpQ3MIwtqgvefHZFUHFiIHpVIRXvG/nX9+gu2P7JNlFu2bfDMJ+uHhi/pUgzaYacMoXv+Ww==
+
+tailwind-toastify@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/tailwind-toastify/-/tailwind-toastify-1.0.8.tgz#8685b32c979d903498922165076faeb7bca96549"
+  integrity sha512-/ugwczM74pli+Eze8l4IlxJC+993ypfgxvG0npQzuQSCKYXfp/xyFoqVnwa93nJNspXnlyWy7C3Ye9QOeU9tDA==
+  dependencies:
+    "@headlessui/react" "^1.7.17"
+    "@heroicons/react" "^1.0.6"
 
 tailwindcss-elevation@^2.0.0:
   version "2.0.0"
