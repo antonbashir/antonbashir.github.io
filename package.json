@@ -21,6 +21,7 @@
     "@types/react-dom": "^18.2.18",
     "add": "^2.0.6",
     "astro": "^4.0.3",
+    "astro-seo": "^0.8.0",
     "autoprefixer": "^10.4.16",
     "daisyui": "^4.4.24",
     "framer-motion": "^10.16.16",

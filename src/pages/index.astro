@@ -2,17 +2,33 @@
 import { FoxAnimation } from "../components/Fox";
 import { Technologies, TechnologyMode } from "../components/Technologies";
 import Navigation from "../layouts/Navigation.astro";
+import { SEO } from "astro-seo";
 ---
 
 <html lang="en">
   <head>
+    <SEO
+      title="🦊 Anton Bashirov"
+      description="This is my personal site and blog"
+      openGraph={{
+        basic: {
+          title:
+            "My name is Anton Bashirov and i am multifunctional software developer",
+          type: "website",
+          image:
+            "https://avatars.githubusercontent.com/u/33657862?s=400&u=1f33be10e786c9a2bbf012d037a3aca5a9702a11&v=4",
+        },
+      }}
+      extend={{
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        meta: [],
+      }}
+    />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>🦊 Anton Bashirov</title>
-  </head>
-  <body>
+  </head><body>
     <div
       class="min-h-screen flex flex-col justify-between overflow-y-hidden overflow-x-hidden"
     >
