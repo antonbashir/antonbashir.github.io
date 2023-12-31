@@ -121,3 +121,4 @@ build/
 *.snap
 *.xlog
 \n.astro
+.env

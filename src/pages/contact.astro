@@ -1,13 +1,38 @@
 ---
 import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
-import '../styles/global.css';
+import "../styles/global.css";
+import { telegramSendMessage } from "telegram-message-send";
+
+if (Astro.request.method === "POST") {
+  try {
+    const botKey = import.meta.env.BOT_KEY;
+    const chatId = import.meta.env.CHAT_ID;
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const contact = data.get("contact");
+    const message = data.get("message");
+    const messageCase = data.get("case");
+    if (name && contact && message) {
+      telegramSendMessage(
+        botKey,
+        chatId,
+        `Имя: ${name}%0AКейс: ${messageCase}%0AКонтакт: ${contact}%0A%0A${message}`,
+      );
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
 ---
 
 <html lang="en">
   <head>
     <Head title="🦊 Anton Bashirov | Contact" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
   </head>
   <body>
     <Navigation page="contact" />
@@ -18,68 +43,79 @@ import '../styles/global.css';
           >contact_page</span
         >
         <p class="text-3xl font-bold px-4">Contact me</p>
-        
       </div>
     </div>
     <div class="divider"></div>
-    <div class="flex flex-col m-auto max-w-none w-2/3 prose">
-      <label class="form-control w-full max-w-none">
-        <div class="label">
-          <span class="label-text"><h3>What is your name ?</h3></span>
-        </div>
-        <input
-          type="text"
-          placeholder="Type here"
-          class="input input-bordered input-lg w-full max-w-none"
-        />
-      </label>
+    <form method="POST">
+      <div class="flex flex-col m-auto max-w-none w-2/3 prose">
+        <label class="form-control w-full max-w-none">
+          <div class="label">
+            <span class="label-text"><h3>What is your name ?</h3></span>
+          </div>
+          <input
+            name="name"
+            type="text"
+            placeholder="Type here"
+            class="input input-bordered input-lg w-full max-w-none"
+          />
+        </label>
 
-      <label class="form-control w-full max-w-none">
-        <div class="label">
-          <span class="label-text"><h3>What is your contact ?</h3></span>
-        </div>
-        <input
-          type="text"
-          placeholder="Type here"
-          class="input input-bordered input-lg w-full max-w-none"
-        />
-      </label>
+        <label class="form-control w-full max-w-none">
+          <div class="label">
+            <span class="label-text"><h3>What is your contact ?</h3></span>
+          </div>
+          <input
+            name="contact"
+            type="text"
+            placeholder="Type here"
+            class="input input-bordered input-lg w-full max-w-none"
+          />
+        </label>
 
-      <label class="form-control w-full max-w-none">
-        <div class="label">
-          <span class="label-text"><h3>What is your case ?</h3></span>
-        </div>
-        <label class="label cursor-pointer">
-          <span class="label-text text-sm">Hiring</span>
-          <input type="radio" name="case" class="radio" checked />
+        <label class="form-control w-full max-w-none">
+          <div class="label">
+            <span class="label-text"><h3>What is your case ?</h3></span>
+          </div>
+          <label class="label cursor-pointer">
+            <span class="label-text text-sm">Hiring</span>
+            <input
+              type="radio"
+              name="case"
+              value="hiring"
+              class="radio"
+              checked
+            />
+          </label>
+          <label class="label cursor-pointer">
+            <span class="label-text text-sm">Chating</span>
+            <input type="radio" name="case" value="chating" class="radio" />
+          </label>
+          <label class="label cursor-pointer">
+            <span class="label-text text-sm">Open-Source projects</span>
+            <input type="radio" name="case" value="open-source" class="radio" />
+          </label>
+          <label class="label cursor-pointer">
+            <span class="label-text text-sm">Technical question</span>
+            <input type="radio" name="case" value="question" class="radio" />
+          </label>
+          <label class="label cursor-pointer">
+            <span class="label-text text-sm">Other</span>
+            <input type="radio" name="case" value="other" class="radio" />
+          </label>
         </label>
-        <label class="label cursor-pointer">
-          <span class="label-text text-sm">Chating</span>
-          <input type="radio" name="case" class="radio" />
-        </label>
-        <label class="label cursor-pointer">
-          <span class="label-text text-sm">Open-Source projects</span>
-          <input type="radio" name="case" class="radio" />
-        </label>
-        <label class="label cursor-pointer">
-          <span class="label-text text-sm">Technical question</span>
-          <input type="radio" name="case" class="radio" />
-        </label>
-        <label class="label cursor-pointer">
-          <span class="label-text text-sm">Other</span>
-          <input type="radio" name="case" class="radio" />
-        </label>
-      </label>
 
-      <label class="form-control w-full max-w-none">
-        <div class="label">
-          <span class="label-text"><h3>Describe your request</h3></span>
-        </div>
-        <textarea class="textarea textarea-bordered h-32" placeholder=""
-        ></textarea>
-      </label>
+        <label class="form-control w-full max-w-none">
+          <div class="label">
+            <span class="label-text"><h3>Write your message here</h3></span>
+          </div>
+          <textarea
+            name="message"
+            class="textarea textarea-bordered h-32"
+            placeholder=""></textarea>
+        </label>
 
-      <button class="btn my-8 btn-wide btn-lg">Submit</button>
-    </div>
+        <button type="submit" class="btn my-8 btn-wide btn-lg">Submit</button>
+      </div>
+    </form>
   </body>
 </html>

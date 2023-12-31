@@ -20,6 +20,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Prepare
+        run: |
+          touch .env
+          echo BOT_KEY="${{ secrets.BOT_KEY }}" >> .env
+          echo CHAT_ID="${{ secrets.CHAT_ID }}" >> .env
+          cat .env
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
