@@ -48,6 +48,13 @@ module.exports = withMT({
           "outline-color": "none",
           "outline-style": "none",
           "outline-width": "none",
+        },
+
+        ".textarea:focus": {
+          "border-color": "none",
+          "outline-color": "none",
+          "outline-style": "none",
+          "outline-width": "none",
         }
       },
     }],
