@@ -61,8 +61,7 @@ class Hiring {
   }
 
   format = () => {
-    return `
-Имя компании: ${this.companyName}
+    return `Имя компании: ${this.companyName}
 
 Вакансия: ${this.vacancyUrl}
 
@@ -72,8 +71,8 @@ ${[...this.expectations.values()].map(expectation => `* ${expectation}`).join("\
 Задачи:
 ${[...this.tasks.values()].map(task => `* ${task}`).join("\n")}
 
-Описание: ${this.description}
-    `
+Описание:
+${this.description}`
   }
 
   valid = () => {
@@ -232,10 +231,8 @@ export const ContactForm = () => {
 Кейс: ${messageCase}
 
 Контакт: ${contact}
-${hiring.format()}
 
-${message}
-          `
+${messageCase == 'hiring' ? hiring.format() : message}`
         })
         setError(false);
         toast("Thank you for your message!");
