@@ -138,12 +138,12 @@ const HiringForm = (properties: HiringProperties) => {
       <input
         type="text"
         placeholder="Type here"
-        className={`input input-bordered input-lg w-full max-w-none ${properties.error && 'input-error'}`}
+        className={`input input-bordered input-lg w-full max-w-none ${properties.error && !properties.hiring.companyName && 'input-error'}`}
         value={properties.hiring.companyName}
         onChange={(event) => properties.onChanged(properties.hiring.withCompanyName(event.target.value))}
       />
       <div className="label">
-        {properties.error && <span className="label-text-alt text-error">Should not be empty</span>}
+        {properties.error && !properties.hiring.companyName && <span className="label-text-alt text-error">Should not be empty</span>}
       </div>
     </label >
 
@@ -253,12 +253,12 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
         <input
           type="text"
           placeholder="Type here"
-          className={`input input-bordered input-lg w-full max-w-none ${error && 'input-error'}`}
+          className={`input input-bordered input-lg w-full max-w-none ${error && !name && 'input-error'}`}
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
         <div className="label">
-          {error && <span className="label-text-alt text-error">Should not be empty</span>}
+          {error && !name && <span className="label-text-alt text-error">Should not be empty</span>}
         </div>
       </label>
 
