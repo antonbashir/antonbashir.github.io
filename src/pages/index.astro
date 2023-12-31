@@ -1,35 +1,13 @@
 ---
 import { FoxAnimation } from "../components/Fox";
-import { Technologies, TechnologyMode } from "../components/Technologies";
+import { Applications, Languages } from "../components/Technologies";
+import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
-import { SEO } from "astro-seo";
 ---
 
 <html lang="en">
-  <head>
-    <SEO
-      title="🦊 Anton Bashirov"
-      description="This is my personal site and blog"
-      canonical="https://antonbashir.github.io/"
-      openGraph={{
-        basic: {
-          title:
-            "My name is Anton Bashirov and I am multifunctional software developer",
-          type: "website",
-          image:
-            "https://avatars.githubusercontent.com/u/33657862?s=400&u=1f33be10e786c9a2bbf012d037a3aca5a9702a11&v=4",
-        },
-      }}
-      extend={{
-        link: [{ rel: "icon", href: "/favicon.png" }],
-        meta: [],
-      }}
-    />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-  </head><body>
+  <Head />
+  <body>
     <div
       class="min-h-screen flex flex-col justify-between overflow-y-hidden overflow-x-hidden"
     >
@@ -42,97 +20,19 @@ import { SEO } from "astro-seo";
           <h2>🧙 My name is Anton Bashirov</h2>
           <h2>👤 Welcome to my personal site and blog</h2>
           <h2>🧑‍💻️ I am multifunctional software developer</h2>
-          <h2>💻 Currently working with Dart, Flutter, Tarantool, Linux and C</h2>
+          <h2>
+            💻 Currently working with Dart, Flutter, Tarantool, Linux and C
+          </h2>
         </article>
       </div>
 
       <div class="flex flex-col">
         <div>
-          <Technologies
-            key="languages"
-            mode={TechnologyMode.languages}
-            slidesPerView={6}
-            spaceBetween={16}
-            technologies={[
-              "Dart",
-              "Java",
-              "Kotlin",
-              "Python",
-              "TS",
-              "JS",
-              "C",
-              "C++",
-              "Scala",
-              "Lua",
-            ]}
-            client:only="react"
-          />
+          <Languages client:only="react" />
         </div>
 
         <div class="my-8">
-          <Technologies
-            key="applications"
-            mode={TechnologyMode.applications}
-            technologies={[
-              "Flutter",
-              "Linux",
-              "IOUring",
-              "RSocket",
-              "Groovy",
-              "E2K",
-              "React",
-              "Astro",
-              "Tailwind",
-              "CMake",
-              "Tailscale",
-              "OKD",
-              "Ansible",
-              "Langchain",
-              "Gradle",
-              "Kaniko",
-              "FFMpeg",
-              "GRPC",
-              "Kurento",
-              "Terraform",
-              "Istio",
-              "Envoy",
-              "Nginx",
-              "Haproxy",
-              "Jenkins",
-              "EFK",
-              "ELK",
-              "Grafana",
-              "JSON",
-              "MessagePack",
-              "YAML",
-              "HOCON",
-              "Maven",
-              "Ant",
-              "Netty",
-              "GraalVM",
-              "JVM",
-              "Tarantool",
-              "Kafka",
-              "JBoss/WF",
-              "Postgres",
-              "UnrealEngine",
-              "Meson",
-              "LXC",
-              "Docker",
-              "Git",
-              "Vault",
-              "Nexus",
-              "Ktor",
-              "Reindexer",
-              "Spring",
-              "Prometheus",
-              "Rive",
-              "Lottie",
-            ]}
-            slidesPerView={8}
-            spaceBetween={16}
-            client:only="react"
-          />
+          <Applications client:only="react" />
         </div>
       </div>
     </div>

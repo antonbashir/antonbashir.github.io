@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import '../styles/swiper.css';
 
-export enum TechnologyMode {
+enum TechnologyMode {
   languages,
   applications
 }
@@ -17,7 +17,7 @@ type Properties = {
   mode: TechnologyMode
 }
 
-export const Technologies = (properties: Properties) => <Swiper
+const Technologies = (properties: Properties) => <Swiper
   loop
   freeMode
   className='swiper-container'
@@ -43,3 +43,85 @@ export const Technologies = (properties: Properties) => <Swiper
       </div>}
   </SwiperSlide>)}
 </Swiper>
+
+export const Languages = () => <Technologies
+  key="languages"
+  mode={TechnologyMode.languages}
+  slidesPerView={6}
+  spaceBetween={16}
+  technologies={[
+    "Dart",
+    "Java",
+    "Kotlin",
+    "Python",
+    "TS",
+    "JS",
+    "C",
+    "C++",
+    "Scala",
+    "Lua",
+  ]}
+/>
+
+export const Applications = () => <Technologies
+  key="applications"
+  mode={TechnologyMode.applications}
+  technologies={[
+    "Flutter",
+    "Linux",
+    "IOUring",
+    "RSocket",
+    "Groovy",
+    "E2K",
+    "React",
+    "Astro",
+    "Tailwind",
+    "CMake",
+    "Tailscale",
+    "OKD",
+    "Ansible",
+    "Langchain",
+    "Gradle",
+    "Kaniko",
+    "FFMpeg",
+    "GRPC",
+    "Kurento",
+    "Terraform",
+    "Istio",
+    "Envoy",
+    "Nginx",
+    "Haproxy",
+    "Jenkins",
+    "EFK",
+    "ELK",
+    "Grafana",
+    "JSON",
+    "MessagePack",
+    "YAML",
+    "HOCON",
+    "Maven",
+    "Ant",
+    "Netty",
+    "GraalVM",
+    "JVM",
+    "Tarantool",
+    "Kafka",
+    "JBoss/WF",
+    "Postgres",
+    "UnrealEngine",
+    "Meson",
+    "LXC",
+    "Docker",
+    "Git",
+    "Vault",
+    "Nexus",
+    "Ktor",
+    "Reindexer",
+    "Spring",
+    "Prometheus",
+    "Rive",
+    "Lottie",
+  ]}
+  slidesPerView={8}
+  spaceBetween={16}
+/>

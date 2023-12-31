@@ -120,4 +120,3 @@ build/
 !**/ios/**/default.perspectivev3
 *.snap
 *.xlog
-/repository-storage/data/

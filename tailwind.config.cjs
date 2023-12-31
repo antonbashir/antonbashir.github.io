@@ -42,6 +42,7 @@ module.exports = withMT({
         '--btn-text-case': 'lowercase',
         '--navbar-padding': '.5rem',
         '--border-btn': '1px',
+
         ".input:focus": {
           "border-color": "none",
           "outline-color": "none",
@@ -59,11 +60,6 @@ module.exports = withMT({
   },
   theme: {
     extend: {
-      dropShadow: {
-        glow: [
-          "0 0 8px #eab308",
-        ]
-      }
     }
   }
 })
