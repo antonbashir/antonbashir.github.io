@@ -341,8 +341,8 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
 
       <button type="submit" className="btn my-8 btn-wide btn-lg">Submit</button>
     </div>
-    <div role="alert" className={`alert absolute top-0 right-0 h-14 w-96 m-8 transition-opacity ease-in duration-700 ${notification ? 'opacity-100' : 'opacity-0'}`}>
-      <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <div role="alert" className={`alert fixed top-0 right-0 h-14 w-96 m-8 transition-opacity ease-in duration-700 ${notification ? 'opacity-100' : 'opacity-0'}`}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
       <span>Thank you for your message</span>
     </div>
   </form >

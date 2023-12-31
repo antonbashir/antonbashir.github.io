@@ -22,7 +22,6 @@ const url = Astro.request.url;
   <head>
     <script>
       document.addEventListener("clipboard-copy", function (event) {
-        console.log(document.querySelector("#notification"));
         document
           .querySelector("#notification")
           ?.classList.replace("opacity-0", "opacity-100");
@@ -60,7 +59,7 @@ const url = Astro.request.url;
     <div
       id="notification"
       role="alert"
-      class={`alert absolute top-0 right-0 h-14 w-96 m-8 transition-opacity ease-in duration-700 opacity-0`}
+      class={`alert fixed top-0 right-0 h-14 w-96 m-8 transition-opacity ease-in duration-700 opacity-0`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
