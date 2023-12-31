@@ -138,7 +138,7 @@ const HiringForm = (properties: HiringProperties) => {
       <input
         type="text"
         placeholder="Type here"
-        className={`input input-bordered input-md w-full max-w-none ${properties.error && 'input-error'}`}
+        className={`input input-bordered input-lg w-full max-w-none ${properties.error && 'input-error'}`}
         value={properties.hiring.companyName}
         onChange={(event) => properties.onChanged(properties.hiring.withCompanyName(event.target.value))}
       />
@@ -154,7 +154,7 @@ const HiringForm = (properties: HiringProperties) => {
       <input
         type="text"
         placeholder="Type here"
-        className="input input-bordered input-md w-full max-w-none"
+        className="input input-bordered input-lg w-full max-w-none"
         value={properties.hiring.vacancyUrl}
         onChange={(event) => properties.onChanged(properties.hiring.withVacancyUrl(event.target.value))}
       />
@@ -253,7 +253,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
         <input
           type="text"
           placeholder="Type here"
-          className={`input input-bordered input-md w-full max-w-none ${error && 'input-error'}`}
+          className={`input input-bordered input-lg w-full max-w-none ${error && 'input-error'}`}
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
@@ -269,7 +269,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
         <input
           type="text"
           placeholder="Type here"
-          className="input input-bordered input-md w-full max-w-none"
+          className="input input-bordered input-lg w-full max-w-none"
           value={contact}
           onChange={(event) => setContact(event.target.value)}
         />
@@ -330,7 +330,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             <span className="label-text"><h3>Write your message here</h3></span>
           </div>
           <textarea
-            className="textarea textarea-bordered h-32"
+            className="textarea textarea-bordered h-30"
             value={message}
             onChange={(event) => setMessage(event.target.value)}
             placeholder="">
