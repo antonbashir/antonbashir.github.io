@@ -4,7 +4,7 @@ type Properties = {
   reference: string
 }
 export const Article = (props: Properties) => <a
-  className="hero rounded-x btn h-max max-w-none w-2/3 m-auto justify-start"
+  className="hero rounded-x btn h-max max-w-none m-auto justify-start"
   href={props.reference}
 >
   <div
