@@ -2,6 +2,8 @@
 import { Article } from "../components/Blog";
 import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
+import { getCollection } from "astro:content";
+const blogEntries = await getCollection("blog");
 ---
 
 <html lang="en">
@@ -12,14 +14,11 @@ import Navigation from "../layouts/Navigation.astro";
     <Navigation page="blog" />
     <div class="divider"></div>
     <div class="flex flex-col gap-4 p-4">
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
+      {
+        blogEntries.map((blogPostEntry) => (
+          <Article reference={blogPostEntry.slug} />
+        ))
+      }
     </div>
   </body>
 </html>

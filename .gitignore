@@ -120,3 +120,4 @@ build/
 !**/ios/**/default.perspectivev3
 *.snap
 *.xlog
+\n.astro
