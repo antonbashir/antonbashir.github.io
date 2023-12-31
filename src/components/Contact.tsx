@@ -138,7 +138,7 @@ const HiringForm = (properties: HiringProperties) => {
       <input
         type="text"
         placeholder="Type here"
-        className={`input input-bordered input-lg w-full max-w-none ${properties.error && 'input-error'}`}
+        className={`input input-bordered input-md w-full max-w-none ${properties.error && 'input-error'}`}
         value={properties.hiring.companyName}
         onChange={(event) => properties.onChanged(properties.hiring.withCompanyName(event.target.value))}
       />
@@ -154,7 +154,7 @@ const HiringForm = (properties: HiringProperties) => {
       <input
         type="text"
         placeholder="Type here"
-        className="input input-bordered input-lg w-full max-w-none"
+        className="input input-bordered input-md w-full max-w-none"
         value={properties.hiring.vacancyUrl}
         onChange={(event) => properties.onChanged(properties.hiring.withVacancyUrl(event.target.value))}
       />
@@ -253,7 +253,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
         <input
           type="text"
           placeholder="Type here"
-          className={`input input-bordered input-lg w-full max-w-none ${error && 'input-error'}`}
+          className={`input input-bordered input-md w-full max-w-none ${error && 'input-error'}`}
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
@@ -269,7 +269,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
         <input
           type="text"
           placeholder="Type here"
-          className="input input-bordered input-lg w-full max-w-none"
+          className="input input-bordered input-md w-full max-w-none"
           value={contact}
           onChange={(event) => setContact(event.target.value)}
         />
@@ -280,7 +280,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
           <span className="label-text"><h3>What is your case ?</h3></span>
         </div>
         <label className="label cursor-pointer">
-          <span className="label-text text-sm">Other</span>
+          <span className="label-text text-lg">Other</span>
           <input type="radio"
             value="other"
             checked={messageCase == "other"}
@@ -289,7 +289,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
           />
         </label>
         <label className="label cursor-pointer">
-          <span className="label-text text-sm">Chatting</span>
+          <span className="label-text text-lg">Chatting</span>
           <input type="radio"
             checked={messageCase == "chatting"}
             onChange={(event) => event.target.checked && setMessageCase("chatting")}
@@ -297,7 +297,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             className="radio" />
         </label>
         <label className="label cursor-pointer">
-          <span className="label-text text-sm">Open-Source projects</span>
+          <span className="label-text text-lg">Open-Source projects</span>
           <input type="radio"
             checked={messageCase == "open-source"}
             onChange={(event) => event.target.checked && setMessageCase("open-source")}
@@ -305,7 +305,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             className="radio" />
         </label>
         <label className="label cursor-pointer">
-          <span className="label-text text-sm">Technical question</span>
+          <span className="label-text text-lg">Technical question</span>
           <input type="radio"
             value="question"
             checked={messageCase == "question"}
@@ -313,7 +313,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             className="radio" />
         </label>
         <label className="label cursor-pointer">
-          <span className="label-text text-sm">Hiring</span>
+          <span className="label-text text-lg">Hiring</span>
           <input type="radio"
             value="hiring"
             className="radio"
