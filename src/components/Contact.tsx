@@ -160,7 +160,7 @@ const HiringForm = (properties: HiringProperties) => {
       />
     </label>
 
-    <label className="form-control w-full max-w-none">
+    <div className="w-full max-w-none">
       <div className="label">
         <span className="label-text"><h3>What do you expect from me ?</h3></span>
       </div>
@@ -171,9 +171,9 @@ const HiringForm = (properties: HiringProperties) => {
           onChecked={(checked) => properties.onChanged(checked ? properties.hiring.withExpectation(expectation) : properties.hiring.withoutExpectation(expectation))}
         />)}
       </div>
-    </label>
+    </div>
 
-    <label className="form-control w-full max-w-none">
+    <div className="w-full max-w-none">
       <div className="label">
         <span className="label-text"><h3>What will you give me during interview process ?</h3></span>
       </div>
@@ -184,7 +184,7 @@ const HiringForm = (properties: HiringProperties) => {
           onChecked={(checked) => properties.onChanged(checked ? properties.hiring.withTask(task) : properties.hiring.withoutTask(task))}
         />)}
       </div>
-    </label>
+    </div>
 
     <label className="form-control w-full max-w-none">
       <div className="label">
@@ -275,7 +275,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
         />
       </label>
 
-      <label className="form-control w-full max-w-none">
+      <div className="w-full max-w-none">
         <div className="label">
           <span className="label-text"><h3>What is your case ?</h3></span>
         </div>
@@ -321,7 +321,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             onChange={(event) => event.target.checked && setMessageCase("hiring")}
           />
         </label>
-      </label>
+      </div>
 
       {messageCase == "hiring"
         ? <HiringForm error={error} hiring={hiring} onChanged={(hiring) => setHiring(hiring.copy())} ></HiringForm>
