@@ -25,13 +25,15 @@ const url = Astro.request.url;
         document
           .querySelector("#notification")
           ?.classList.remove("translate-x-full");
-        setTimeout(
-          () =>
-            document
-              .querySelector("#notification")
-              ?.classList.add("translate-x-full"),
-          1000,
-        );
+        document.querySelector("#notification")?.classList.add("mr-8");
+        setTimeout(() => {
+          document
+            .querySelector("#notification")
+            ?.classList.add("translate-x-full");
+          document
+            .querySelector("#notification")
+            ?.classList.remove("mr-8");
+        }, 1000);
       });
     </script>
     <Head title="🦊 Anton Bashirov | Blog" />
