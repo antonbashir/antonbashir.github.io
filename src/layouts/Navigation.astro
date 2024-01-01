@@ -1,6 +1,6 @@
 ---
-import { CatAnimation } from "../components/Cat";
 import "../styles/tab-button.css";
+import "../styles/home.css";
 interface Props {
   page?: string;
 }
@@ -10,8 +10,10 @@ export const inactiveButton = `tab-button`;
 ---
 
 <div class="navbar pt-2">
-  <div class="navbar-start py-16">
-    <CatAnimation client:load client:only="react" />
+  <div class="navbar-start">
+    <div class="typewriter px-4">
+      <a href="/"><h1 class="text-3xl">Evolve. Always.</h1></a>
+    </div>
   </div>
   <div class="navbar-center hidden lg:flex gap-8">
     <a
@@ -43,7 +45,7 @@ export const inactiveButton = `tab-button`;
       <div class="wave"></div>
     </a>
   </div>
-  <div class="navbar-end flex gap-8 pr-8">
+  <div class="navbar-end flex gap-8 px-4">
     <a href="https://www.linkedin.com/in/anton-bashirov/" target="_blank">
       <svg
         class="w-8 h-8 fill-current"
@@ -77,6 +79,5 @@ export const inactiveButton = `tab-button`;
         ></path></svg
       >
     </a>
-
   </div>
 </div>
