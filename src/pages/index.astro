@@ -3,7 +3,7 @@ import { FoxAnimation } from "../components/Fox";
 import { Applications, Languages } from "../components/Technologies";
 import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
-import '../styles/global.css';
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -15,7 +15,23 @@ import '../styles/global.css';
       <Navigation />
 
       <div class="flex place-content-center place-items-center">
-        <FoxAnimation client:only />
+        <div class="flex flex-col place-content-center place-items-center">
+          <FoxAnimation client:only />
+          <div>
+            <script
+              type="text/javascript"
+              src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+              data-name="bmc-button"
+              data-slug="antonbashir"
+              data-color="#ffffff"
+              data-emoji="🍵"
+              data-font="Inter"
+              data-text="Buy me a tea"
+              data-outline-color="#000000"
+              data-font-color="#000000"
+              data-coffee-color="#FFDD00"></script>
+          </div>
+        </div>
         <article class="prose max-h-none max-w-none">
           <h2>👋 Greetings</h2>
           <h2>🧙 My name is Anton Bashirov</h2>

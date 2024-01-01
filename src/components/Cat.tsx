@@ -7,12 +7,10 @@ export const CatAnimation = (props: Properties) => {
     src: '/cat.riv',
     stateMachines: "State Machine 1",
     autoplay: true,
-    layout: new Layout({
-      fit: Fit.ScaleDown,
-      alignment: Alignment.TopLeft
-    })
   });
-  return <div className="w-20 h-20">
-    <RiveComponent />
+  return <div className="fixed -left-10 -top-16 h-64 w-64">
+    <a href="/">
+      <RiveComponent />
+    </a>
   </div>
 }
