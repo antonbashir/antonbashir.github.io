@@ -1,9 +1,7 @@
 import { useLottie } from "lottie-react";
 import foxAnimation from "./fox.json";
 
-type Properties = {}
-
-export const FoxAnimation = (properties: Properties) => {
+export const FoxAnimation = () => {
   const options = {
     animationData: foxAnimation,
     loop: true,

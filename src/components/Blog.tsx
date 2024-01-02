@@ -3,9 +3,9 @@ type Properties = {
   description: string
   reference: string
 }
-export const Article = (props: Properties) => <a
+export const Article = (properties: Properties) => <a
   className="hero rounded-x btn h-max max-w-none m-auto justify-start"
-  href={props.reference}
+  href={properties.reference}
 >
   <div
     className="hero-content card flex flex-row"
@@ -24,8 +24,8 @@ export const Article = (props: Properties) => <a
       ></path>
     </svg>
     <div className="card-body place-items-start p-2">
-      <div className="card-title">{props.title}</div>
-      <p>{props.description}</p>
+      <div className="card-title">{properties.title}</div>
+      <p>{properties.description}</p>
     </div>
   </div>
 </a>
