@@ -3,7 +3,6 @@ import { Grid, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import '../styles/swiper.css';
-
 enum TechnologyMode {
   languages,
   applications
@@ -17,28 +16,32 @@ type Properties = {
   mode: TechnologyMode
 }
 
-const Technologies = (properties: Properties) => <Swiper
-  loop
-  freeMode
-  className='swiper-container'
-  slidesPerView={properties.slidesPerView}
-  speed={3000}
-  autoplay={{
-    delay: 0,
-    disableOnInteraction: false,
-  }}
-  spaceBetween={properties.spaceBetween}
-  modules={[Grid, Autoplay, Pagination]}>
-  {properties.technologies.map((technology) => <SwiperSlide key={technology}>
-    {properties.mode == TechnologyMode.languages
-      ? <div className='flex place-content-center p-8 rounded-3xl bg-base-200'>
-        <p className="text-lg font-bold ">{technology}</p>
-      </div>
-      : <div className='flex place-content-center p-8 rounded-3xl bg-white'>
-        <p className="text-lg font-bold text-black">{technology}</p>
-      </div>}
-  </SwiperSlide>)}
-</Swiper>
+const Technologies = (properties: Properties) => {
+  return <Swiper
+    loop
+    freeMode
+    className='swiper-container'
+    slidesPerView={
+      window.innerWidth > 768 ? properties.slidesPerView : 3
+    }
+    speed={3000}
+    autoplay={{
+      delay: 0,
+      disableOnInteraction: false,
+    }}
+    spaceBetween={properties.spaceBetween}
+    modules={[Grid, Autoplay, Pagination]}>
+    {properties.technologies.map((technology) => <SwiperSlide key={technology}>
+      {properties.mode == TechnologyMode.languages
+        ? <div className='flex place-content-center p-8 rounded-3xl bg-base-200'>
+          <p className="text-lg font-bold ">{technology}</p>
+        </div>
+        : <div className='flex place-content-center p-8 rounded-3xl bg-white'>
+          <p className="text-lg font-bold text-black">{technology}</p>
+        </div>}
+    </SwiperSlide>)}
+  </Swiper>;
+}
 
 export const Languages = () => <Technologies
   key="languages"

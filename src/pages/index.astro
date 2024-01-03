@@ -14,9 +14,22 @@ import "../styles/global.css";
     >
       <Navigation />
       <div class="flex place-content-center place-items-center m-4">
-        <div class="flex flex-col place-content-center place-items-center">
+        <div
+          class="hidden lg:flex flex-col place-content-center place-items-center"
+        >
           <FoxAnimation client:only />
-          <div>
+        </div>
+        <div class="flex flex-col place-items-center">
+          <article class="prose max-h-none max-w-none">
+            <h2>👋 Greetings</h2>
+            <h2>🧙 My name is Anton Bashirov</h2>
+            <h2>👤 Welcome to my personal site and blog</h2>
+            <h2>🧑‍💻️ I am multifunctional software developer</h2>
+            <h2>
+              💻 Currently working with Dart, Flutter, Tarantool, Linux and C
+            </h2>
+          </article>
+          <div class="p-8">
             <script
               type="text/javascript"
               src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
@@ -31,15 +44,6 @@ import "../styles/global.css";
               data-coffee-color="#FFDD00"></script>
           </div>
         </div>
-        <article class="prose max-h-none max-w-none">
-          <h2>👋 Greetings</h2>
-          <h2>🧙 My name is Anton Bashirov</h2>
-          <h2>👤 Welcome to my personal site and blog</h2>
-          <h2>🧑‍💻️ I am multifunctional software developer</h2>
-          <h2>
-            💻 Currently working with Dart, Flutter, Tarantool, Linux and C
-          </h2>
-        </article>
       </div>
       <div class="flex py-8 flex-col">
         <div>
