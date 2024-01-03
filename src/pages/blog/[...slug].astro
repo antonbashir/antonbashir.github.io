@@ -25,12 +25,12 @@ const url = Astro.request.url;
         document
           .querySelector("#notification")
           ?.classList.remove("translate-x-full");
-        document.querySelector("#notification")?.classList.add("mr-4");
+        document.querySelector("#notification")?.classList.add("m-4");
         setTimeout(() => {
           document
             .querySelector("#notification")
             ?.classList.add("translate-x-full");
-          document.querySelector("#notification")?.classList.remove("mr-4");
+          document.querySelector("#notification")?.classList.remove("m-4");
         }, 1000);
       });
     </script>
