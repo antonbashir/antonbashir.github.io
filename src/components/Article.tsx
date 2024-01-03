@@ -11,7 +11,7 @@ export const Article = (properties: Properties) => <a
     className="hero-content card flex flex-row"
   >
     <svg
-      className="h-16 w-16 fill-current"
+      className="h-16 w-16 fill-current mt-4"
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
