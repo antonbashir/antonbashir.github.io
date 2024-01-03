@@ -34,7 +34,11 @@ const url = Astro.request.url;
         }, 1000);
       });
     </script>
-    <Head title="🦊 Anton Bashirov | Blog" />
+    <Head
+      title={post.data.title}
+      ogTitle={post.data.title}
+      description={post.data.description}
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
