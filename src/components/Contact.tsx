@@ -338,7 +338,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
         </label>
       }
 
-      <button type="submit" className="btn my-8 btn-wide btn-lg">Submit</button>
+      <button type="submit" className="btn my-8 btn-lg md:btn-wide">Submit</button>
     </div>
     <div role="alert" className={`alert fixed top-0 right-0 h-14 w-96 my-4 transition-transform ease-in duration-500 ${notification ? 'mr-4' : 'translate-x-full'}`}>
       <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
