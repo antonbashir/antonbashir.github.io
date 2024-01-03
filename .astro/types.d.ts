@@ -1,5 +1,15 @@
 declare module 'astro:content' {
 	interface Render {
+		'.mdx': Promise<{
+			Content: import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+			remarkPluginFrontmatter: Record<string, any>;
+		}>;
+	}
+}
+
+declare module 'astro:content' {
+	interface Render {
 		'.md': Promise<{
 			Content: import('astro').MarkdownInstance<{}>['Content'];
 			headings: import('astro').MarkdownHeading[];
@@ -175,20 +185,20 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"en/hello-world.md": {
-	id: "en/hello-world.md";
+"en/hello-world.mdx": {
+	id: "en/hello-world.mdx";
   slug: "en/hello-world";
   body: string;
   collection: "blog";
   data: any
-} & { render(): Render[".md"] };
-"ru/flutter-web.md": {
-	id: "ru/flutter-web.md";
+} & { render(): Render[".mdx"] };
+"ru/flutter-web.mdx": {
+	id: "ru/flutter-web.mdx";
   slug: "ru/flutter-web";
   body: string;
   collection: "blog";
   data: any
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 };
 
 	};

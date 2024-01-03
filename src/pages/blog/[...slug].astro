@@ -45,16 +45,16 @@ const url = Astro.request.url;
     <div class="pt-4 px-4 m-auto">
       <ClipboardCopy value={url}>
         <div class="inline-flex flex-row gap-2 items-center">
-          <p class="text-5xl font-bold text-white">
+          <p class="text-5xl font-bold">
             {post.data.title}
           </p>
           <span class="material-symbols-outlined text-3xl">content_copy</span>
         </div>
       </ClipboardCopy>
       <div class="divider"></div>
-      <div class="prose prose-p:text-white prose-p:text-lg">
+      <article class="prose prose-dark mx-auto max-w-5xl">
         <Content />
-      </div>
+      </article>
     </div>
     <div
       id="notification"
