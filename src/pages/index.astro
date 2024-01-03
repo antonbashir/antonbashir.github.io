@@ -9,17 +9,15 @@ import "../styles/global.css";
 <html lang="en">
   <head><Head /></head>
   <body>
-    <div
-      class="flex flex-col justify-between overflow-y-hidden overflow-x-hidden"
-    >
-      <Navigation />
-      <div class="flex place-content-center place-items-center m-4">
+    <Navigation />
+    <div class="flex flex-col overflow-y-hidden overflow-x-hidden">
+      <div class="flex lg:place-items-center lg:place-content-center m-4">
         <div
           class="hidden lg:flex flex-col place-content-center place-items-center"
         >
           <FoxAnimation client:only />
         </div>
-        <div class="flex-col place-items-center">
+        <div class="flex flex-col place-items-start">
           <article class="prose max-h-none max-w-none">
             <h1>👋 Greetings</h1>
             <h1 class="text-lg font-bold">🧙 My name is Anton Bashirov</h1>
@@ -33,7 +31,7 @@ import "../styles/global.css";
               💻 Currently working with Dart and C
             </h1>
           </article>
-          <div class="hidden md:block p-4 lg:p-8">
+          <div class="hidden lg:flex py-4 lg:py-8">
             <script
               type="text/javascript"
               src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
