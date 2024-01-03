@@ -205,7 +205,7 @@ export const ContactForm = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [message, setMessage] = useState("");
-  const [messageCase, setMessageCase] = useState("other");
+  const [messageCase, setMessageCase] = useState("chatting");
   const [hiring, setHiring] = useState<Hiring>(new Hiring(
     "",
     "",
@@ -288,7 +288,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             className="radio" />
         </label>
         <label className="label cursor-pointer">
-          <span className="label-text text-lg">Open-Source projects</span>
+          <span className="label-text text-lg">Open-Source</span>
           <input type="radio"
             checked={messageCase == "open-source"}
             onChange={(event) => event.target.checked && setMessageCase("open-source")}
@@ -296,7 +296,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             className="radio" />
         </label>
         <label className="label cursor-pointer">
-          <span className="label-text text-lg">Technical question</span>
+          <span className="label-text text-lg">Question</span>
           <input type="radio"
             value="question"
             checked={messageCase == "question"}
