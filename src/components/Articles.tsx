@@ -66,7 +66,6 @@ export const ArticlesLanguageSelector = () => {
 
 export const Articles = () => {
   const isRu = useStore(isRuArticles);
-  console.log(isRu);
   return <div className="flex flex-col xl:grid xl:grid-cols-3 mx-2 gap-4">
     {
       articles
