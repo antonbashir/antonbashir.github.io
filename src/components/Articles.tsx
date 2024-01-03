@@ -36,7 +36,7 @@ const Article = (properties: Properties) => <a
     </svg>
     <div className="card-body place-items-start p-2">
       <div className="card-title">{properties.title}</div>
-      <p>{properties.description}</p>
+      <p className="text-justify">{properties.description}</p>
     </div>
   </div>
 </a>
