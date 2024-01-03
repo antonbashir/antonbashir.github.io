@@ -245,7 +245,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
   }
 
   return <form onSubmit={submit}>
-    <div className="flex flex-col m-auto max-w-5xl prose">
+    <div className="flex flex-col m-auto max-w-5xl px-4 prose">
       <label className="form-control w-full max-w-none">
         <div className="label">
           <span className="label-text"><h3>What is your name ?</h3></span>
