@@ -1,5 +1,5 @@
 .tab-button {
-  width: 200px;
+  width: 180px;
   position: relative;
   display: block;
   text-decoration: none;
@@ -20,8 +20,8 @@
   }
 
   .wave {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     background-color: black;
     position: absolute;
     left: 0;
@@ -53,7 +53,7 @@
 }
 
 .tab-button-active {
-  width: 200px;
+  width: 180px;
   @apply btn;
   @apply btn-primary;
 }
