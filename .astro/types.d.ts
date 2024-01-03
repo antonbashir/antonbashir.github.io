@@ -155,11 +155,11 @@ declare module 'astro:content' {
 			? {
 					collection: C;
 					slug: ValidContentEntrySlug<C>;
-				}
+			  }
 			: {
 					collection: C;
 					id: keyof DataEntryMap[C];
-				}
+			  }
 	>;
 	// Allow generic `string` to avoid excessive type errors in the config
 	// if `dev` is not running to update as you edit.
@@ -175,9 +175,16 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"article-1.md": {
-	id: "article-1.md";
-  slug: "article-1";
+"en/article-1.md": {
+	id: "en/article-1.md";
+  slug: "en/article-1";
+  body: string;
+  collection: "blog";
+  data: any
+} & { render(): Render[".md"] };
+"ru/article-1.md": {
+	id: "ru/article-1.md";
+  slug: "ru/article-1";
   body: string;
   collection: "blog";
   data: any
