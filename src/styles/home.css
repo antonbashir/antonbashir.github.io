@@ -2,7 +2,6 @@
   overflow: hidden;
   border-right: .10rem solid white;
   white-space: nowrap;
-  margin: 0 auto;
   letter-spacing: .15em;
   animation: 
     typing 2.5s steps(100, end),

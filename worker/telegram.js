@@ -21,7 +21,6 @@ async function sendMessage(bot_url, chat_id, text,
     "reply_to_message_id": reply_to_message_id
   })
 
-  console.log(url);
   await fetch(url)
 }
 

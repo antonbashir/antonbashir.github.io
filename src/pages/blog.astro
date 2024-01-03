@@ -18,7 +18,7 @@ import "../styles/global.css";
   <body>
     <Navigation page="blog" />
     <div class="flex place-items-center">
-      <div class="flex place-items-center flex-1 px-8 py-4">
+      <div class="flex place-items-center flex-1 pt-4 px-4">
         <span
           class="material-symbols-outlined text-3xl drop-shadow-glow text-light-blue-300"
           >rss_feed</span
@@ -27,7 +27,7 @@ import "../styles/global.css";
       </div>
     </div>
     <div class="divider"></div>
-    <div class="grid grid-cols-3 gap-4 p-4">
+    <div class="grid grid-cols-3 gap-4 mx-2">
       {
         articles.map((post) => (
           <Article

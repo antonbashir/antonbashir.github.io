@@ -25,14 +25,12 @@ const url = Astro.request.url;
         document
           .querySelector("#notification")
           ?.classList.remove("translate-x-full");
-        document.querySelector("#notification")?.classList.add("mr-8");
+        document.querySelector("#notification")?.classList.add("mr-4");
         setTimeout(() => {
           document
             .querySelector("#notification")
             ?.classList.add("translate-x-full");
-          document
-            .querySelector("#notification")
-            ?.classList.remove("mr-8");
+          document.querySelector("#notification")?.classList.remove("mr-4");
         }, 1000);
       });
     </script>
@@ -44,7 +42,7 @@ const url = Astro.request.url;
   </head>
   <body>
     <Navigation page="blog" />
-    <div class="max-w-none p-8 m-auto">
+    <div class="pt-4 px-4 m-auto">
       <ClipboardCopy value={url}>
         <div class="inline-flex flex-row gap-2 items-center">
           <p class="text-5xl font-bold text-white">
@@ -61,7 +59,7 @@ const url = Astro.request.url;
     <div
       id="notification"
       role="alert"
-      class={`alert fixed top-0 right-0 h-14 w-96 my-8 transition-transform ease-in duration-500 translate-x-full`}
+      class={`alert fixed top-0 right-0 h-14 w-96 my-4 transition-transform ease-in duration-500 translate-x-full`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

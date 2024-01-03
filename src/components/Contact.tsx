@@ -245,7 +245,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
   }
 
   return <form onSubmit={submit}>
-    <div className="flex flex-col m-auto max-w-none w-2/3 prose">
+    <div className="flex flex-col m-auto max-w-5xl prose">
       <label className="form-control w-full max-w-none">
         <div className="label">
           <span className="label-text"><h3>What is your name ?</h3></span>
@@ -340,7 +340,7 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
 
       <button type="submit" className="btn my-8 btn-wide btn-lg">Submit</button>
     </div>
-    <div role="alert" className={`alert fixed top-0 right-0 h-14 w-96 my-8 transition-transform ease-in duration-500 ${notification ? 'mr-8' : 'translate-x-full'}`}>
+    <div role="alert" className={`alert fixed top-0 right-0 h-14 w-96 my-4 transition-transform ease-in duration-500 ${notification ? 'mr-4' : 'translate-x-full'}`}>
       <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>

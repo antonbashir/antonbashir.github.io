@@ -55,7 +55,12 @@ module.exports = withMT({
           "outline-color": "none",
           "outline-style": "none",
           "outline-width": "none",
-        }
+        },
+
+        ".divider": {
+          "margin-top": "2px",
+          "margin-bottom": "2px",
+        },
       },
     }],
     base: true,
