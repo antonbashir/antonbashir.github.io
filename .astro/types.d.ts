@@ -175,16 +175,16 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"en/article-1.md": {
-	id: "en/article-1.md";
-  slug: "en/article-1";
+"en/hello-world.md": {
+	id: "en/hello-world.md";
+  slug: "en/hello-world";
   body: string;
   collection: "blog";
   data: any
 } & { render(): Render[".md"] };
-"ru/article-1.md": {
-	id: "ru/article-1.md";
-  slug: "ru/article-1";
+"ru/flutter-web.md": {
+	id: "ru/flutter-web.md";
+  slug: "ru/flutter-web";
   body: string;
   collection: "blog";
   data: any
