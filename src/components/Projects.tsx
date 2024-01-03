@@ -33,7 +33,7 @@ const ProjectCard = (props: Properties) =>
 export const ProjectList = () => <>
   <ProjectCard
     name="ART"
-    description="Make art no code"
+    description="Make art, not code"
     code="https://github.com/art-community"
   />
   <ProjectCard
