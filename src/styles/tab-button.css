@@ -4,8 +4,11 @@
   display: block;
   text-decoration: none;
   overflow: hidden;
-  
+
   @apply btn;
+
+  letter-spacing: .10em;
+  font-weight: 500;
 
   &:hover {
     .wave {
@@ -25,7 +28,7 @@
     background-color: black;
     position: absolute;
     left: 0;
-    top: -80px;
+    top: -60px;
     transition: 0.4s;
 
     &::before, &::after {
@@ -56,6 +59,8 @@
   width: 180px;
   @apply btn;
   @apply btn-primary;
+  letter-spacing: .10em;
+  font-weight: 500;
 }
 
 @keyframes wave {

@@ -280,15 +280,6 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
           <span className="label-text"><h3>What is your case ?</h3></span>
         </div>
         <label className="label cursor-pointer">
-          <span className="label-text text-lg">Other</span>
-          <input type="radio"
-            value="other"
-            checked={messageCase == "other"}
-            onChange={(event) => event.target.checked && setMessageCase("other")}
-            className="radio"
-          />
-        </label>
-        <label className="label cursor-pointer">
           <span className="label-text text-lg">Chatting</span>
           <input type="radio"
             checked={messageCase == "chatting"}
@@ -319,6 +310,15 @@ ${messageCase == 'hiring' ? hiring.format() : message}`
             className="radio"
             checked={messageCase == "hiring"}
             onChange={(event) => event.target.checked && setMessageCase("hiring")}
+          />
+        </label>
+        <label className="label cursor-pointer">
+          <span className="label-text text-lg">Other</span>
+          <input type="radio"
+            value="other"
+            checked={messageCase == "other"}
+            onChange={(event) => event.target.checked && setMessageCase("other")}
+            className="radio"
           />
         </label>
       </div>
