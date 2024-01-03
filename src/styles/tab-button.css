@@ -7,6 +7,9 @@
 
   @apply btn;
 
+  padding-left: 0;
+  padding-right: 0;
+  gap: 0;
   letter-spacing: .10em;
   font-weight: 500;
 
@@ -61,6 +64,9 @@
   @apply btn-primary;
   letter-spacing: .10em;
   font-weight: 500;
+  padding-left: 0;
+  padding-right: 0;
+  gap: 0;
 }
 
 @keyframes wave {
