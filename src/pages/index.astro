@@ -6,12 +6,12 @@ import Navigation from "../layouts/Navigation.astro";
 import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="en" class="h-full">
   <head><Head /></head>
-  <body>
+  <body class="flex flex-col h-full">
     <Navigation />
-    <div class="flex flex-col overflow-y-hidden overflow-x-hidden">
-      <div class="flex lg:place-items-center lg:place-content-center m-4">
+    <div class="flex flex-col overflow-y-hidden overflow-x-hidden h-full">
+      <div class="flex flex-grow lg:place-items-center lg:place-content-center m-4">
         <div
           class="hidden lg:flex flex-col place-content-center place-items-center"
         >
@@ -31,7 +31,7 @@ import "../styles/global.css";
               💻 Currently working with Dart and C
             </h1>
           </article>
-          <div class="hidden lg:flex py-4 lg:py-8">
+          <div class="py-4 lg:py-8">
             <script
               type="text/javascript"
               src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
