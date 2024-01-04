@@ -16,16 +16,16 @@ type Properties = {
 }
 
 export const articleColor = (label: string) => {
-  var color: string = "bg-primary";
+  var color: string = "primary";
   switch (label.toLowerCase()) {
     case "note":
-      color = "bg-indigo-500";
+      color = "indigo-500";
       break;
     case "article":
-      color = "bg-green-500";
+      color = "green-500";
       break;
     case "guide":
-      color = "bg-purple-500";
+      color = "purple-500";
       break;
   }
   return color;
@@ -58,7 +58,7 @@ const Article = (properties: Properties) => {
       <div className="card-body place-items-start p-2">
         <div className="card-title flex flex-row">
           <div>{properties.title}</div>
-          <div className={`badge badge-lg ${articleColor(properties.label)}`}>{properties.label}</div>
+          <div className={`badge badge-lg bg-${articleColor(properties.label)}`}>{properties.label}</div>
         </div>
         <p className="text-justify">{properties.description}</p>
         <div className="card-title flex flex-row">

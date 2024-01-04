@@ -74,14 +74,14 @@ const tags: string[] = post.data.tags?.split(",") ?? [];
     <div class="px-4 m-auto">
       <div class="flex flex-row gap-2">
         <div
-          class={`badge badge-ghost badge-lg font-bold p-4 rounded-xl ${color}`}
+          class={`badge badge-outline badge-lg border-${color}`}
         >
           {post.data.label}
         </div>
         {
           tags.map((tag) => (
             <div
-              class={`badge badge-primary badge-lg font-bold p-4 rounded-xl`}
+              class={`badge badge-outline badge-lg`}
             >
               {tag}
             </div>
