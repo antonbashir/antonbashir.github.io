@@ -2,10 +2,7 @@ import { getCollection } from "astro:content";
 import { atom } from 'nanostores';
 import { useStore } from '@nanostores/react';
 
-export const isRuArticles = atom(false);
-
-
-
+const isRuArticles = atom(false);
 const articles = await getCollection("blog");
 
 type Properties = {
