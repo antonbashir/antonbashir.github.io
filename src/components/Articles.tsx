@@ -12,34 +12,54 @@ type Properties = {
   title: string
   description: string
   reference: string
+  date: string
+  label: string
 }
 
-const Article = (properties: Properties) => <a
-  className="hero rounded-x btn h-max max-w-none m-auto justify-start"
-  href={properties.reference}
->
-  <div
-    className="hero-content card flex flex-row"
+const Article = (properties: Properties) => {
+  var color;
+  switch (properties.label) {
+    case "note":
+      color = "bg-orange-400";
+      break;
+    case "article":
+      color = "bg-green-400";
+      break;
+    case "guide":
+      color = "bg-purple-400";
+      break;
+  }
+  return <a
+    className="hero rounded-x btn h-max max-w-none m-auto justify-start"
+    href={properties.reference}
   >
-    <svg
-      className="h-16 w-16 fill-current mt-4"
-      xmlns="http://www.w3.org/2000/svg"
-      x="0px"
-      y="0px"
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
+    <div
+      className="hero-content card flex flex-row"
     >
-      <path
-        d="M 7 2 L 7 48 L 43 48 L 43 14.59375 L 42.71875 14.28125 L 30.71875 2.28125 L 30.40625 2 Z M 9 4 L 29 4 L 29 16 L 41 16 L 41 46 L 9 46 Z M 31 5.4375 L 39.5625 14 L 31 14 Z M 15 22 L 15 24 L 35 24 L 35 22 Z M 15 28 L 15 30 L 31 30 L 31 28 Z M 15 34 L 15 36 L 35 36 L 35 34 Z"
-      ></path>
-    </svg>
-    <div className="card-body place-items-start p-2">
-      <div className="card-title">{properties.title}</div>
-      <p className="text-justify">{properties.description}</p>
+      <svg
+        className="h-16 w-16 fill-current mt-4"
+        xmlns="http://www.w3.org/2000/svg"
+        x="0px"
+        y="0px"
+        width="64"
+        height="64"
+        viewBox="0 0 64 64"
+      >
+        <path
+          d="M 7 2 L 7 48 L 43 48 L 43 14.59375 L 42.71875 14.28125 L 30.71875 2.28125 L 30.40625 2 Z M 9 4 L 29 4 L 29 16 L 41 16 L 41 46 L 9 46 Z M 31 5.4375 L 39.5625 14 L 31 14 Z M 15 22 L 15 24 L 35 24 L 35 22 Z M 15 28 L 15 30 L 31 30 L 31 28 Z M 15 34 L 15 36 L 35 36 L 35 34 Z"
+        ></path>
+      </svg>
+      <div className="card-body place-items-start p-2">
+        <div className="card-title flex flex-row place-content-between">
+          <div>{properties.title}</div>
+          <div className={`badge badge-lg ${color}`}>{properties.label}</div>
+        </div>
+        <p className="text-justify">{properties.description}</p>
+        <p className="text-sm font-light text-justify">{properties.date}</p>
+      </div>
     </div>
-  </div>
-</a>
+  </a>;
+}
 
 export const ArticlesLanguageSelector = () => {
   const isRu = useStore(isRuArticles);
@@ -79,6 +99,8 @@ export const Articles = () => {
             key={post.id}
             title={post.data.title}
             description={post.data.description}
+            label={post.data.label}
+            date={post.data.date}
             reference={post.slug}
           />
         ))
