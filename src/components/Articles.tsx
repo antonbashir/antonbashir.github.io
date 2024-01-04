@@ -63,17 +63,17 @@ export const ArticlesLanguageSelector = () => {
   return <div className="flex flex-row gap-2 mx-4 place-items-center">
     <div>
       <img
-        width="32"
-        height="32"
+        width="24"
+        height="24"
         src="https://img.icons8.com/emoji/48/united-kingdom-emoji.png"
         alt="united-kingdom-emoji"
       />
     </div>
-    <input type="checkbox" className="toggle toggle-md" checked={isRu} onChange={(event) => isRuArticles.set(event.target.checked)} />
+    <input type="checkbox" className="toggle toggle-sm" checked={isRu} onChange={(event) => isRuArticles.set(event.target.checked)} />
     <div>
       <img
-        width="32"
-        height="32"
+        width="24"
+        height="24"
         src="https://img.icons8.com/emoji/48/russia-emoji.png"
         alt="russia-emoji"
       />
