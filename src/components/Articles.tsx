@@ -10,22 +10,29 @@ type Properties = {
   description: string
   reference: string
   date: string
+  time: string
   label: string
+  tags?: string
+}
+
+export const articleColor = (label: string) => {
+  var color: string = "bg-primary";
+  switch (label.toLowerCase()) {
+    case "note":
+      color = "bg-indigo-500";
+      break;
+    case "article":
+      color = "bg-green-500";
+      break;
+    case "guide":
+      color = "bg-purple-500";
+      break;
+  }
+  return color;
 }
 
 const Article = (properties: Properties) => {
-  var color;
-  switch (properties.label.toLowerCase()) {
-    case "note":
-      color = "bg-orange-400";
-      break;
-    case "article":
-      color = "bg-green-400";
-      break;
-    case "guide":
-      color = "bg-purple-400";
-      break;
-  }
+  const tags = properties.tags?.split(",") ?? [];
   return <a
     className="hero rounded-x btn h-max max-w-none m-auto justify-start"
     href={properties.reference}
@@ -51,10 +58,14 @@ const Article = (properties: Properties) => {
       <div className="card-body place-items-start p-2">
         <div className="card-title flex flex-row">
           <div>{properties.title}</div>
-          <div className={`badge badge-lg ${color}`}>{properties.label}</div>
+          <div className={`badge badge-lg ${articleColor(properties.label)}`}>{properties.label}</div>
         </div>
         <p className="text-justify">{properties.description}</p>
-        <p className="text-sm font-light text-justify">{properties.date}</p>
+        <div className="card-title flex flex-row">
+          <p className="text-sm font-light text-justify">{properties.date}</p>
+          <p className="text-sm font-light text-justify">{properties.time}</p>
+        </div>
+        <div className="flex flex-row gap-2">{tags.map(tag => <div className={`badge badge-primary`}>{tag}</div>)}</div>
       </div>
     </div>
   </a>;
@@ -85,7 +96,7 @@ export const ArticlesLanguageSelector = () => {
 
 export const Articles = () => {
   const isRu = useStore(isRuArticles);
-  return <div className="flex flex-col xl:grid xl:grid-cols-3 mx-2 gap-4">
+  return <div className="flex flex-col mx-2 gap-4">
     {
       articles
         .filter((post) =>
@@ -100,6 +111,8 @@ export const Articles = () => {
             description={post.data.description}
             label={post.data.label}
             date={post.data.date}
+            time={post.data.time}
+            tags={post.data.tags}
             reference={post.slug}
           />
         ))
