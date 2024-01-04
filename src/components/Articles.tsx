@@ -18,7 +18,7 @@ type Properties = {
 
 const Article = (properties: Properties) => {
   var color;
-  switch (properties.label) {
+  switch (properties.label.toLowerCase()) {
     case "note":
       color = "bg-orange-400";
       break;

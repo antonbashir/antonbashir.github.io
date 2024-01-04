@@ -18,7 +18,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const url = Astro.request.url;
 var color;
-switch (post.data.label) {
+switch (post.data.label.toLowerCase()) {
   case "note":
     color = "bg-orange-400";
     break;
@@ -76,7 +76,7 @@ switch (post.data.label) {
         <div class={`badge badge-lg ${color}`}>{post.data.label}</div>
       </div>
       <div class="divider"></div>
-      <p class="text-lg font-bold text-justify">{post.data.description}</p>
+      <p class="text-md font-light text-justify">{post.data.description}</p>
       <p class="text-sm font-light text-justify">{post.data.date}</p>
       <article class="prose prose-dark mx-auto max-w-5xl my-8">
         <Content />
