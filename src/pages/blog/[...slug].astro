@@ -16,6 +16,18 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const url = Astro.request.url;
+var color;
+switch (post.data.label) {
+  case "note":
+    color = "bg-orange-400";
+    break;
+  case "article":
+    color = "bg-green-400";
+    break;
+  case "guide":
+    color = "bg-purple-400";
+    break;
+}
 ---
 
 <html lang="en">
@@ -47,15 +59,24 @@ const url = Astro.request.url;
   <body>
     <Navigation page="blog" />
     <div class="pt-4 px-4 m-auto">
-      <ClipboardCopy value={url}>
-        <div class="inline-flex flex-row gap-2 items-center">
-          <p class="text-5xl font-bold">
-            {post.data.title}
-          </p>
-          <span class="material-symbols-outlined text-3xl">content_copy</span>
+      <div class="flex flex-row place-items-center gap-4">
+        <div class="flex-grow">
+          <ClipboardCopy value={url}>
+            <div class="inline-flex flex-row gap-2 items-center">
+              <p class="text-5xl font-bold">
+                {post.data.title}
+              </p>
+              <span class="material-symbols-outlined text-3xl"
+                >content_copy</span
+              >
+            </div>
+          </ClipboardCopy>
         </div>
-      </ClipboardCopy>
+        <div class={`badge badge-lg ${color}`}>{post.data.label}</div>
+      </div>
       <div class="divider"></div>
+      <p class="text-lg font-bold text-justify">{post.data.description}</p>
+      <p class="text-sm font-light text-justify">{post.data.date}</p>
       <article class="prose prose-dark mx-auto max-w-5xl my-8">
         <Content />
       </article>
