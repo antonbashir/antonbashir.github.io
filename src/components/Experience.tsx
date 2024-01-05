@@ -22,14 +22,6 @@ const LineChart = () => {
 
 export const ExperiencePath = () => {
   return <>
-    <div className="container flex flex-row place-items-center">
-      <div className="description border-green-200 border-x border-y p-4">
-        <p>The beginning of my path</p>
-      </div>
-      <progress className="label" value="100" max="100"></progress>
-      <div className="glowing-circle"></div>
-      <LineChart ></LineChart>
-    </div>
     <div className="flex place-content-center">
       <div className="imageContainer">
         <img
