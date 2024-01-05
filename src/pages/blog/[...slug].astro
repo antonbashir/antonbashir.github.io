@@ -48,49 +48,48 @@ const tags: string[] = post.data.tags?.split(",") ?? [];
   </head>
   <body>
     <Navigation page="blog" />
-    <div
-      class="flex flex-row pt-4 px-4 place-items-center justify-between gap-2 flex-grow"
-    >
-      <div class="flex flex-col gap-2">
-        <ClipboardCopy value={url}>
-          <div class="inline-flex flex-row gap-2 items-center">
-            <p class="text-3xl font-bold">
-              {post.data.title}
-            </p>
-            <span class="material-symbols-outlined text-3xl">content_copy</span>
+    <div class="max-w-5xl py-16 px-4 m-auto">
+      <div class="flex flex-row place-items-center">
+        <div class="flex flex-col gap-2 flex-1">
+          <div>
+            <ClipboardCopy value={url}>
+              <div class="inline-flex flex-row gap-2 items-center">
+                <p class="text-3xl md:text-5xl font-bold">
+                  {post.data.title}
+                </p>
+                <span class="material-symbols-outlined text-3xl"
+                  >content_copy</span
+                >
+              </div>
+            </ClipboardCopy>
           </div>
-        </ClipboardCopy>
-        <div class="flex flex-row gap-2">
-          <div class="badge badge-lg badge-ghost">
-            <p class="text-sm">{post.data.date}</p>
-          </div>
-          <div class="badge badge-lg badge-ghost">
-            <p class="text-sm">{post.data.time}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="px-4 m-auto">
-      <div class="flex flex-row gap-2">
-        <div
-          class={`badge badge-outline badge-lg border-${color}`}
-        >
-          {post.data.label}
-        </div>
-        {
-          tags.map((tag) => (
-            <div
-              class={`badge badge-outline badge-lg`}
-            >
-              {tag}
+          <div class="flex flex-row gap-2 pt-4">
+            <div class="flex flex-1 gap-2 flex-col sm:flex-row">
+              <div class="badge badge-lg badge-ghost">
+                <p class="text-sm">{post.data.date}</p>
+              </div>
+              <div class="badge badge-lg badge-ghost">
+                <p class="text-sm">{post.data.time} read</p>
+              </div>
             </div>
-          ))
-        }
+            <div class="flex flex-row gap-2">
+              <div class={`badge badge-outline badge-lg border-${color}`}>
+                {post.data.label}
+              </div>
+              {
+                tags.map((tag) => (
+                  <div class={`badge badge-outline badge-lg`}>{tag}</div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
       </div>
-      <article class="prose prose-dark mx-auto max-w-none my-8">
-        <Content />
-      </article>
+      <div class="m-auto">
+        <article class="prose prose-dark mx-auto max-w-none my-8">
+          <Content />
+        </article>
+      </div>
     </div>
     <div
       id="notification"
