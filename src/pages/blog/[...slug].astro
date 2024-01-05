@@ -66,19 +66,19 @@ const tags: string[] = post.data.tags?.split(",") ?? [];
           <div class="flex flex-row gap-2 pt-4">
             <div class="flex flex-1 gap-2 flex-col sm:flex-row">
               <div class="badge badge-lg badge-ghost">
-                <p class="text-sm">{post.data.date}</p>
+                <p class="text-lg">{post.data.date}</p>
               </div>
               <div class="badge badge-lg badge-ghost">
-                <p class="text-sm">{post.data.time} read</p>
+                <p class="text-lg">{post.data.time} read</p>
               </div>
             </div>
             <div class="flex flex-row gap-2">
               <div class={`badge badge-outline badge-lg border-${color}`}>
-                {post.data.label}
+                <p class="text-lg">{post.data.label}</p>
               </div>
               {
                 tags.map((tag) => (
-                  <div class={`badge badge-outline badge-lg`}>{tag}</div>
+                  <div class={`badge badge-outline badge-lg`}><p class="text-lg">{tag}</p></div>
                 ))
               }
             </div>
