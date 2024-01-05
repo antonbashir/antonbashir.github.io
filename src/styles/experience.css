@@ -59,3 +59,41 @@
     -10px 0 80px #f0f,
     10px 0 80px #0ff;
 }
+
+.line {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+}
+
+.label {
+  font-size: 1.2em;
+  font-family: "Work Sans", sans-serif;
+  color: #eaeef5;
+  user-select: none;
+  margin: 0px;
+}
+
+.exampleBody {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.exampleContainer {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 5px;
+}
+
+.example {
+  width: 80%;
+  height: min-content;
+  stroke: #bf4d00;
+  padding: 4%;
+  border: 1px solid #eaeef5;
+}

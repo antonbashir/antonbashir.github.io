@@ -2,7 +2,7 @@
 import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
 import "../styles/global.css";
-import "../styles/experience.css";
+import { ExperiencePath } from "../components/Experience";
 ---
 
 <html lang="en">
@@ -25,24 +25,6 @@ import "../styles/experience.css";
       </div>
     </div>
     <div class="divider"></div>
-    <div class="container flex flex-row place-items-center">
-      <div class="description border-green-200 border-x border-y p-4">
-        <p>The begining of my path</p>
-      </div>
-      <progress class="label" value="100" max="100"></progress>
-      <div class="glowing-circle"></div>
-    </div>
-    <div class="flex place-content-center">
-      <div class="imageContainer">
-        <img
-          class="object-fill h-full w-full max-w-7xl m-16 rounded-3xl foregroundImg"
-          src="/experience.jpeg"
-        />
-        <img
-          class="object-fill h-full w-full max-w-7xl m-16 rounded-3xl backgroundImg"
-          src="/experience.jpeg"
-        />
-      </div>
-    </div>
+    <ExperiencePath client:only />
   </body>
 </html>
