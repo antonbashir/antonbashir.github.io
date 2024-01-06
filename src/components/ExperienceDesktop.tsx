@@ -84,8 +84,8 @@ const Step = (properties: StepProperties) => {
           clearInterval(interval);
           return;
         }
-        setValue(value + 1);
-      }, 5);
+        setValue(value + 10);
+      }, 50);
       return () => clearInterval(interval);
     }
     return () => { };
