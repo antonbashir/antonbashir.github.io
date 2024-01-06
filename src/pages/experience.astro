@@ -3,7 +3,7 @@ import Head from "../layouts/Head.astro";
 import Navigation from "../layouts/Navigation.astro";
 import "../styles/global.css";
 import { ExperienceDesktop } from "../components/ExperienceDesktop";
-import { ExperienceMobile } from "../components/ExperienceMobile";
+import { ExperiencePath } from "../components/ExperiencePath";
 ---
 
 <html lang="en">
@@ -26,7 +26,6 @@ import { ExperienceMobile } from "../components/ExperienceMobile";
       </div>
     </div>
     <div class="divider"></div>
-    <div class="hidden 2xl:block"><ExperienceDesktop client:only /></div>
-    <div class="2xl:hidden"><ExperienceMobile client:only /></div>
+    <ExperiencePath client:only />
   </body>
 </html>

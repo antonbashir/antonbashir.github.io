@@ -79,8 +79,8 @@ const Step = (properties: StepProperties) => {
 
   useEffect(() => {
     if (launched) {
-      let start;
-      const step = (timestamp) => {
+      let start: number;
+      const step = (timestamp: number) => {
         if (start === undefined)
           start = timestamp;
         const elapsed = timestamp - start;
@@ -691,7 +691,7 @@ const Steps = () => {
 
 export const ExperienceDesktop = () => {
   useEffect(() => {
-    const onResize = () => {
+    function onResize() {
       window.location.reload();
     }
     window.addEventListener('resize', onResize);
