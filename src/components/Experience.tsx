@@ -485,7 +485,7 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">Fabric</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 463, top: 415, line: 50 }} left={true}>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 463, top: 415, line: 300 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Java Developer</p>
         <p className="font-thin text-xs">2016-2017</p>
@@ -503,18 +503,37 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">JVM</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 8, top: 477, line: 63 }} left={false}>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 70, top: 470, line: 65 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Java Developer</p>
         <p className="font-thin text-xs">2017</p>
       </div>
       <p className="text-xs">CRM B2C System</p>
-      <div className="flex flex-wrap gap-1 max-w-xs">
+      <div className="flex flex-wrap gap-1 max-w-xs w-48">
         <div className="badge badge-sm badge-primary">JEE</div>
         <div className="badge badge-sm badge-primary">Amdocs</div>
         <div className="badge badge-sm badge-primary">Ant</div>
         <div className="badge badge-sm badge-primary">Oracle DB</div>
         <div className="badge badge-sm badge-primary">JVM</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 336, top: 502, line: 70 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Java Developer</p>
+        <p className="font-thin text-xs">2018</p>
+      </div>
+      <p className="text-xs">SSO for internal and external bank software applications</p>
+      <div className="flex flex-wrap gap-1 max-w-xs">
+        <div className="badge badge-sm badge-primary">Mesos</div>
+        <div className="badge badge-sm badge-primary">Marathon</div>
+        <div className="badge badge-sm badge-primary">Spring Framework</div>
+        <div className="badge badge-sm badge-primary">Jenkins</div>
+        <div className="badge badge-sm badge-primary">Ansible</div>
+        <div className="badge badge-sm badge-primary">Gradle</div>
+        <div className="badge badge-sm badge-primary">Mongo</div>
+        <div className="badge badge-sm badge-primary">Groovy</div>
+        <div className="badge badge-sm badge-primary">Ratpack</div>
+        <div className="badge badge-sm badge-primary">ReactiveProgramming</div>
       </div>
     </Step>
   </>;
