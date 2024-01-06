@@ -37,7 +37,7 @@ export const experienceProjects: Record<string, ExperienceProject> = {
   },
   "ue-3": {
     role: "Unreal Engine Developer",
-    year: "2017-2017",
+    year: "2016-2017",
     name: "Game - fighting",
     tags: [
       "Unreal Engine",
