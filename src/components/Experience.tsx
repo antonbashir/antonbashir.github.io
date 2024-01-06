@@ -444,7 +444,7 @@ const Road = () => {
     <Path
       id="path238-7"
       path="m 787.73533,1083.9465 c -0.0338,-9.7763 -0.0677,-19.5518 -0.38887,-26.9754 -0.32121,-7.4235 -0.92973,-12.4935 -4.79546,-15.954 -3.86574,-3.4604 -10.98765,-5.3105 -14.96922,-6.3493 -3.98157,-1.0387 -4.82194,-1.2659 -13.57131,-2.3689 -8.74938,-1.103 -25.40378,-3.0814 -33.7367,-8.6969 -8.33291,-5.6154 -8.33925,-14.8655 -8.34558,-24.11582"
-      transform="translate(-9.7416367,187.23896)"
+      transform="rotate(-178.29821,746.35138,1135.4085)"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
@@ -713,21 +713,29 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">Helm</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 793, top: 1230, line: 100 }} left={true}>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 793, top: 1220, line: 100 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
         <p className="font-thin text-xs">2022</p>
       </div>
-      <p className="text-xs">Safe Repository</p>
+      <p className="text-xs">Platform</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-        <div className="badge badge-sm badge-primary">Kotlin</div>
-        <div className="badge badge-sm badge-primary">Ktor</div>
-        <div className="badge badge-sm badge-primary">Netty</div>
-        <div className="badge badge-sm badge-primary">Tarantool</div>
-        <div className="badge badge-sm badge-primary">Dart</div>
+        <div className="badge badge-sm badge-primary">AWS</div>
+        <div className="badge badge-sm badge-primary">GCP</div>
+        <div className="badge badge-sm badge-primary">Terraform</div>
+        <div className="badge badge-sm badge-primary">Terragrunt</div>
         <div className="badge badge-sm badge-primary">Flutter</div>
-        <div className="badge badge-sm badge-primary">Gradle</div>
-        <div className="badge badge-sm badge-primary">Nexus API</div>
+        <div className="badge badge-sm badge-primary">Dart</div>
+        <div className="badge badge-sm badge-primary">k8s</div>
+        <div className="badge badge-sm badge-primary">Istio</div>
+        <div className="badge badge-sm badge-primary">Woodpekcer CI</div>
+        <div className="badge badge-sm badge-primary">Spinnaker CD</div>
+        <div className="badge badge-sm badge-primary">GraalVM</div>
+        <div className="badge badge-sm badge-primary">Helm</div>
+        <div className="badge badge-sm badge-primary">Ktor</div>
+        <div className="badge badge-sm badge-primary">Kotlin</div>
+        <div className="badge badge-sm badge-primary">Go</div>
+        <div className="badge badge-sm badge-primary">Vault</div>
       </div>
     </Step>
   </>;
