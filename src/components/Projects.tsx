@@ -12,16 +12,19 @@ type Properties = {
 const ProjectCard = (props: Properties) =>
   <div className={props.todo != true ? `project-card` : `card bg-base-200`}>
     <div className="card-body">
-      <h1 className="card-title text-2xl font-bold">{props.name}</h1>
-      <p className="py-4 text-xl">
-        {props.description}
-      </p>
-      <div class="mt-2">
-        {props.tags}
+      <div className="flex flex-col gap-4 flex-1">
+        <h1 className="card-title text-2xl font-bold">{props.name}</h1>
+        <div>
+          <p className="py-4 text-xl">
+            {props.description}
+          </p>
+        </div>
+        <div>{props.tags}</div>
       </div>
+      <div className="divider"></div>
       <div className="card-actions mt-2">
         {props.documentation &&
-          <a className="btn btn-primary btn-wide text-center inline-flex items-center" href={props.documentation} target="_blank">
+          <a className="btn btn-primary max-w-none btn-wide text-center inline-flex items-center" href={props.documentation} target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
               <path d="M 6 2 C 4.9057453 2 4 2.9057453 4 4 L 4 20 C 4 21.094255 4.9057453 22 6 22 L 18 22 C 19.094255 22 20 21.094255 20 20 L 20 8 L 14 2 L 6 2 z M 6 4 L 13 4 L 13 9 L 18 9 L 18 20 L 6 20 L 6 4 z M 8 12 L 8 14 L 16 14 L 16 12 L 8 12 z M 8 16 L 8 18 L 16 18 L 16 16 L 8 16 z"></path>
             </svg>
