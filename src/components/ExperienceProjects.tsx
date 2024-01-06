@@ -1,4 +1,4 @@
-type ExperienceProject = {
+export type ExperienceProject = {
   role: string
   year: string
   name: string
