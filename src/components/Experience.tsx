@@ -510,7 +510,7 @@ const Steps = () => {
   return <>
     <Step delay={delay} duration={cardDuration} sizing={{ left: 193, top: 62, line: 50 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Programming Engineer</p>
+        <p className="font-bold text-xs flex-1">Software Engineer</p>
         <p className="font-thin text-xs">2014-2018</p>
       </div>
       <p className="text-xs">Russian Technological University</p>
@@ -520,6 +520,7 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">System Design</div>
         <div className="badge badge-sm badge-primary">Programming</div>
         <div className="badge badge-sm badge-primary">Problem Solving</div>
+        <div className="badge badge-sm badge-primary">Software Development</div>
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 477, top: 160, line: 50 }} left={true}>
