@@ -680,16 +680,24 @@ const Steps = () => {
       </div>
       <p className="text-xs">{experienceProjects["principal-5"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-      {experienceProjects["principal-5"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
+        {experienceProjects["principal-5"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
   </>;
 }
 
-export const ExperienceDesktop = () =>
-  <div className="wrapper">
+export const ExperienceDesktop = () => {
+  useEffect(() => {
+    const onResize = () => {
+      window.location.reload();
+    }
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [])
+  return <div className="wrapper">
     <div className="container">
       <Road />
       <Steps />
     </div>
-  </div>
+  </div>;
+}
