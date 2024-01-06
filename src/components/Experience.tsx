@@ -9,6 +9,7 @@ const pathDuration = 1;
 const maxLineProgress = 100;
 
 type PointProperties = {
+  id: string
   transform: string
   paths: string[]
   fill: string
@@ -42,6 +43,7 @@ const Point = (properties: PointProperties) => {
 };
 
 type PathProperties = {
+  id: string
   stroke: string
   path: string
   duration: number
@@ -143,6 +145,7 @@ const Road = () => {
     </defs>
     <ExperienceImage />
     <Point
+      id="g4"
       duration={pointDuration}
       delay={delay}
       fill="#fffff"
@@ -155,12 +158,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path117"
       path="m 497.16107,142.62853 c 0.014,3.09313 0.0279,6.1862 -2.6415,9.44644 -2.66943,3.26024 -8.02195,6.68732 -14.07183,12.0865 -6.04989,5.39917 -12.79657,12.76996 -16.17798,17.31246 -3.3814,4.54249 -3.39744,6.25659 -3.40952,7.19289 -0.0121,0.93629 -0.0202,1.09462 -0.0283,1.25302"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g4-2"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -173,12 +178,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path165"
       path="m 460.04621,222.67095 c 0.0138,1.00471 0.0277,2.00942 1.62587,6.16159 1.5982,4.15217 4.78074,11.45172 9.01786,14.24162 4.23711,2.7899 9.52866,1.07015 11.92254,5.95481 2.39388,4.88466 1.88987,16.37334 1.38586,27.86225"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g169"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -191,12 +198,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path222"
       path="m 487.27243,309.35112 c 0.0624,3.11814 0.12473,6.23628 0.1096,8.15037 -0.0151,1.9141 -0.10775,2.6241 1.27874,3.0218 1.3865,0.39769 4.25189,0.48302 9.1815,0.64688 4.92961,0.16387 11.92293,0.40626 18.15169,0.24705 6.22875,-0.15921 11.69275,-0.72003 18.87981,-0.67711 7.18706,0.0429 16.09716,0.68957 20.53549,3.43822 4.43832,2.74865 4.40491,7.59931 4.37149,12.44996"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g173"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -209,12 +218,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path223"
       path="m 560.20071,369.29697 c 0.12073,5.29486 0.24146,10.5896 -6.33521,11.02434 -6.57666,0.43474 -19.84993,-3.99048 -34.9439,-5.51962 -15.09396,-1.52914 -32.0072,-0.162 -40.52984,1.77927 -8.52264,1.94127 -8.65436,4.45665 -8.78609,6.97203"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g177"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -227,12 +238,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path224"
       path="m 471.08926,415.99164 c 0.53009,9.01147 1.06016,18.02272 -0.75685,21.52775 -1.81701,3.50504 -5.9809,1.50361 -10.38539,1.32593 -4.40449,-0.17769 -9.04909,1.46838 -11.28311,4.29703 -2.23401,2.82866 -2.05715,6.83963 -1.88029,10.85069"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g181"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -245,12 +258,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path225"
       path="m 448.20416,485.90729 c 0.22049,6.12951 0.44097,12.25891 -4.48255,12.93968 -4.92352,0.68076 -14.99046,-4.08705 -23.12777,-7.16582 -8.13731,-3.07877 -14.34394,-4.46811 -21.62601,-4.03087 -7.28206,0.43725 -15.63763,2.70074 -20.24579,5.13566 -4.60817,2.43491 -5.46613,5.03998 -5.90718,7.15055 -0.44106,2.11056 -0.46522,3.72658 -0.46394,4.80618 0.001,1.0796 0.028,1.62264 0.0548,2.16572"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g185"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -263,12 +278,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path235"
       path="m 374.56732,539.62597 c 0.0138,2.24069 0.0275,4.48134 -5.83475,5.31782 -5.86229,0.83647 -17.60022,0.26872 -27.0302,0.20532 -9.42998,-0.0634 -16.55153,0.37758 -20.21161,1.41388 -3.66007,1.0363 -3.8585,2.66786 -4.05694,4.29946"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g189"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -281,16 +298,18 @@ const Road = () => {
       ]}
     />
     <Path
-      path="m 317.65934,583.02909 c 0.01,0.97793 0.0199,1.95584 -1.79267,4.42205 -1.81253,2.46621 -5.44738,6.42051 -3.33548,9.5222 2.11191,3.1017 9.97017,5.35057 13.81804,6.46257 3.84786,1.112 3.68487,1.087 15.55165,2.2886 11.86678,1.2016 35.76248,3.62972 47.71251,5.57514 11.95004,1.94541 11.954,3.40809 11.95797,4.87077"
-      stroke="#ffffff"
+    id="path236"
+    stroke="#ffffff"
+    path="m 317.65934,583.02909 c 0.01,0.97793 0.0199,1.95584 -1.79267,4.42205 -1.81253,2.46621 -5.44738,6.42051 -3.33548,9.5222 2.11191,3.1017 9.97017,5.35057 13.81804,6.46257 3.84786,1.112 3.68487,1.087 16.22415,2.27758 12.53927,1.19057 37.77991,3.59664 50.32526,7.33902 12.54535,3.74238 12.39497,8.82102 12.2446,13.89968"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g193"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
-      transform="matrix(0.06400411,0,0,0.06400411,384.38595,616.1401)"
+      transform="matrix(0.06400411,0,0,0.06400411,387.84245,626.39143)"
       paths={[
         "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
         "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
@@ -299,12 +318,14 @@ const Road = () => {
       ]}
     />
     <Path
-      path="m 399.89778,647.98115 c 0.18534,3.53179 0.37068,7.06357 -6.95779,7.66029 -7.32848,0.59672 -22.17054,-1.74157 -34.9602,-3.55192 -12.78967,-1.81034 -23.52574,-3.09258 -28.99434,-0.6158 -5.46859,2.47678 -5.66906,8.71242 -5.86954,14.94816"
+      id="path228"
+      path="m 404.2634,659.09365 c -0.001,1.80217 -0.003,3.60434 -3.92284,6.82545 -3.92017,3.2211 -11.75915,7.86112 -24.84162,12.4295 -13.08247,4.56837 -31.40814,9.06502 -46.083,11.12429 -14.67486,2.05926 -25.69755,1.68098 -31.30947,4.60977 -5.61191,2.92878 -5.81238,9.16442 -6.01286,15.40016"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g201"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -317,12 +338,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path229"
       path="m 321.23124,697.09237 c -1.18489,4.11595 -2.36977,8.23183 10.30145,10.47162 12.67122,2.23978 39.19766,2.60331 52.38738,4.16238 13.18972,1.55907 13.04235,4.31368 12.89499,7.06829"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g197"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -335,12 +358,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path230"
       path="m 398.59479,749.69687 c -0.74965,5.11526 -1.49931,10.23056 -0.92603,15.12539 0.57328,4.89483 2.46942,9.56904 2.95449,14.57413 0.48506,5.0051 -0.44096,10.34074 -1.36701,15.67652"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g209"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -353,12 +378,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path231"
       path="m 403.03857,824.89816 c -0.1994,5.26158 -0.3988,10.52302 4.85932,14.05022 5.25811,3.5272 15.97306,5.31983 30.46872,4.84278 14.49567,-0.47705 32.77022,-3.22371 41.96787,-2.93945 9.19764,0.28426 9.31722,3.59949 9.4368,6.91478"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g205"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -371,12 +398,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="g205"
       path="m 490.5034,880.12667 c 0.0227,1.54105 0.0453,3.08208 0.89295,4.4692 0.84761,1.38712 2.52009,2.62022 4.42726,4.27351 1.90717,1.65329 4.04883,3.72659 8.42557,6.89508 4.37674,3.16849 10.98819,7.43188 14.22142,10.79557 3.23323,3.36369 3.08814,5.82761 2.94305,8.29156"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g213"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -389,12 +418,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path237"
       path="m 521.32256,947.22991 c 0.12473,2.74397 0.24947,5.48794 1.59029,7.14056 1.34082,1.65262 3.89764,2.21388 7.09378,2.79074 3.19614,0.57687 7.03138,1.1693 11.9854,2.21 4.95402,1.0407 11.02637,2.52955 14.06272,3.78073 3.03635,1.25118 3.03635,2.26456 3.03635,3.27795"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g217"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -407,12 +438,14 @@ const Road = () => {
       ]}
     />
     <Path
+      id="path238"
       path="m 560.48469,999.20306 c -0.003,0.54433 -0.005,1.08864 1.06031,1.93674 1.06565,0.8482 3.19959,2.0002 6.96379,2.9971 3.76421,0.997 9.15856,1.8388 15.37934,2.8522 6.22078,1.0135 13.26751,2.1983 17.87644,3.2576 4.60892,1.0592 6.77936,1.9926 7.86092,2.7468 1.08155,0.7543 1.07391,1.3292 1.06628,1.9041"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
     />
     <Point
+      id="g221"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
@@ -503,13 +536,13 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">JVM</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 70, top: 470, line: 65 }} left={false}>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 40, top: 468, line: 65 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Java Developer</p>
         <p className="font-thin text-xs">2017</p>
       </div>
       <p className="text-xs">CRM B2C System</p>
-      <div className="flex flex-wrap gap-1 max-w-xs w-48">
+      <div className="flex flex-wrap gap-1 max-w-xs w-56">
         <div className="badge badge-sm badge-primary">JEE</div>
         <div className="badge badge-sm badge-primary">Amdocs</div>
         <div className="badge badge-sm badge-primary">Ant</div>
@@ -536,7 +569,7 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">ReactiveProgramming</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 17, top: 615, line: 50 }} left={false}>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 17, top: 578, line: 132}} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Team Leader</p>
         <p className="font-thin text-xs">2018-2019</p>
