@@ -503,6 +503,20 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">JVM</div>
       </div>
     </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 8, top: 477, line: 63 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Java Developer</p>
+        <p className="font-thin text-xs">2017</p>
+      </div>
+      <p className="text-xs">CRM B2C System</p>
+      <div className="flex flex-wrap gap-1 max-w-xs">
+        <div className="badge badge-sm badge-primary">JEE</div>
+        <div className="badge badge-sm badge-primary">Amdocs</div>
+        <div className="badge badge-sm badge-primary">Ant</div>
+        <div className="badge badge-sm badge-primary">Oracle DB</div>
+        <div className="badge badge-sm badge-primary">JVM</div>
+      </div>
+    </Step>
   </>;
 }
 
