@@ -580,7 +580,7 @@ const Steps = () => {
       <div className="flex flex-wrap gap-1 max-w-xs">
         <div className="badge badge-sm badge-primary">JEE</div>
         <div className="badge badge-sm badge-primary">Spring Framework</div>
-        <div className="badge badge-sm badge-primary">Jboss/Wildfly</div>
+        <div className="badge badge-sm badge-primary">Jboss/WildFly</div>
         <div className="badge badge-sm badge-primary">Groovy</div>
         <div className="badge badge-sm badge-primary">Gradle</div>
         <div className="badge badge-sm badge-primary">Jenkins</div>
@@ -691,7 +691,7 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">RabbitMQ</div>
         <div className="badge badge-sm badge-primary">Solr</div>
         <div className="badge badge-sm badge-primary">Postgres</div>
-        <div className="badge badge-sm badge-primary">Patrony</div>
+        <div className="badge badge-sm badge-primary">Patroni</div>
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 75, top: 915, line: 100 }} left={false}>
@@ -718,7 +718,7 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">TypeScript</div>
         <div className="badge badge-sm badge-primary">MeteorJS</div>
         <div className="badge badge-sm badge-primary">Ruby</div>
-        <div className="badge badge-sm badge-primary">ReindexerDB</div>
+        <div className="badge badge-sm badge-primary">Reindexer DB</div>
         <div className="badge badge-sm badge-primary">fcontext</div>
         <div className="badge badge-sm badge-primary">ucontext</div>
       </div>
@@ -776,7 +776,7 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">Dart</div>
         <div className="badge badge-sm badge-primary">k8s</div>
         <div className="badge badge-sm badge-primary">Istio</div>
-        <div className="badge badge-sm badge-primary">Woodpekcer CI</div>
+        <div className="badge badge-sm badge-primary">Woodpecker CI</div>
         <div className="badge badge-sm badge-primary">Spinnaker CD</div>
         <div className="badge badge-sm badge-primary">GraalVM</div>
         <div className="badge badge-sm badge-primary">Helm</div>
