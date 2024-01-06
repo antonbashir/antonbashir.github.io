@@ -1,6 +1,11 @@
 .container {
   position: relative;
   width: max-content;
+  box-shadow: 1px 1px 30px 30px rgba(0,0,0,0.75);
+  @apply m-auto;
+  @apply my-8;
+  @apply flex;
+  @apply place-content-center;
 }
 
 .tooltip-1 {
