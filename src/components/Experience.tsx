@@ -162,7 +162,7 @@ export const ExperiencePath = () => {
       <Svg />
       <div className="tooltip-1 flex flex-row place-content-center place-items-center" >
         <div className="card">
-          <div className="card-content p-4 rounded-lg bg-base-200 tooltip-card-1">
+          <div className="card-content p-4 rounded-xl bg-base-200 tooltip-card">
             <p className="text-white text-md">Moscow State Technical University of </p>
             <p className="text-white text-md">Radio Engineering, Electronics and Automation </p>
             <p className="text-white text-md">Information Technology, Programming Engineer</p>
@@ -175,7 +175,7 @@ export const ExperiencePath = () => {
       <div className="tooltip-2 flex flex-row place-content-center place-items-center" >
         <progress className='bar-2' value='100' max='100'></progress>
         <div className="card">
-          <div className="card-content p-4 rounded-lg bg-base-200 tooltip-card-1">
+          <div className="card-content p-4 rounded-xl bg-base-200 tooltip-card">
             <p className="text-white text-md">Unreal Engine 4 Junior Developer</p>
             <p className="text-white text-md">3D modeling software for modeling flats’ and rooms’ interior</p>
             <p className="text-white text-md">Visual Studio, Unreal Engine</p>
