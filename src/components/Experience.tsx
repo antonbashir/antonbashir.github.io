@@ -462,6 +462,46 @@ const Road = () => {
         "M 426.731,0 H 85.269 C 38.181,0 0,38.181 0,85.269 V 426.73 C 0,473.819 38.181,512 85.269,512 H 426.73 C 473.819,512 512,473.819 512,426.731 V 85.269 C 512,38.181 473.819,0 426.731,0 Z m 42.602,426.731 c 0,23.525 -19.078,42.603 -42.603,42.603 H 85.269 c -23.525,0 -42.603,-19.078 -42.603,-42.603 V 85.269 c 0,-23.525 19.078,-42.603 42.603,-42.603 H 426.73 c 23.525,0 42.603,19.078 42.603,42.603 z"
       ]}
     />
+    <Path
+      id="path8"
+      path="m 777.91468,1301.7629 c -5.98684,9.105 -11.97368,18.21 -27.72056,22.326 -15.74687,4.1159 -41.25233,3.2429 -53.91223,8.7309 -12.6599,5.488 -12.47281,17.3368 -12.28572,29.1857"
+      stroke="#ffffff"
+      delay={delay += pointDuration}
+      duration={pathDuration}
+    />
+    <Point
+      id="g7"
+      duration={pointDuration}
+      delay={delay += pathDuration}
+      fill="#fffff"
+      transform="matrix(0.06400411,0,0,0.06400411,668.49229,1361.6496)"
+      paths={[
+        "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
+        "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
+        "M 383.996,225.83 V 192 c 0,-25.201 -17.466,-42.667 -42.667,-42.667 -11.782,0 -21.333,9.551 -21.333,21.333 0,11.782 9.551,21.333 21.333,21.333 v 42.667 c 0,5.658 2.248,11.084 6.248,15.085 l 6.248,6.248 -6.248,6.248 c -4.001,4.001 -6.248,9.427 -6.248,15.085 V 320 c -11.782,0 -21.333,9.551 -21.333,21.333 0,11.782 9.551,21.333 21.333,21.333 25.201,0 42.667,-17.466 42.667,-42.667 v -33.83 l 15.085,-15.085 c 8.331,-8.331 8.331,-21.839 0,-30.17 z",
+        "M 426.731,0 H 85.269 C 38.181,0 0,38.181 0,85.269 V 426.73 C 0,473.819 38.181,512 85.269,512 H 426.73 C 473.819,512 512,473.819 512,426.731 V 85.269 C 512,38.181 473.819,0 426.731,0 Z m 42.602,426.731 c 0,23.525 -19.078,42.603 -42.603,42.603 H 85.269 c -23.525,0 -42.603,-19.078 -42.603,-42.603 V 85.269 c 0,-23.525 19.078,-42.603 42.603,-42.603 H 426.73 c 23.525,0 42.603,19.078 42.603,42.603 z"
+      ]}
+    />
+    <Path
+      id="path13"
+      path="m 686.32916,1393.2958 c 0.79375,8.0257 1.5875,16.0514 10.14253,22.8865 8.55504,6.8352 24.87066,12.4795 39.51107,15.6545 14.64041,3.175 27.60473,3.8805 41.54613,7.3797 13.94141,3.4992 28.85854,9.7916 36.27814,15.3811 7.41961,5.5895 7.3404,10.4753 7.26119,15.3612"
+      stroke="#ffffff"
+      delay={delay += pointDuration}
+      duration={pathDuration}
+    />
+    <Point
+      id="g12"
+      duration={pointDuration}
+      delay={delay += pathDuration}
+      fill="#fffff"
+      transform="matrix(0.06400411,0,0,0.06400411,803.7253,1469.8271)"
+      paths={[
+        "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
+        "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
+        "M 383.996,225.83 V 192 c 0,-25.201 -17.466,-42.667 -42.667,-42.667 -11.782,0 -21.333,9.551 -21.333,21.333 0,11.782 9.551,21.333 21.333,21.333 v 42.667 c 0,5.658 2.248,11.084 6.248,15.085 l 6.248,6.248 -6.248,6.248 c -4.001,4.001 -6.248,9.427 -6.248,15.085 V 320 c -11.782,0 -21.333,9.551 -21.333,21.333 0,11.782 9.551,21.333 21.333,21.333 25.201,0 42.667,-17.466 42.667,-42.667 v -33.83 l 15.085,-15.085 c 8.331,-8.331 8.331,-21.839 0,-30.17 z",
+        "M 426.731,0 H 85.269 C 38.181,0 0,38.181 0,85.269 V 426.73 C 0,473.819 38.181,512 85.269,512 H 426.73 C 473.819,512 512,473.819 512,426.731 V 85.269 C 512,38.181 473.819,0 426.731,0 Z m 42.602,426.731 c 0,23.525 -19.078,42.603 -42.603,42.603 H 85.269 c -23.525,0 -42.603,-19.078 -42.603,-42.603 V 85.269 c 0,-23.525 19.078,-42.603 42.603,-42.603 H 426.73 c 23.525,0 42.603,19.078 42.603,42.603 z"
+      ]}
+    />
   </motion.svg>;
 }
 
@@ -716,7 +756,7 @@ const Steps = () => {
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 793, top: 1220, line: 100 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
-        <p className="font-thin text-xs">2022</p>
+        <p className="font-thin text-xs">2023</p>
       </div>
       <p className="text-xs">Platform</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
@@ -736,6 +776,41 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">Kotlin</div>
         <div className="badge badge-sm badge-primary">Go</div>
         <div className="badge badge-sm badge-primary">Vault</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 218, top: 1323, line: 100 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
+        <p className="font-thin text-xs">2023</p>
+      </div>
+      <p className="text-xs">Pet Project</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        <div className="badge badge-sm badge-primary">Langchain</div>
+        <div className="badge badge-sm badge-primary">OpenAI API</div>
+        <div className="badge badge-sm badge-primary">Chroma</div>
+        <div className="badge badge-sm badge-primary">RAG</div>
+        <div className="badge badge-sm badge-primary">LLM</div>
+        <div className="badge badge-sm badge-primary">Prompting</div>
+        <div className="badge badge-sm badge-primary">Python</div>
+        <div className="badge badge-sm badge-primary">Vector search</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 835, top: 1420, line: 50 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
+        <p className="font-thin text-xs">2023</p>
+      </div>
+      <p className="text-xs">Pet Project</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        <div className="badge badge-sm badge-primary">Tailscale</div>
+        <div className="badge badge-sm badge-primary">Headscale</div>
+        <div className="badge badge-sm badge-primary">WireGuard</div>
+        <div className="badge badge-sm badge-primary">Go</div>
+        <div className="badge badge-sm badge-primary">Mesh networks</div>
+        <div className="badge badge-sm badge-primary">VPN & Tunnels</div>
+        <div className="badge badge-sm badge-primary">Dart</div>
+        <div className="badge badge-sm badge-primary">Flutter</div>
+        <div className="badge badge-sm badge-primary">Multiplatform</div>
       </div>
     </Step>
   </>;
