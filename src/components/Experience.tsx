@@ -17,30 +17,26 @@ type PointProperties = {
   delay: number
 }
 
-const Point = (properties: PointProperties) => {
-  const strokeWidth = "1";
-  return (
-    <motion.g
-      transform={properties.transform}
-      filter="url(#glow)">
-      {properties.paths.map(path => <motion.path
-        key={path}
-        d={path}
-        fill="#ffffff"
-        stroke="none"
-        strokeWidth={strokeWidth}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        filter="url(#glow)"
-        transition={{
-          ease: "linear",
-          duration: properties.duration,
-          delay: properties.delay,
-        }}
-      />)}
-    </motion.g>
-  );
-};
+const Point = (properties: PointProperties) => (
+  <motion.g
+    transform={properties.transform}
+    filter="url(#glow)">
+    {properties.paths.map(path => <motion.path
+      key={path}
+      d={path}
+      fill="#ffffff"
+      stroke="none"
+      strokeWidth={"1"}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      filter="url(#glow)"
+      transition={{
+        ease: "linear",
+        duration: properties.duration,
+        delay: properties.delay,
+      }} />)}
+  </motion.g>
+);
 
 type PathProperties = {
   id: string
@@ -51,24 +47,22 @@ type PathProperties = {
   transform?: string
 }
 
-const Path = (properties: PathProperties) => {
-  return (
-    <motion.path
-      transform={properties.transform}
-      fill="none"
-      stroke={properties.stroke}
-      strokeWidth={"2"}
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{
-        ease: "linear",
-        duration: properties.duration,
-        delay: properties.delay
-      }}
-      filter="url(#glow)"
-      d={properties.path} />
-  );
-};
+const Path = (properties: PathProperties) => (
+  <motion.path
+    transform={properties.transform}
+    fill="none"
+    stroke={properties.stroke}
+    strokeWidth={"2"}
+    initial={{ pathLength: 0 }}
+    animate={{ pathLength: 1 }}
+    transition={{
+      ease: "linear",
+      duration: properties.duration,
+      delay: properties.delay
+    }}
+    filter="url(#glow)"
+    d={properties.path} />
+);
 
 type StepProperties = {
   left: boolean
@@ -824,11 +818,10 @@ const Steps = () => {
   </>;
 }
 
-export const ExperiencePath = () => {
-  return <div className="wrapper">
+export const ExperiencePath = () =>
+  <div className="wrapper">
     <div className="container">
       <Road />
       <Steps />
     </div>
   </div>
-}
