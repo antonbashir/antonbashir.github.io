@@ -508,12 +508,19 @@ const Road = () => {
 const Steps = () => {
   var delay = 0;
   return <>
-    <Step delay={delay} duration={cardDuration} sizing={{ left: 205, top: 92, line: 50 }} left={false}>
+    <Step delay={delay} duration={cardDuration} sizing={{ left: 193, top: 62, line: 50 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Programming Engineer</p>
         <p className="font-thin text-xs">2014-2018</p>
       </div>
       <p className="text-xs">Russian Technological University</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-52">
+        <div className="badge badge-sm badge-primary">Algorithms</div>
+        <div className="badge badge-sm badge-primary">Modeling</div>
+        <div className="badge badge-sm badge-primary">System Design</div>
+        <div className="badge badge-sm badge-primary">Programming</div>
+        <div className="badge badge-sm badge-primary">Problem Solving</div>
+      </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 477, top: 160, line: 50 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
