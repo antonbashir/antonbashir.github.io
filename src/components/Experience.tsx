@@ -281,7 +281,7 @@ const Road = () => {
       ]}
     />
     <Path
-      path="m 317.65934,583.02909 c 0.01,0.97793 0.0199,1.95584 -1.79267,4.42205 -1.81253,2.46621 -5.44738,6.42051 -11.25573,9.5222 -5.80834,3.1017 -13.78976,5.35061 -23.41247,6.52496 -9.62271,1.17435 -20.88587,1.27407 -26.53043,2.40224 -5.64455,1.12817 -5.66985,3.28469 -5.69515,5.44125"
+      path="m 317.65934,583.02909 c 0.01,0.97793 0.0199,1.95584 -1.79267,4.42205 -1.81253,2.46621 -5.44738,6.42051 -3.33548,9.5222 2.11191,3.1017 9.97017,5.35057 13.81804,6.46257 3.84786,1.112 3.68487,1.087 15.55165,2.2886 11.86678,1.2016 35.76248,3.62972 47.71251,5.57514 11.95004,1.94541 11.954,3.40809 11.95797,4.87077"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
@@ -290,7 +290,7 @@ const Road = () => {
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
-      transform="matrix(0.06400411,0,0,0.06400411,233.2183,611.2758)"
+      transform="matrix(0.06400411,0,0,0.06400411,384.38595,616.1401)"
       paths={[
         "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
         "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
@@ -299,7 +299,7 @@ const Road = () => {
       ]}
     />
     <Path
-      path="m 248.73014,644.05229 c -0.0747,2.67946 -0.14943,5.35886 12.34869,5.96926 12.49811,0.6104 37.56757,-0.84821 50.0028,1.54037 12.43523,2.38858 12.23476,8.62422 12.03428,14.85996"
+      path="m 399.89778,647.98115 c 0.18534,3.53179 0.37068,7.06357 -6.95779,7.66029 -7.32848,0.59672 -22.17054,-1.74157 -34.9602,-3.55192 -12.78967,-1.81034 -23.52574,-3.09258 -28.99434,-0.6158 -5.46859,2.47678 -5.66906,8.71242 -5.86954,14.94816"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
@@ -517,13 +517,13 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">JVM</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 336, top: 502, line: 70 }} left={true}>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 335, top: 482, line: 145 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
         <p className="font-bold text-xs flex-1">Java Developer</p>
         <p className="font-thin text-xs">2018</p>
       </div>
-      <p className="text-xs">SSO for internal and external bank software applications</p>
-      <div className="flex flex-wrap gap-1 max-w-xs">
+      <p className="text-xs">SSO for bank software applications</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-52">
         <div className="badge badge-sm badge-primary">Mesos</div>
         <div className="badge badge-sm badge-primary">Marathon</div>
         <div className="badge badge-sm badge-primary">Spring Framework</div>
@@ -534,6 +534,21 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">Groovy</div>
         <div className="badge badge-sm badge-primary">Ratpack</div>
         <div className="badge badge-sm badge-primary">ReactiveProgramming</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 17, top: 615, line: 50 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Team Leader</p>
+        <p className="font-thin text-xs">2018-2019</p>
+      </div>
+      <p className="text-xs">OMS system for b2c</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-52">
+        <div className="badge badge-sm badge-primary">Oracle DB</div>
+        <div className="badge badge-sm badge-primary">JVM</div>
+        <div className="badge badge-sm badge-primary">Oracle ESB</div>
+        <div className="badge badge-sm badge-primary">Ant</div>
+        <div className="badge badge-sm badge-primary">Amdocs Process</div>
+        <div className="badge badge-sm badge-primary">WebLogic</div>
       </div>
     </Step>
   </>;

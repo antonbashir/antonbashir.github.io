@@ -240,7 +240,7 @@
     </g>
     <g id="g193"
       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:7.812;stroke-dasharray:none;stroke-opacity:1"
-      transform="matrix(0.06400411,0,0,0.06400411,233.2183,611.2758)">&#10;
+      transform="matrix(0.06400411,0,0,0.06400411,384.38595,616.1401)">&#10;
       <path
         d="m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z"
         id="path190"
@@ -448,7 +448,7 @@
       id="path225" />
     <path
       style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.499999;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-      d="m 248.73014,644.05229 c -0.0747,2.67946 -0.14943,5.35886 12.34869,5.96926 12.49811,0.6104 37.56757,-0.84821 50.0028,1.54037 12.43523,2.38858 12.23476,8.62422 12.03428,14.85996"
+      d="m 399.89778,647.98115 c 0.18534,3.53179 0.37068,7.06357 -6.95779,7.66029 -7.32848,0.59672 -22.17054,-1.74157 -34.9602,-3.55192 -12.78967,-1.81034 -23.52574,-3.09258 -28.99434,-0.6158 -5.46859,2.47678 -5.66906,8.71242 -5.86954,14.94816"
       id="path228" />
     <path
       style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.499999;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
@@ -472,7 +472,7 @@
       id="path235" />
     <path
       style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.499999;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-      d="m 317.65934,583.02909 c 0.01,0.97793 0.0199,1.95584 -1.79267,4.42205 -1.81253,2.46621 -5.44738,6.42051 -11.25573,9.5222 -5.80834,3.1017 -13.78976,5.35061 -23.41247,6.52496 -9.62271,1.17435 -20.88587,1.27407 -26.53043,2.40224 -5.64455,1.12817 -5.66985,3.28469 -5.69515,5.44125"
+      d="m 317.65934,583.02909 c 0.01,0.97793 0.0199,1.95584 -1.79267,4.42205 -1.81253,2.46621 -5.44738,6.42051 -3.33548,9.5222 2.11191,3.1017 9.97017,5.35057 13.81804,6.46257 3.84786,1.112 3.68487,1.087 15.55165,2.2886 11.86678,1.2016 35.76248,3.62972 47.71251,5.57514 11.95004,1.94541 11.954,3.40809 11.95797,4.87077"
       id="path236" />
     <path
       style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.499999;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
