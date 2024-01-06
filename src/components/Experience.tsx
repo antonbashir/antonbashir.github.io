@@ -112,7 +112,7 @@ const Step = (properties: StepProperties) => {
     >
       {properties.left && <progress className='step-left-line' style={{ width: properties.sizing.line }} value={value} max='100' />}
       <div
-        className="flex step-body flex-col place-content-center p-4 rounded-xl bg-base-200 gap-2"
+        className="flex step-body flex-col place-content-center p-4 rounded-xl bg-base-200 gap-1"
         style={{
           animation: `step linear ${properties.duration}s`,
           animationIterationCount: 1,
@@ -430,43 +430,59 @@ const Road = () => {
 const Steps = () => {
   var delay = 0;
   return <>
-    <Step delay={delay} duration={cardDuration} sizing={{ left: 156, top: 82, line: 50 }} left={false}>
-      <div className="flex flex-row gap-2 place-items-center">
-        <p className="font-bold text-md flex-1">Programming Engineer</p>
+    <Step delay={delay} duration={cardDuration} sizing={{ left: 205, top: 92, line: 50 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Programming Engineer</p>
         <p className="font-thin text-xs">2014-2018</p>
       </div>
-      <p className="text-md">Russian Technological University</p>
+      <p className="text-xs">Russian Technological University</p>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 477, top: 150, line: 50 }} left={true}>
-      <div className="flex flex-row gap-2 place-items-center">
-        <p className="font-bold text-md flex-1">Unreal Engine Developer</p>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 477, top: 160, line: 50 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Unreal Engine Developer</p>
         <p className="font-thin text-xs">2015</p>
       </div>
-      <p className="text-md">3D modeling software for modeling flats’ and rooms’ interior</p>
-      <div className="flex flex-row gap-2">
+      <p className="text-xs">3D modeling software for modeling flats’ and rooms’ interior</p>
+      <div className="flex flex-row gap-1">
         <div className="badge badge-sm badge-primary">Unreal Engine</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 135, top: 236, line: 50 }} left={false}>
-      <div className="flex flex-row gap-2 place-items-center">
-        <p className="font-bold text-md flex-1">Unreal Engine Developer</p>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 185, top: 250, line: 50 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Unreal Engine Developer</p>
         <p className="font-thin text-xs">2015-2016</p>
       </div>
-      <p className="text-md">Game - clone of the S.T.A.L.K.E.R</p>
-      <div className="flex flex-row gap-2">
+      <p className="text-xs">Game - clone of the S.T.A.L.K.E.R</p>
+      <div className="flex flex-row gap-1">
         <div className="badge badge-sm badge-primary">Unreal Engine</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 577, top: 297, line: 50 }} left={true}>
-      <div className="flex flex-row gap-2 place-items-center">
-        <p className="font-bold text-md flex-1">Unreal Engine Developer</p>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 577, top: 307, line: 50 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Unreal Engine Developer</p>
         <p className="font-thin text-xs">2016-2017</p>
       </div>
-      <p className="text-md">Game - fighting</p>
-      <div className="flex flex-row gap-2">
+      <p className="text-xs">Game - fighting</p>
+      <div className="flex flex-row gap-1">
         <div className="badge badge-sm badge-primary">Unreal Engine</div>
         <div className="badge badge-sm badge-primary">UE Slate UI</div>
         <div className="badge badge-sm badge-primary">UMG</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 54, top: 344, line: 50 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">IOS/Android Developer</p>
+        <p className="font-thin text-xs">2016-2017</p>
+      </div>
+      <p className="text-xs">Software application for TAXI (like Uber)</p>
+      <div className="flex flex-wrap gap-1 max-w-xs">
+        <div className="badge badge-sm badge-primary">Google Maps API</div>
+        <div className="badge badge-sm badge-primary">Apple Maps API</div>
+        <div className="badge badge-sm badge-primary">Android SDK</div>
+        <div className="badge badge-sm badge-primary">Swift</div>
+        <div className="badge badge-sm badge-primary">Java</div>
+        <div className="badge badge-sm badge-primary">Kotlin</div>
+        <div className="badge badge-sm badge-primary">Fabric</div>
       </div>
     </Step>
   </>;
