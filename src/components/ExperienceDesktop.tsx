@@ -4,8 +4,8 @@ import { ExperienceImage } from "./ExperienceImage";
 import { useState, type ReactNode, useEffect } from "react";
 import { experienceProjects } from "./ExperienceProjects";
 
-const stepDuration = 1;
-const pointDuration = 1;
+const stepDuration = 0.5;
+const pointDuration = 0.5;
 const pathDuration = 1;
 const maxLineProgress = 100;
 
@@ -79,17 +79,20 @@ const Step = (properties: StepProperties) => {
 
   useEffect(() => {
     if (launched) {
-      const interval = setInterval(() => {
-        if (value == maxLineProgress) {
-          clearInterval(interval);
-          return;
+      let start;
+      const step = (timestamp) => {
+        if (start === undefined)
+          start = timestamp;
+        const elapsed = timestamp - start;
+        setValue(value + elapsed);
+        if (value < maxLineProgress) {
+          window.requestAnimationFrame(step);
         }
-        setValue(value + 10);
-      }, 50);
-      return () => clearInterval(interval);
+      }
+      window.requestAnimationFrame(step);
     }
     return () => { };
-  }, [value, launched]);
+  }, [launched]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -116,7 +119,7 @@ const Step = (properties: StepProperties) => {
           animation: `step linear ${properties.duration}s`,
           animationIterationCount: 1,
           animationFillMode: "forwards",
-          animationDelay: `${properties.delay * 1000 + 500}ms`,
+          animationDelay: `${properties.delay * 1000 + 50}ms`,
         }}>
         {properties.children}
       </div>
