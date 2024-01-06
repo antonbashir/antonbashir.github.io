@@ -166,7 +166,6 @@ export const ExperiencePath = () => {
             <p className="font-bold text-md">Information Technology, Programming Engineer</p>
             <p className="text-md">Russian Technological University</p>
             <p className="font-thin text-xs">2018</p>
-
           </div>
         </div>
         <progress className='bar-1' value='100' max='100'></progress>
