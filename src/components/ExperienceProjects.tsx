@@ -148,7 +148,7 @@ export const experienceProjects: Record<string, ExperienceProject> = {
     ]
   },
   "tl-2": {
-    role: "Architect/Developer",
+    role: "Team Leader",
     year: "2020-2021",
     name: "Trouble Ticket Management system (NTTM)",
     tags: [
