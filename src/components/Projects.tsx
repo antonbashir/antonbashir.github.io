@@ -6,6 +6,7 @@ type Properties = {
   documentation?: string
   code?: string
   todo?: boolean
+  tags?: ReactNode
 }
 
 const ProjectCard = (props: Properties) =>
@@ -15,7 +16,10 @@ const ProjectCard = (props: Properties) =>
       <p className="py-4 text-xl">
         {props.description}
       </p>
-      <div className="card-actions">
+      <div class="mt-2">
+        {props.tags}
+      </div>
+      <div className="card-actions mt-2">
         {props.documentation &&
           <a className="btn btn-primary btn-wide text-center inline-flex items-center" href={props.documentation} target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
@@ -35,30 +39,103 @@ export const ProjectList = () => <>
     name="ART"
     description="Make art, not code"
     code="https://github.com/art-community"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Java</div>
+          <div className="badge badge-lg badge-outline">Kotlin</div>
+          <div className="badge badge-lg badge-outline">Gradle</div>
+          <div className="badge badge-lg badge-outline">ReactJS</div>
+          <div className="badge badge-lg badge-outline">Typescript</div>
+          <div className="badge badge-lg badge-outline">Rocks DB</div>
+          <div className="badge badge-lg badge-outline">Tarantool DB</div>
+          <div className="badge badge-lg badge-outline">Kafka</div>
+          <div className="badge badge-lg badge-outline">Prometheus</div>
+          <div className="badge badge-lg badge-outline">Logging</div>
+          <div className="badge badge-lg badge-outline">Monitoring</div>
+          <div className="badge badge-lg badge-outline">K8S API</div>
+          <div className="badge badge-lg badge-outline">OKD API</div>
+          <div className="badge badge-lg badge-outline">Gradle Plugins</div>
+          <div className="badge badge-lg badge-outline">Java Code Generation</div>
+          <div className="badge badge-lg badge-outline">Kotlin Code Generation</div>
+          <div className="badge badge-lg badge-outline">Annotation processing</div>
+        </div>
+      </>
+    }
   />
   <ProjectCard
     name="Dart Linux Interactor"
     description="Dart ❤️ Linux"
     documentation="https://antonbashir.github.io/dart-linux-interactor/"
     code="https://github.com/antonbashir/dart-linux-interactor/"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Dart</div>
+          <div className="badge badge-lg badge-outline">IO Uring</div>
+          <div className="badge badge-lg badge-outline">Dart Isolates</div>
+          <div className="badge badge-lg badge-outline">Memory pools</div>
+          <div className="badge badge-lg badge-outline">Memory buffers</div>
+          <div className="badge badge-lg badge-outline">Event Loop</div>
+        </div>
+      </>
+    }
   />
   <ProjectCard
     name="Dart Reactive Transport"
     description="Dart ❤️ Rsocket"
     documentation="https://antonbashir.github.io/dart-reactive-transport/"
     code="https://github.com/antonbashir/dart-reactive-transport/"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Dart</div>
+          <div className="badge badge-lg badge-outline">IO Uring</div>
+          <div className="badge badge-lg badge-outline">Reactive programming</div>
+          <div className="badge badge-lg badge-outline">RSocket specification</div>
+        </div>
+      </>
+    }
   />
   <ProjectCard
     name="Dart IOUring Transport"
     description="Dart ❤️ IOUring"
     documentation="https://antonbashir.github.io/dart-iouring-transport/"
     code="https://github.com/antonbashir/dart-iouring-transport/"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Dart</div>
+          <div className="badge badge-lg badge-outline">IO Uring</div>
+          <div className="badge badge-lg badge-outline">Dart Isolates</div>
+          <div className="badge badge-lg badge-outline">Memory pools</div>
+          <div className="badge badge-lg badge-outline">Memory buffers</div>
+          <div className="badge badge-lg badge-outline">Event Loop</div>
+        </div>
+      </>
+    }
   />
   <ProjectCard
     name="Dart Tarantool Storage"
     description="Dart ❤️ Tarantool"
     documentation="https://antonbashir.github.io/dart-tarantool-storage/"
     code="https://github.com/antonbashir/dart-tarantool-storage/"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Dart</div>
+          <div className="badge badge-lg badge-outline">IO Uring</div>
+          <div className="badge badge-lg badge-outline">Dart Isolates</div>
+          <div className="badge badge-lg badge-outline">Memory pools</div>
+          <div className="badge badge-lg badge-outline">Memory buffers</div>
+          <div className="badge badge-lg badge-outline">Event Loop</div>
+          <div className="badge badge-lg badge-outline">Tarantool DB</div>
+          <div className="badge badge-lg badge-outline">Tarantool fibers</div>
+          <div className="badge badge-lg badge-outline">Tarantool event loop</div>
+          <div className="badge badge-lg badge-outline">Tarantool memory management</div>
+        </div>
+      </>
+    }
   />
   <ProjectCard name="Lucifer" description="TODO" todo />
   <ProjectCard name="Eva" description="TODO" todo />
