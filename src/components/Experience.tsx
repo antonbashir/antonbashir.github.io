@@ -485,6 +485,24 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">Fabric</div>
       </div>
     </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 463, top: 415, line: 50 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Java Developer</p>
+        <p className="font-thin text-xs">2016-2017</p>
+      </div>
+      <p className="text-xs">Software for selling, activation and provisioning of multiple products for b2b clients</p>
+      <div className="flex flex-wrap gap-1 max-w-xs">
+        <div className="badge badge-sm badge-primary">JEE</div>
+        <div className="badge badge-sm badge-primary">Spring Framework</div>
+        <div className="badge badge-sm badge-primary">Jboss/Wildfly</div>
+        <div className="badge badge-sm badge-primary">Groovy</div>
+        <div className="badge badge-sm badge-primary">Gradle</div>
+        <div className="badge badge-sm badge-primary">Jenkins</div>
+        <div className="badge badge-sm badge-primary">Ansible</div>
+        <div className="badge badge-sm badge-primary">Maven</div>
+        <div className="badge badge-sm badge-primary">JVM</div>
+      </div>
+    </Step>
   </>;
 }
 
