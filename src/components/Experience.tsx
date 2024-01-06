@@ -90,7 +90,7 @@ const Step = (properties: StepProperties) => {
           return;
         }
         setValue(value + 1);
-      }, 1);
+      }, 5);
       return () => clearInterval(interval);
     }
     return () => { };
@@ -121,7 +121,7 @@ const Step = (properties: StepProperties) => {
           animation: `step linear ${properties.duration}s`,
           animationIterationCount: 1,
           animationFillMode: "forwards",
-          animationDelay: `${properties.delay * 1000 + 200}ms`,
+          animationDelay: `${properties.delay * 1000 + 500}ms`,
         }}>
         {properties.children}
       </div>
