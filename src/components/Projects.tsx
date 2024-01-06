@@ -21,7 +21,7 @@ const ProjectCard = (props: Properties) =>
         </div>
         <div>{props.tags}</div>
       </div>
-      <div className="divider"></div>
+      {!props.todo && <div className="divider"></div>}
       <div className="card-actions mt-2">
         {props.documentation &&
           <a className="btn btn-primary max-w-none btn-wide text-center inline-flex items-center" href={props.documentation} target="_blank">
