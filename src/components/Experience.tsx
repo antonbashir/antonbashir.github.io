@@ -163,10 +163,9 @@ export const ExperiencePath = () => {
       <div className="tooltip-1 flex flex-row place-content-center place-items-center" >
         <div className="card">
           <div className="card-content p-4 rounded-xl bg-base-200 tooltip-card">
-            <p className="text-white text-md">Moscow State Technical University of </p>
-            <p className="text-white text-md">Radio Engineering, Electronics and Automation </p>
-            <p className="text-white text-md">Information Technology, Programming Engineer</p>
-            <p className="text-white text-sm">2018</p>
+            <p className="font-bold text-md">Information Technology, Programming Engineer</p>
+            <p className="text-md">Russian Technological University</p>
+            <p className="font-thin text-xs">2018</p>
 
           </div>
         </div>
@@ -176,10 +175,10 @@ export const ExperiencePath = () => {
         <progress className='bar-2' value='100' max='100'></progress>
         <div className="card">
           <div className="card-content p-4 rounded-xl bg-base-200 tooltip-card">
-            <p className="text-white text-md">Unreal Engine 4 Junior Developer</p>
-            <p className="text-white text-md">3D modeling software for modeling flats’ and rooms’ interior</p>
-            <p className="text-white text-md">Visual Studio, Unreal Engine</p>
-            <p className="text-white font-thin text-xs">2018</p>
+            <p className="font-bold text-md">Unreal Engine 4 Junior Developer</p>
+            <p className="text-md">3D modeling software for modeling flats’ and rooms’ interior</p>
+            <p className="text-md">Visual Studio, Unreal Engine</p>
+            <p className="font-thin text-xs">2018</p>
           </div>
         </div>
       </div>

@@ -10,8 +10,8 @@
 
 .tooltip-1 {
   position: absolute;
-  left: 60px;
-  top: 65px;
+  left: 35px;
+  top: 78px;
   animation: tooltip linear 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
