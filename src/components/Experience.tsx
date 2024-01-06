@@ -2,6 +2,7 @@ import "../styles/experience.css";
 import { motion } from "framer-motion";
 import { ExperienceImage } from "./ExperienceImage";
 import { useState, type ReactNode, useEffect } from "react";
+import { experienceProjects } from "./ExperienceProjects";
 
 const cardDuration = 1;
 const pointDuration = 1;
@@ -504,321 +505,188 @@ const Steps = () => {
   return <>
     <Step delay={delay} duration={cardDuration} sizing={{ left: 193, top: 62, line: 50 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Software Engineer</p>
-        <p className="font-thin text-xs">2014-2018</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["mirea"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["mirea"].year}</p>
       </div>
-      <p className="text-xs">Russian Technological University</p>
+      <p className="text-xs">{experienceProjects["mirea"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-52">
-        <div className="badge badge-sm badge-primary">Algorithms</div>
-        <div className="badge badge-sm badge-primary">Modeling</div>
-        <div className="badge badge-sm badge-primary">System Design</div>
-        <div className="badge badge-sm badge-primary">Programming</div>
-        <div className="badge badge-sm badge-primary">Problem Solving</div>
-        <div className="badge badge-sm badge-primary">Software Development</div>
+        {experienceProjects["mirea"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 477, top: 160, line: 50 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Unreal Engine Developer</p>
-        <p className="font-thin text-xs">2015</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["ue-1"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["ue-1"].year}</p>
       </div>
-      <p className="text-xs">3D modeling software for modeling flats’ and rooms’ interior</p>
+      <p className="text-xs">{experienceProjects["ue-1"].name}</p>
       <div className="flex flex-row gap-1">
-        <div className="badge badge-sm badge-primary">Unreal Engine</div>
+        {experienceProjects["ue-1"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 185, top: 250, line: 50 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Unreal Engine Developer</p>
-        <p className="font-thin text-xs">2015-2016</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["ue-2"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["ue-2"].year}</p>
       </div>
-      <p className="text-xs">Game - clone of the S.T.A.L.K.E.R</p>
+      <p className="text-xs">{experienceProjects["ue-2"].name}</p>
       <div className="flex flex-row gap-1">
-        <div className="badge badge-sm badge-primary">Unreal Engine</div>
+        {experienceProjects["ue-2"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 577, top: 307, line: 50 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Unreal Engine Developer</p>
-        <p className="font-thin text-xs">2016-2017</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["ue-3"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["ue-3"].year}</p>
       </div>
-      <p className="text-xs">Game - fighting</p>
+      <p className="text-xs">{experienceProjects["ue-3"].name}</p>
       <div className="flex flex-row gap-1">
-        <div className="badge badge-sm badge-primary">Unreal Engine</div>
-        <div className="badge badge-sm badge-primary">UE Slate UI</div>
-        <div className="badge badge-sm badge-primary">UMG</div>
+        {experienceProjects["ue-3"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 54, top: 344, line: 50 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">IOS/Android Developer</p>
-        <p className="font-thin text-xs">2016-2017</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["taxi"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["taxi"].year}</p>
       </div>
-      <p className="text-xs">Software application for TAXI (like Uber)</p>
+      <p className="text-xs">{experienceProjects["taxi"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs">
-        <div className="badge badge-sm badge-primary">Google Maps API</div>
-        <div className="badge badge-sm badge-primary">Apple Maps API</div>
-        <div className="badge badge-sm badge-primary">Android SDK</div>
-        <div className="badge badge-sm badge-primary">Swift</div>
-        <div className="badge badge-sm badge-primary">Java</div>
-        <div className="badge badge-sm badge-primary">Kotlin</div>
-        <div className="badge badge-sm badge-primary">Fabric</div>
+        {experienceProjects["taxi"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 463, top: 415, line: 300 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Java Developer</p>
-        <p className="font-thin text-xs">2016-2017</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["java-1"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["java-1"].year}</p>
       </div>
-      <p className="text-xs">Software for selling, activation and provisioning of multiple products for b2b clients</p>
+      <p className="text-xs">{experienceProjects["java-1"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs">
-        <div className="badge badge-sm badge-primary">JEE</div>
-        <div className="badge badge-sm badge-primary">Spring Framework</div>
-        <div className="badge badge-sm badge-primary">Jboss/WildFly</div>
-        <div className="badge badge-sm badge-primary">Groovy</div>
-        <div className="badge badge-sm badge-primary">Gradle</div>
-        <div className="badge badge-sm badge-primary">Jenkins</div>
-        <div className="badge badge-sm badge-primary">Ansible</div>
-        <div className="badge badge-sm badge-primary">Maven</div>
-        <div className="badge badge-sm badge-primary">JVM</div>
+        {experienceProjects["java-1"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 40, top: 468, line: 65 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Java Developer</p>
-        <p className="font-thin text-xs">2017</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["java-2"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["java-2"].year}</p>
       </div>
-      <p className="text-xs">CRM B2C System</p>
+      <p className="text-xs">{experienceProjects["java-2"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-56">
-        <div className="badge badge-sm badge-primary">JEE</div>
-        <div className="badge badge-sm badge-primary">Amdocs</div>
-        <div className="badge badge-sm badge-primary">Ant</div>
-        <div className="badge badge-sm badge-primary">Oracle DB</div>
-        <div className="badge badge-sm badge-primary">JVM</div>
+        {experienceProjects["java-2"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 335, top: 482, line: 145 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Java Developer</p>
-        <p className="font-thin text-xs">2018</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["java-3"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["java-3"].year}</p>
       </div>
-      <p className="text-xs">SSO for bank software applications</p>
+      <p className="text-xs">{experienceProjects["java-3"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-52">
-        <div className="badge badge-sm badge-primary">Mesos</div>
-        <div className="badge badge-sm badge-primary">Marathon</div>
-        <div className="badge badge-sm badge-primary">Spring Framework</div>
-        <div className="badge badge-sm badge-primary">Jenkins</div>
-        <div className="badge badge-sm badge-primary">Ansible</div>
-        <div className="badge badge-sm badge-primary">Gradle</div>
-        <div className="badge badge-sm badge-primary">Mongo</div>
-        <div className="badge badge-sm badge-primary">Groovy</div>
-        <div className="badge badge-sm badge-primary">Ratpack</div>
-        <div className="badge badge-sm badge-primary">ReactiveProgramming</div>
+        {experienceProjects["java-3"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 17, top: 590, line: 112 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Team Leader</p>
-        <p className="font-thin text-xs">2018-2019</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["tl-1"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["tl-1"].year}</p>
       </div>
-      <p className="text-xs">OMS system for b2c</p>
+      <p className="text-xs">{experienceProjects["tl-1"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-52">
-        <div className="badge badge-sm badge-primary">Oracle DB</div>
-        <div className="badge badge-sm badge-primary">JVM</div>
-        <div className="badge badge-sm badge-primary">Oracle ESB</div>
-        <div className="badge badge-sm badge-primary">Ant</div>
-        <div className="badge badge-sm badge-primary">Amdocs Process</div>
-        <div className="badge badge-sm badge-primary">WebLogic</div>
+        {experienceProjects["tl-1"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 308, top: 660, line: 132 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Architect/Developer</p>
-        <p className="font-thin text-xs">2019</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["archdev-1"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["archdev-1"].year}</p>
       </div>
-      <p className="text-xs">Transport Module for CRM System</p>
+      <p className="text-xs">{experienceProjects["archdev-1"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-52">
-        <div className="badge badge-sm badge-primary">in-house framework</div>
-        <div className="badge badge-sm badge-primary">JVM</div>
-        <div className="badge badge-sm badge-primary">Oracle DB</div>
-        <div className="badge badge-sm badge-primary">Gradle</div>
-        <div className="badge badge-sm badge-primary">Tarantool</div>
-        <div className="badge badge-sm badge-primary">ELK</div>
-        <div className="badge badge-sm badge-primary">Prometheus</div>
-        <div className="badge badge-sm badge-primary">Grafana</div>
+        {experienceProjects["archdev-1"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 41, top: 753, line: 50 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Architect/Developer</p>
-        <p className="font-thin text-xs">2019</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["archdev-2"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["archdev-2"].year}</p>
       </div>
-      <p className="text-xs">Integration layer for CRM System</p>
+      <p className="text-xs">{experienceProjects["archdev-2"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-52">
-        <div className="badge badge-sm badge-primary">in-house framework</div>
-        <div className="badge badge-sm badge-primary">JVM</div>
-        <div className="badge badge-sm badge-primary">OpenShift</div>
-        <div className="badge badge-sm badge-primary">Kaniko</div>
-        <div className="badge badge-sm badge-primary">Tarantool</div>
-        <div className="badge badge-sm badge-primary">ELK</div>
-        <div className="badge badge-sm badge-primary">Prometheus</div>
-        <div className="badge badge-sm badge-primary">Grafana</div>
+        {experienceProjects["archdev-2"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 464, top: 802, line: 150 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Team Leader</p>
-        <p className="font-thin text-xs">2020</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["tl-2"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["tl-2"].year}</p>
       </div>
-      <p className="text-xs">Trouble Ticket Management system (NTTM)</p>
+      <p className="text-xs">{experienceProjects["tl-2"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-52">
-        <div className="badge badge-sm badge-primary">Spring framework</div>
-        <div className="badge badge-sm badge-primary">JVM</div>
-        <div className="badge badge-sm badge-primary">K8s</div>
-        <div className="badge badge-sm badge-primary">Angular</div>
-        <div className="badge badge-sm badge-primary">Jenkins</div>
-        <div className="badge badge-sm badge-primary">Camunda</div>
-        <div className="badge badge-sm badge-primary">ELK</div>
-        <div className="badge badge-sm badge-primary">Prometheus</div>
-        <div className="badge badge-sm badge-primary">Grafana</div>
-        <div className="badge badge-sm badge-primary">Haproxy</div>
-        <div className="badge badge-sm badge-primary">RabbitMQ</div>
-        <div className="badge badge-sm badge-primary">Solr</div>
-        <div className="badge badge-sm badge-primary">Postgres</div>
-        <div className="badge badge-sm badge-primary">Patroni</div>
+        {experienceProjects["tl-2"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 75, top: 915, line: 100 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
-        <p className="font-thin text-xs">2021-2022</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["principal-1"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["principal-1"].year}</p>
       </div>
-      <p className="text-xs">Import Replacement</p>
+      <p className="text-xs">{experienceProjects["principal-1"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-        <div className="badge badge-sm badge-primary">Elbrus E2K</div>
-        <div className="badge badge-sm badge-primary">GCC</div>
-        <div className="badge badge-sm badge-primary">GDB</div>
-        <div className="badge badge-sm badge-primary">CLang</div>
-        <div className="badge badge-sm badge-primary">JVM</div>
-        <div className="badge badge-sm badge-primary">Groovy</div>
-        <div className="badge badge-sm badge-primary">Scala</div>
-        <div className="badge badge-sm badge-primary">Kotlin</div>
-        <div className="badge badge-sm badge-primary">Python</div>
-        <div className="badge badge-sm badge-primary">FFMpeg</div>
-        <div className="badge badge-sm badge-primary">Kurento</div>
-        <div className="badge badge-sm badge-primary">GStreamer</div>
-        <div className="badge badge-sm badge-primary">MongoDB</div>
-        <div className="badge badge-sm badge-primary">ReactJS</div>
-        <div className="badge badge-sm badge-primary">TypeScript</div>
-        <div className="badge badge-sm badge-primary">MeteorJS</div>
-        <div className="badge badge-sm badge-primary">Ruby</div>
-        <div className="badge badge-sm badge-primary">Reindexer DB</div>
-        <div className="badge badge-sm badge-primary">fcontext</div>
-        <div className="badge badge-sm badge-primary">ucontext</div>
+        {experienceProjects["principal-1"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 649, top: 995, line: 100 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
-        <p className="font-thin text-xs">2022</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["principal-2"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["principal-2"].year}</p>
       </div>
-      <p className="text-xs">Safe Repository</p>
+      <p className="text-xs">{experienceProjects["principal-2"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-        <div className="badge badge-sm badge-primary">Kotlin</div>
-        <div className="badge badge-sm badge-primary">Ktor</div>
-        <div className="badge badge-sm badge-primary">Netty</div>
-        <div className="badge badge-sm badge-primary">Tarantool</div>
-        <div className="badge badge-sm badge-primary">Dart</div>
-        <div className="badge badge-sm badge-primary">Flutter</div>
-        <div className="badge badge-sm badge-primary">Gradle</div>
-        <div className="badge badge-sm badge-primary">Nexus API</div>
+        {experienceProjects["principal-2"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 234, top: 1106, line: 100 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">DevOps Engineer</p>
-        <p className="font-thin text-xs">2022</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["devops-1"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["devops-1"].year}</p>
       </div>
-      <p className="text-xs">Cloud-based DevOps</p>
+      <p className="text-xs">{experienceProjects["devops-1"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-        <div className="badge badge-sm badge-primary">AWS</div>
-        <div className="badge badge-sm badge-primary">GCP</div>
-        <div className="badge badge-sm badge-primary">Terragrunt</div>
-        <div className="badge badge-sm badge-primary">Terraform</div>
-        <div className="badge badge-sm badge-primary">K8s</div>
-        <div className="badge badge-sm badge-primary">ArgoCD</div>
-        <div className="badge badge-sm badge-primary">Istio</div>
-        <div className="badge badge-sm badge-primary">Woodpecker CI</div>
-        <div className="badge badge-sm badge-primary">Spinnaker CD</div>
-        <div className="badge badge-sm badge-primary">Vault</div>
-        <div className="badge badge-sm badge-primary">Cilium</div>
-        <div className="badge badge-sm badge-primary">Helm</div>
+        {experienceProjects["devops-1"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 793, top: 1220, line: 100 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
-        <p className="font-thin text-xs">2023</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["principal-3"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["principal-3"].year}</p>
       </div>
-      <p className="text-xs">Platform</p>
+      <p className="text-xs">{experienceProjects["principal-3"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-        <div className="badge badge-sm badge-primary">AWS</div>
-        <div className="badge badge-sm badge-primary">GCP</div>
-        <div className="badge badge-sm badge-primary">Terraform</div>
-        <div className="badge badge-sm badge-primary">Terragrunt</div>
-        <div className="badge badge-sm badge-primary">Flutter</div>
-        <div className="badge badge-sm badge-primary">Dart</div>
-        <div className="badge badge-sm badge-primary">k8s</div>
-        <div className="badge badge-sm badge-primary">Istio</div>
-        <div className="badge badge-sm badge-primary">Woodpecker CI</div>
-        <div className="badge badge-sm badge-primary">Spinnaker CD</div>
-        <div className="badge badge-sm badge-primary">GraalVM</div>
-        <div className="badge badge-sm badge-primary">Helm</div>
-        <div className="badge badge-sm badge-primary">Ktor</div>
-        <div className="badge badge-sm badge-primary">Kotlin</div>
-        <div className="badge badge-sm badge-primary">Go</div>
-        <div className="badge badge-sm badge-primary">Vault</div>
+        {experienceProjects["principal-3"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 218, top: 1323, line: 100 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
-        <p className="font-thin text-xs">2023</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["principal-4"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["principal-4"].year}</p>
       </div>
-      <p className="text-xs">Pet Project</p>
+      <p className="text-xs">{experienceProjects["principal-4"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-        <div className="badge badge-sm badge-primary">Langchain</div>
-        <div className="badge badge-sm badge-primary">OpenAI API</div>
-        <div className="badge badge-sm badge-primary">Chroma</div>
-        <div className="badge badge-sm badge-primary">RAG</div>
-        <div className="badge badge-sm badge-primary">LLM</div>
-        <div className="badge badge-sm badge-primary">Prompting</div>
-        <div className="badge badge-sm badge-primary">Python</div>
-        <div className="badge badge-sm badge-primary">Vector search</div>
+        {experienceProjects["principal-4"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 835, top: 1420, line: 50 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
-        <p className="font-thin text-xs">2023</p>
+        <p className="font-bold text-xs flex-1">{experienceProjects["principal-5"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["principal-5"].year}</p>
       </div>
-      <p className="text-xs">Pet Project</p>
+      <p className="text-xs">{experienceProjects["principal-5"].name}</p>
       <div className="flex flex-wrap gap-1 max-w-xs w-96">
-        <div className="badge badge-sm badge-primary">Tailscale</div>
-        <div className="badge badge-sm badge-primary">Headscale</div>
-        <div className="badge badge-sm badge-primary">WireGuard</div>
-        <div className="badge badge-sm badge-primary">Go</div>
-        <div className="badge badge-sm badge-primary">Mesh networks</div>
-        <div className="badge badge-sm badge-primary">VPN & Tunnels</div>
-        <div className="badge badge-sm badge-primary">Dart</div>
-        <div className="badge badge-sm badge-primary">Flutter</div>
-        <div className="badge badge-sm badge-primary">Multiplatform</div>
+      {experienceProjects["principal-5"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </Step>
   </>;
 }
 
-export const ExperiencePath = () =>
+export const ExperienceDesktop = () =>
   <div className="wrapper">
     <div className="container">
       <Road />
