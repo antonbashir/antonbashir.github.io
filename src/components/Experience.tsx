@@ -695,7 +695,7 @@ const Steps = () => {
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 75, top: 915, line: 100 }} left={false}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Principal Developer</p>
+        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
         <p className="font-thin text-xs">2021-2022</p>
       </div>
       <p className="text-xs">Import Replacement</p>
@@ -724,7 +724,7 @@ const Steps = () => {
     </Step>
     <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 649, top: 995, line: 100 }} left={true}>
       <div className="flex flex-row gap-1 place-items-center">
-        <p className="font-bold text-xs flex-1">Principal Developer</p>
+        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
         <p className="font-thin text-xs">2022</p>
       </div>
       <p className="text-xs">Safe Repository</p>
