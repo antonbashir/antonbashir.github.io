@@ -194,18 +194,30 @@ const Steps = () => {
         <p className="font-thin text-xs">2015</p>
       </div>
       <p className="text-md">3D modeling software for modeling flats’ and rooms’ interior</p>
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-2">
         <div className="badge badge-sm badge-primary">Unreal Engine</div>
       </div>
     </Step>
-    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 147, top: 236, line: 50 }} left={false}>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 135, top: 236, line: 50 }} left={false}>
       <div className="flex flex-row gap-2 place-items-center">
         <p className="font-bold text-md flex-1">Unreal Engine Developer</p>
-        <p className="font-thin text-xs">2015</p>
+        <p className="font-thin text-xs">2015-2016</p>
       </div>
       <p className="text-md">Game - clone of the S.T.A.L.K.E.R</p>
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-2">
         <div className="badge badge-sm badge-primary">Unreal Engine</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 577, top: 297, line: 50 }} left={true}>
+      <div className="flex flex-row gap-2 place-items-center">
+        <p className="font-bold text-md flex-1">Unreal Engine Developer</p>
+        <p className="font-thin text-xs">2016-2017</p>
+      </div>
+      <p className="text-md">Game - fighting</p>
+      <div className="flex flex-row gap-2">
+        <div className="badge badge-sm badge-primary">Unreal Engine</div>
+        <div className="badge badge-sm badge-primary">UE Slate UI</div>
+        <div className="badge badge-sm badge-primary">UMG</div>
       </div>
     </Step>
   </>;
