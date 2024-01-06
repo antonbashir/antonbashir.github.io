@@ -1,11 +1,32 @@
+.wrapper {
+  filter: drop-shadow(0px 0px 50px rgba(0,0,0,0.75)) drop-shadow(0px 0px 50px rgba(0,0,0,0.75)) drop-shadow(0px 0px 50px rgba(0,0,0,0.75)) drop-shadow(0px 0px 50px rgba(0,0,0,0.75));
+}
+
 .container {
   position: relative;
   width: max-content;
-  box-shadow: 0px 0px 30px 30px rgba(0,0,0,0.75);
   @apply m-auto;
   @apply my-8;
   @apply flex;
   @apply place-content-center;
+  clip-path: inset(0% round 30px);
+}
+
+.svg {
+}
+
+.tooltip-card {
+  box-shadow: 0px 0px 16px 1px rgba(44,35,165,0.75);
+}
+
+@keyframes tooltip {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes tooltip {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .tooltip-1 {
@@ -18,11 +39,6 @@
   animation-delay: 0s;
   opacity: 0;
 }
-
-.tooltip-card {
-  box-shadow: 0px 0px 16px 1px rgba(44,35,165,0.75);
-}
-
 
 .tooltip-2 {
   position: absolute;
@@ -69,12 +85,29 @@
 }
 
 
-@keyframes tooltip {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+.tooltip-3 {
+  position: absolute;
+  left: 130px;
+  top: 235px;
+  animation: tooltip linear 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 4s;
+  opacity: 0;
 }
 
-@-webkit-keyframes tooltip {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+.bar-3 {
+  -webkit-appearance: none;
+  height: 2px;
+  width: 50px;
+}
+
+.bar-3::-webkit-progress-bar {
+  border-radius: calc(1.4em / 2);
+  background: transparent;
+}
+
+.bar-3::-webkit-progress-value {
+  background: white;
+  box-shadow: 0 0 0.6em rgba(183,172,255,0.75), 0 0 0.8em rgba(183,172,255,0.75);
 }
