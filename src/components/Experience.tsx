@@ -361,7 +361,7 @@ const Road = () => {
     />
     <Path
       id="path231"
-      path="m 346.16361,833.69133 c -0.42337,6.29927 -0.84674,12.59838 9.41478,17.6587 10.26151,5.06032 31.20658,8.88133 48.65683,6.99314 17.45024,-1.8882 31.40344,-9.48534 38.15462,-7.86544 6.75118,1.6199 6.29948,12.45688 5.84776,23.29409"
+      path="m 346.16361,833.69133 c -0.42337,6.29927 -0.84674,12.59836 7.69286,17.34456 8.53959,4.7462 26.04123,7.93902 36.51425,9.84962 10.47302,1.91059 13.91681,2.53884 22.61569,2.64815 8.69888,0.10932 22.65224,-0.30029 29.40343,1.31961 6.75118,1.61991 6.29948,5.26919 5.84776,8.91855"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
@@ -381,7 +381,7 @@ const Road = () => {
     />
     <Path
       id="path232"
-      path="m 448.83152,903.93917 c -0.33011,7.49416 -0.66021,14.98822 5.47916,20.43236 6.13938,5.44414 18.74757,8.83793 30.17991,4.03085 11.43235,-4.80707 21.68758,-17.81443 33.45076,-24.67826 11.76318,-6.86384 25.03313,-7.58335 32.26228,-4.42051 7.22915,3.16283 8.41718,10.20799 8.78561,16.59934 0.36843,6.39135 -0.0827,12.12882 -0.53392,17.86635"
+      path="m 448.83152,903.93917 c -0.33011,7.49416 -0.66021,14.98822 3.03172,21.24818 3.69194,6.25995 11.40551,11.28527 17.9111,14.89734 6.50559,3.61208 11.80247,5.81051 16.06601,7.23603 4.26354,1.42551 7.49329,2.07796 16.76483,2.71509 9.27154,0.63713 24.58471,1.25894 32.12488,7.15138 7.54017,5.89245 7.30727,17.05546 7.07437,28.21858"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
@@ -391,7 +391,7 @@ const Road = () => {
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
-      transform="matrix(0.06400411,0,0,0.06400411,542.6012,932.55743)"
+      transform="matrix(0.06400411,0,0,0.06400411,525.01487,984.1939)"
       paths={[
         "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
         "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
@@ -405,14 +405,14 @@ const Road = () => {
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
-      transform="translate(-2.1166667,12.7)"
+      transform="matrix(0.98693567,0,0,1.0001024,-12.670864,61.992644)"
     />
     <Point
       id="g213"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
-      transform="matrix(0.06400411,0,0,0.06400411,634.78198,986.20211)"
+      transform="matrix(0.06400411,0,0,0.06400411,615.69894,1035.5935)"
       paths={[
         "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
         "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
@@ -422,17 +422,18 @@ const Road = () => {
     />
     <Path
       id="path238"
-      path="m 650.96545,1018.5433 c -0.0962,3.569 -0.19242,7.1378 0.37843,9.1093 0.57085,1.9715 1.80864,2.3457 5.35746,1.9889 3.54881,-0.3568 9.40783,-1.4444 14.54125,-2.0357 5.13341,-0.5913 9.54019,-0.6862 17.30609,-0.819 7.76591,-0.1328 18.88778,-0.3035 24.49134,4.8862 5.60357,5.1897 5.68542,15.7378 5.76727,26.2861"
+      path="m 650.96545,1018.5433 c 0.52116,3.6572 1.04229,7.3141 1.61312,9.2857 0.57084,1.9715 1.19135,2.2575 4.56377,4.9876 3.37242,2.7302 9.49596,7.9039 14.5853,11.8107 5.08934,3.9067 9.14332,6.5456 14.92477,6.6333 5.78144,0.088 13.28801,-2.3757 19.4649,6.0776 6.17688,8.4534 11.02088,27.8203 15.86498,47.1876"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
+      transform="translate(-18.708867,49.017231)"
     />
     <Point
       id="g217"
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
-      transform="matrix(0.06400411,0,0,0.06400411,701.42555,1057.7446)"
+      transform="matrix(0.06400411,0,0,0.06400411,685.36251,1153.8576)"
       paths={[
         "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
         "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
@@ -442,8 +443,8 @@ const Road = () => {
     />
     <Path
       id="path238-7"
-      path="m 623.84566,1049.8964 c -0.0962,-8.7785 -0.19242,-17.5564 4.89852,-20.8105 5.09094,-3.254 15.36814,-0.9839 23.43705,-0.3925 8.06892,0.5913 13.92794,-0.4963 19.06136,-1.0876 5.13341,-0.5913 9.54019,-0.6862 16.20361,-0.6647 6.66341,0.022 15.58081,0.1594 20.03771,-4.3975 4.4569,-4.557 4.45056,-13.8071 4.44423,-23.05742"
-      transform="translate(6.3213967,91.1259)"
+      path="m 787.73533,1083.9465 c -0.0338,-9.7763 -0.0677,-19.5518 -0.38887,-26.9754 -0.32121,-7.4235 -0.92973,-12.4935 -4.79546,-15.954 -3.86574,-3.4604 -10.98765,-5.3105 -14.96922,-6.3493 -3.98157,-1.0387 -4.82194,-1.2659 -13.57131,-2.3689 -8.74938,-1.103 -25.40378,-3.0814 -33.7367,-8.6969 -8.33291,-5.6154 -8.33925,-14.8655 -8.34558,-24.11582"
+      transform="translate(-9.7416367,187.23896)"
       stroke="#ffffff"
       delay={delay += pointDuration}
       duration={pathDuration}
@@ -453,7 +454,7 @@ const Road = () => {
       duration={pointDuration}
       delay={delay += pathDuration}
       fill="#fffff"
-      transform="matrix(0.06400411,0,0,0.06400411,615.15683,1139.5857)"
+      transform="matrix(0.06400411,0,0,0.06400411,760.7384,1270.123)"
       paths={[
         "m 282.503,149.97 c -11.43,-2.858 -23.013,4.092 -25.87,15.522 l -42.667,170.667 c -2.858,11.43 4.092,23.013 15.522,25.87 11.43,2.857 23.013,-4.092 25.87,-15.522 L 298.025,175.84 c 2.858,-11.43 -4.092,-23.012 -15.522,-25.87 z",
         "M 170.662,234.667 V 192 c 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 -25.201,0 -42.667,17.466 -42.667,42.667 v 33.83 l -15.085,15.085 c -8.331,8.331 -8.331,21.839 0,30.17 l 15.085,15.085 V 320 c 0,25.201 17.466,42.667 42.667,42.667 11.782,0 21.333,-9.551 21.333,-21.333 0,-11.782 -9.551,-21.333 -21.333,-21.333 v -42.667 c 0,-5.658 -2.248,-11.084 -6.248,-15.085 l -6.248,-6.249 6.248,-6.248 c 4.001,-4.001 6.248,-9.427 6.248,-15.085 z",
@@ -643,6 +644,90 @@ const Steps = () => {
         <div className="badge badge-sm badge-primary">Solr</div>
         <div className="badge badge-sm badge-primary">Postgres</div>
         <div className="badge badge-sm badge-primary">Patrony</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 75, top: 915, line: 100 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Principal Developer</p>
+        <p className="font-thin text-xs">2021-2022</p>
+      </div>
+      <p className="text-xs">Import Replacement</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        <div className="badge badge-sm badge-primary">Elbrus E2K</div>
+        <div className="badge badge-sm badge-primary">GCC</div>
+        <div className="badge badge-sm badge-primary">GDB</div>
+        <div className="badge badge-sm badge-primary">CLang</div>
+        <div className="badge badge-sm badge-primary">JVM</div>
+        <div className="badge badge-sm badge-primary">Groovy</div>
+        <div className="badge badge-sm badge-primary">Scala</div>
+        <div className="badge badge-sm badge-primary">Kotlin</div>
+        <div className="badge badge-sm badge-primary">Python</div>
+        <div className="badge badge-sm badge-primary">FFMpeg</div>
+        <div className="badge badge-sm badge-primary">Kurento</div>
+        <div className="badge badge-sm badge-primary">GStreamer</div>
+        <div className="badge badge-sm badge-primary">MongoDB</div>
+        <div className="badge badge-sm badge-primary">ReactJS</div>
+        <div className="badge badge-sm badge-primary">TypeScript</div>
+        <div className="badge badge-sm badge-primary">MeteorJS</div>
+        <div className="badge badge-sm badge-primary">Ruby</div>
+        <div className="badge badge-sm badge-primary">ReindexerDB</div>
+        <div className="badge badge-sm badge-primary">fcontext</div>
+        <div className="badge badge-sm badge-primary">ucontext</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 649, top: 995, line: 100 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Principal Developer</p>
+        <p className="font-thin text-xs">2022</p>
+      </div>
+      <p className="text-xs">Safe Repository</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        <div className="badge badge-sm badge-primary">Kotlin</div>
+        <div className="badge badge-sm badge-primary">Ktor</div>
+        <div className="badge badge-sm badge-primary">Netty</div>
+        <div className="badge badge-sm badge-primary">Tarantool</div>
+        <div className="badge badge-sm badge-primary">Dart</div>
+        <div className="badge badge-sm badge-primary">Flutter</div>
+        <div className="badge badge-sm badge-primary">Gradle</div>
+        <div className="badge badge-sm badge-primary">Nexus API</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 234, top: 1106, line: 100 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">DevOps Engineer</p>
+        <p className="font-thin text-xs">2022</p>
+      </div>
+      <p className="text-xs">Cloud-based DevOps</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        <div className="badge badge-sm badge-primary">AWS</div>
+        <div className="badge badge-sm badge-primary">GCP</div>
+        <div className="badge badge-sm badge-primary">Terragrunt</div>
+        <div className="badge badge-sm badge-primary">Terraform</div>
+        <div className="badge badge-sm badge-primary">K8s</div>
+        <div className="badge badge-sm badge-primary">ArgoCD</div>
+        <div className="badge badge-sm badge-primary">Istio</div>
+        <div className="badge badge-sm badge-primary">Woodpecker CI</div>
+        <div className="badge badge-sm badge-primary">Spinnaker CD</div>
+        <div className="badge badge-sm badge-primary">Vault</div>
+        <div className="badge badge-sm badge-primary">Cilium</div>
+        <div className="badge badge-sm badge-primary">Helm</div>
+      </div>
+    </Step>
+    <Step delay={delay += (pointDuration + pathDuration)} duration={cardDuration} sizing={{ left: 793, top: 1230, line: 100 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">Principal Software Engineer</p>
+        <p className="font-thin text-xs">2022</p>
+      </div>
+      <p className="text-xs">Safe Repository</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        <div className="badge badge-sm badge-primary">Kotlin</div>
+        <div className="badge badge-sm badge-primary">Ktor</div>
+        <div className="badge badge-sm badge-primary">Netty</div>
+        <div className="badge badge-sm badge-primary">Tarantool</div>
+        <div className="badge badge-sm badge-primary">Dart</div>
+        <div className="badge badge-sm badge-primary">Flutter</div>
+        <div className="badge badge-sm badge-primary">Gradle</div>
+        <div className="badge badge-sm badge-primary">Nexus API</div>
       </div>
     </Step>
   </>;
