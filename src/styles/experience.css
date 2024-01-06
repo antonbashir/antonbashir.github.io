@@ -18,13 +18,11 @@
 
 .step {
   position: absolute;
-  opacity: 0;
 }
 
 .step-left-line {
   -webkit-appearance: none;
   height: 2px;
-  rotate: 180deg;
 }
 
 .step-left-line::-webkit-progress-bar {
@@ -41,6 +39,7 @@
   -webkit-appearance: none;
   height: 2px;
   width: 50px;
+  rotate: 180deg;
 }
 
 .step-right-line::-webkit-progress-bar {
@@ -65,4 +64,5 @@
 
 .step-body {
   box-shadow: 0px 0px 16px 1px rgba(44,35,165,0.75);
+  opacity: 0;
 }

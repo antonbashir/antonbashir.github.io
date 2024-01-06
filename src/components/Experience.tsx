@@ -1,11 +1,12 @@
 import "../styles/experience.css";
 import { motion } from "framer-motion";
 import { ExperienceImage } from "./ExperienceImage";
-import type { ReactNode } from "react";
+import { useState, type ReactNode, useEffect } from "react";
 
 const cardDuration = 1;
 const pointDuration = 1;
 const pathDuration = 1;
+const maxLineProgress = 100;
 
 type PointProperties = {
   transform: string
@@ -22,6 +23,7 @@ const Point = (properties: PointProperties) => {
       transform={properties.transform}
       filter="url(#glow)">
       {properties.paths.map(path => <motion.path
+        key={path}
         d={path}
         fill="#ffffff"
         stroke="none"
@@ -73,22 +75,55 @@ type StepProperties = {
 }
 
 const Step = (properties: StepProperties) => {
+  const [value, setValue] = useState(0);
+  const [launched, setLaunched] = useState(false);
+
+  console.log(properties);
+
+  useEffect(() => {
+    if (launched) {
+      const interval = setInterval(() => {
+        if (value == maxLineProgress) {
+          clearInterval(interval);
+          return;
+        }
+        setValue(value + 1);
+      }, 1);
+      return () => clearInterval(interval);
+    }
+    return () => { };
+  }, [value, launched]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (launched) {
+        clearInterval(interval);
+        return;
+      }
+      setLaunched(true);
+    }, properties.delay * 1000);
+    return () => clearInterval(interval);
+  }, [launched]);
+
   return (
     <div className="step flex flex-row place-content-center place-items-center"
       style={{
         left: properties.sizing.left,
         top: properties.sizing.top,
-        animation: `step linear ${properties.duration}s`,
-        animationIterationCount: 1,
-        animationFillMode: "forwards",
-        animationDelay: `${properties.delay}s`,
       }}
     >
-      {properties.left && <progress className='step-left-line' style={{ width: properties.sizing.line }} value='100' max='100' />}
-      <div className="flex flex-col place-content-center step-body p-4 rounded-xl bg-base-200 gap-2">
+      {properties.left && <progress className='step-left-line' style={{ width: properties.sizing.line }} value={value} max='100' />}
+      <div
+        className="flex step-body flex-col place-content-center p-4 rounded-xl bg-base-200 gap-2"
+        style={{
+          animation: `step linear ${properties.duration}s`,
+          animationIterationCount: 1,
+          animationFillMode: "forwards",
+          animationDelay: `${properties.delay * 1000 + 200}ms`,
+        }}>
         {properties.children}
       </div>
-      {!properties.left && <progress className='step-left-line' style={{ width: properties.sizing.line }} value='100' max='100' />}
+      {!properties.left && <progress className='step-right-line' style={{ width: properties.sizing.line }} value={value} max='100' />}
     </div>
   );
 };
