@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import '../styles/project-card.css'
 
 type Properties = {
@@ -136,6 +137,28 @@ export const ProjectList = () => <>
           <div className="badge badge-lg badge-outline">Tarantool fibers</div>
           <div className="badge badge-lg badge-outline">Tarantool event loop</div>
           <div className="badge badge-lg badge-outline">Tarantool memory management</div>
+        </div>
+      </>
+    }
+  />
+  <ProjectCard
+    name="Personal Site"
+    description="If you see this page then you already know my site"
+    code="https://github.com/antonbashir/antonbashir.github.io"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Astro</div>
+          <div className="badge badge-lg badge-outline">React</div>
+          <div className="badge badge-lg badge-outline">TypeScript</div>
+          <div className="badge badge-lg badge-outline">JavaScript</div>
+          <div className="badge badge-lg badge-outline">Tailwind</div>
+          <div className="badge badge-lg badge-outline">Framer Motion</div>
+          <div className="badge badge-lg badge-outline">SVG</div>
+          <div className="badge badge-lg badge-outline">Inkscape</div>
+          <div className="badge badge-lg badge-outline">JS animations</div>
+          <div className="badge badge-lg badge-outline">Lottie</div>
+          <div className="badge badge-lg badge-outline">Rive</div>
         </div>
       </>
     }
