@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import '../styles/project-card.css'
 
 type Properties = {
   name: string
@@ -11,7 +10,7 @@ type Properties = {
 }
 
 const ProjectCard = (props: Properties) =>
-  <div className={props.todo != true ? `project-card` : `card bg-base-200`}>
+  <div className="card bg-base-200">
     <div className="card-body">
       <div className="flex flex-col gap-4 flex-1">
         <h1 className="card-title text-2xl font-bold">{props.name}</h1>

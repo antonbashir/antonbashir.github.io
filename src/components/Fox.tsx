@@ -5,9 +5,7 @@ export const FoxAnimation = () => {
   const options = {
     animationData: foxAnimation,
     loop: true,
-    style: { width: "35rem", height: "35rem", position: "relative", left: "-15px" }
   };
-  // @ts-ignore
-  const { View } = useLottie(options);
+  const { View } = useLottie(options, { width: "35rem", height: "35rem", position: "relative", left: "-15px" });
   return <>{View}</>
 }

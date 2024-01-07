@@ -15,22 +15,6 @@ type Properties = {
   tags?: string
 }
 
-export const articleColor = (label: string) => {
-  var color: string = "primary";
-  switch (label.toLowerCase()) {
-    case "note":
-      color = "indigo-500";
-      break;
-    case "article":
-      color = "green-500";
-      break;
-    case "guide":
-      color = "purple-500";
-      break;
-  }
-  return color;
-}
-
 const Article = (properties: Properties) => {
   const tags = properties.tags?.split(",") ?? [];
   return <a
@@ -69,6 +53,22 @@ const Article = (properties: Properties) => {
       </div>
     </div>
   </a>;
+}
+
+export const articleColor = (label: string) => {
+  var color: string = "primary";
+  switch (label.toLowerCase()) {
+    case "note":
+      color = "indigo-500";
+      break;
+    case "article":
+      color = "green-500";
+      break;
+    case "guide":
+      color = "purple-500";
+      break;
+  }
+  return color;
 }
 
 export const ArticlesLanguageSelector = () => {

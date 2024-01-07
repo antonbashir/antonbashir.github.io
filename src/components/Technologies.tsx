@@ -3,6 +3,7 @@ import { Grid, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import '../styles/swiper.css';
+
 enum TechnologyMode {
   languages,
   applications
