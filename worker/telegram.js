@@ -33,7 +33,7 @@ function addURLOptions(urlString, options = {}) {
 }
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request, env, _) {
     await handle(request, env);
     return new Response();
   },

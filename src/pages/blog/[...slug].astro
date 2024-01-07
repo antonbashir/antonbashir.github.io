@@ -22,7 +22,7 @@ const tags: string[] = post.data.tags?.split(",") ?? [];
   <head>
     <script>
       import "@github/clipboard-copy-element";
-      document.addEventListener("clipboard-copy", function (event) {
+      document.addEventListener("clipboard-copy", () => {
         document
           .querySelector("#notification")
           ?.classList.remove("translate-x-full");
