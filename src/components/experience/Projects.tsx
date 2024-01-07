@@ -8,7 +8,7 @@ export type ExperienceProject = {
 export const experienceProjects: Record<string, ExperienceProject> = {
   "mirea": {
     role: "Software Engineer",
-    year: "2014-2017",
+    year: "2014-2018",
     name: "Russian Technological University",
     tags: [
       "Algorithms",
