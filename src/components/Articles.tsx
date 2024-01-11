@@ -16,7 +16,7 @@ type Properties = {
 }
 
 const Article = (properties: Properties) => {
-  const tags = properties.tags?.split(",") ?? [];
+  const tags = properties.tags?.split(",")?.map((tag: string) => tag.replaceAll(/\s/g, '')) ?? [];
   return <a
     className="hero rounded-x btn h-max max-w-none m-auto justify-start"
     href={properties.reference}
@@ -49,7 +49,7 @@ const Article = (properties: Properties) => {
           <p className="text-sm font-light text-justify">{properties.date}</p>
           <p className="text-sm font-light text-justify">{properties.time}</p>
         </div>
-        <div className="flex flex-row gap-2">{tags.map(tag => <div className={`badge badge-primary`}>{tag}</div>)}</div>
+        <div className="flex flex-row gap-2">{tags.map(tag => <div key={tag} className={`badge badge-primary`}>{tag}</div>)}</div>
       </div>
     </div>
   </a>;

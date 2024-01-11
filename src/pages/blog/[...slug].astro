@@ -15,7 +15,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const url = Astro.request.url;
 const color = articleColor(post.data.label);
-const tags: string[] = post.data.tags?.split(",") ?? [];
+const tags: string[] = post.data.tags?.split(",")?.map((tag: string) => tag.replaceAll(/\s/g, '')) ?? [];
 ---
 
 <html lang="en">
