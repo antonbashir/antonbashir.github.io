@@ -40,7 +40,7 @@ const Article = (properties: Properties) => {
         </svg>
       </div>
       <div className="card-body place-items-start p-2">
-        <div className="card-title flex flex-row">
+        <div className="card-title flex flex-row text-justify">
           <div>{properties.title}</div>
           <div className={`badge badge-lg bg-${articleColor(properties.label)}`}>{properties.label}</div>
         </div>
