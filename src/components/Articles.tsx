@@ -40,9 +40,8 @@ const Article = (properties: Properties) => {
         </svg>
       </div>
       <div className="card-body place-items-start p-2">
-        <div className="card-title flex flex-row text-justify">
+        <div className="card-title text-justify">
           <div>{properties.title}</div>
-          <div className={`badge badge-lg bg-${articleColor(properties.label)}`}>{properties.label}</div>
         </div>
         <p className="text-justify">{properties.description}</p>
         <div className="card-title flex flex-row">
@@ -50,6 +49,7 @@ const Article = (properties: Properties) => {
           <p className="text-sm font-light text-justify">{properties.time}</p>
         </div>
         <div className="flex flex-row gap-2">{tags.map(tag => <div key={tag} className={`badge badge-primary`}>{tag}</div>)}</div>
+        <div className={`badge badge-lg bg-${articleColor(properties.label)}`}>{properties.label}</div>
       </div>
     </div>
   </a>;
