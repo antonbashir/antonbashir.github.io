@@ -282,5 +282,26 @@ export const experienceProjects: Record<string, ExperienceProject> = {
       "Flutter",
       "MultiPlatform",
     ]
+  },
+  "principal-6": {
+    role: "Principal Software Engineer",
+    year: "2023",
+    name: "Vault Customization",
+    tags: [
+      "Vault",
+      "Go",
+      "Replication",
+    ],
+  },
+  "principal-7": {
+    role: "Principal Software Engineer",
+    year: "2023",
+    name: "Istio API Gateway",
+    tags: [
+      "Istio",
+      "Envoy",
+      "Go",
+      "EnvoyFilter",
+    ]
   }
 }

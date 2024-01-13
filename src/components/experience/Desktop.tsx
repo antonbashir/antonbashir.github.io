@@ -4,9 +4,9 @@ import "../../styles/experience.css";
 
 const maxLineProgress = 100;
 
-export const experienceStepDuration = 0.5;
-export const experiencePointDuration = 0.5;
-export const experiencePathDuration = 1;
+export const experienceStepDuration = 0;
+export const experiencePointDuration = 0;
+export const experiencePathDuration = 0;
 
 
 export type ExperiencePointProperties = {

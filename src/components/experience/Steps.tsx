@@ -184,5 +184,25 @@ export const ExperienceSteps = () => {
         {experienceProjects["principal-5"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
       </div>
     </ExperienceStep>
+    <ExperienceStep delay={delay += (experiencePointDuration + experiencePathDuration)} duration={experienceStepDuration} sizing={{ left: 270, top: 1565, line: 50 }} left={false}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">{experienceProjects["principal-6"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["principal-6"].year}</p>
+      </div>
+      <p className="text-xs">{experienceProjects["principal-6"].name}</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        {experienceProjects["principal-6"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
+      </div>
+    </ExperienceStep>
+    <ExperienceStep delay={delay += (experiencePointDuration + experiencePathDuration)} duration={experienceStepDuration} sizing={{ left: 880, top: 1615, line: 25 }} left={true}>
+      <div className="flex flex-row gap-1 place-items-center">
+        <p className="font-bold text-xs flex-1">{experienceProjects["principal-7"].role}</p>
+        <p className="font-thin text-xs">{experienceProjects["principal-7"].year}</p>
+      </div>
+      <p className="text-xs">{experienceProjects["principal-7"].name}</p>
+      <div className="flex flex-wrap gap-1 max-w-xs w-96">
+        {experienceProjects["principal-7"].tags.map(tag => <div className="badge badge-sm badge-primary" key={tag}>{tag}</div>)}
+      </div>
+    </ExperienceStep>
   </>;
 }
