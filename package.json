@@ -42,6 +42,7 @@
     "rehype-slug": "^6.0.0",
     "rehype-toc": "^3.0.2",
     "swiper": "^11.0.5",
+    "tailwind-typewriter": "^1.0.1",
     "tailwindcss": "^3.3.6",
     "tailwindcss-elevation": "^2.0.0",
     "typescript": "^5.3.3",

@@ -104,6 +104,7 @@ export const Articles = () => {
             ? post.id.startsWith("ru")
             : post.id.startsWith("en"),
         )
+        .sort((first, second) => Date.parse(second.data.date) > Date.parse(first.data.date) ? 1 : -1)
         .map((post) => (
           <Article
             key={post.id}

@@ -5,6 +5,16 @@ module.exports = withMT({
   plugins: [
     require("daisyui"),
     require('tailwindcss-elevation'),
+    require('tailwind-typewriter')(
+      {
+        wordsets: {
+          no: {
+            words: ['No', ' '],
+            delay: 1
+          }
+        }
+      }
+    ),
     require('@tailwindcss/typography'),
   ],
   daisyui: {
