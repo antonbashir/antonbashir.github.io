@@ -69,8 +69,6 @@ export const ExperienceMobile = () => {
     <MobileCard delay={delay += mobileCardDuration} duration={mobileCardDuration} project={experienceProjects["principal-3"]!} />
     <MobileCard delay={delay += mobileCardDuration} duration={mobileCardDuration} project={experienceProjects["principal-4"]!} />
     <MobileCard delay={delay += mobileCardDuration} duration={mobileCardDuration} project={experienceProjects["principal-5"]!} />
-    <MobileCard delay={delay += mobileCardDuration} duration={mobileCardDuration} project={experienceProjects["principal-6"]!} />
-    <MobileCard delay={delay += mobileCardDuration} duration={mobileCardDuration} project={experienceProjects["principal-7"]!} />
   </div>;
 }
 

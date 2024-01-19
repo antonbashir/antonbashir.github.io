@@ -255,37 +255,6 @@ export const experienceProjects: Record<string, ExperienceProject> = {
   "principal-4": {
     role: "Principal Software Engineer",
     year: "2023",
-    name: "Pet Project",
-    tags: [
-      "Langchain",
-      "OpenAI API",
-      "Chroma",
-      "RAG",
-      "LLM",
-      "Prompting",
-      "Python",
-      "Vector search",
-    ]
-  },
-  "principal-5": {
-    role: "Principal Software Engineer",
-    year: "2023",
-    name: "Pet Project",
-    tags: [
-      "Tailscale",
-      "Headscale",
-      "WireGuard",
-      "Go",
-      "Mesh networks",
-      "VPN & Tunnels",
-      "Dart",
-      "Flutter",
-      "MultiPlatform",
-    ]
-  },
-  "principal-6": {
-    role: "Principal Software Engineer",
-    year: "2023",
     name: "Vault Customization",
     tags: [
       "Vault",
@@ -293,7 +262,7 @@ export const experienceProjects: Record<string, ExperienceProject> = {
       "Replication",
     ],
   },
-  "principal-7": {
+  "principal-5": {
     role: "Principal Software Engineer",
     year: "2023",
     name: "Istio API Gateway",
