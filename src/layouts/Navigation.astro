@@ -20,7 +20,7 @@ export const inactiveButton = `tab-button`;
     </div>
     {
       page != "" && (
-        <a class="btn btn-square mx-4" href="/">
+        <a class="btn btn-square mx-4 2xl:hidden" href="/">
           <span class="material-symbols-outlined">home</span>
         </a>
       )
@@ -132,6 +132,13 @@ export const inactiveButton = `tab-button`;
     }
   </div>
   <div class="hidden 2xl:flex navbar-center gap-4">
+    {
+      page != "" && (
+        <a class="btn btn-square mx-4" href="/">
+          <span class="material-symbols-outlined">home</span>
+        </a>
+      )
+    }
     <a
       class={page == "experience" ? activeButton : inactiveButton}
       href="/experience/"
