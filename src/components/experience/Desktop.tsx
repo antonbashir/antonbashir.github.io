@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useRef, type ReactNode } from "react";
 import "../../styles/experience.css";
 
 const maxLineProgress = 100;
@@ -78,22 +78,33 @@ export type ExperienceStepProperties = {
 export const ExperienceStep = (properties: ExperienceStepProperties) => {
   const [value, setValue] = useState(0);
   const [launched, setLaunched] = useState(false);
+  const [done, setDone] = useState(false);
+  const requestRef = useRef()
 
   useEffect(() => {
     if (launched) {
       let start: number;
+      let counter: number = 0;
       const step = (timestamp: number) => {
+        if (done) return;
         if (start === undefined)
           start = timestamp;
         const elapsed = timestamp - start;
-        setValue(value + elapsed);
-        if (value < maxLineProgress) {
-          window.requestAnimationFrame(step);
+        counter += elapsed;
+        setValue(counter);
+        if (counter < maxLineProgress) {
+          requestRef.ref = window.requestAnimationFrame(step);
+          return;
         }
+        setDone(true);
+        return;
       }
-      window.requestAnimationFrame(step);
+      requestRef.ref = window.requestAnimationFrame(step);
     }
-    return () => { };
+    return () => {
+      setDone(true);
+      window.cancelAnimationFrame(requestRef.current);
+    };
   }, [launched]);
 
   useEffect(() => {
