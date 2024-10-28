@@ -1,0 +1,114 @@
+---
+import "../../styles/global.css";
+import "../../styles/base.css";
+import { getCollection } from "astro:content";
+import Navigation from "../../layouts/Navigation.astro";
+import Head from "../../layouts/Head.astro";
+import { articleColor } from "../../components/Articles";
+export async function getStaticPaths() {
+  return (await getCollection("blog")).map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+const url = Astro.request.url;
+const color = articleColor(post.data.label);
+const tags: string[] = post.data.tags?.split(",")?.map((tag: string) => tag.replaceAll(/\s/g, '')) ?? [];
+---
+
+<html lang="en">
+  <head>
+    <script>
+      import "@github/clipboard-copy-element";
+      document.addEventListener("clipboard-copy", () => {
+        document
+          .querySelector("#notification")
+          ?.classList.remove("translate-x-full");
+        document.querySelector("#notification")?.classList.add("m-4");
+        setTimeout(() => {
+          document
+            .querySelector("#notification")
+            ?.classList.add("translate-x-full");
+          document.querySelector("#notification")?.classList.remove("m-4");
+        }, 1000);
+      });
+    </script>
+    <Head
+      title={post.data.title}
+      ogTitle={post.data.title}
+      description={post.data.description}
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <Navigation page="blog" />
+    <div class="max-w-5xl py-12 px-4 m-auto">
+      <div class="flex flex-row place-items-center">
+        <div class="flex flex-col gap-2 flex-1">
+          <div>
+            <clipboard-copy value={url}>
+              <div class="inline-flex flex-row gap-2 items-center">
+                <p class="text-3xl md:text-5xl font-bold">
+                  {post.data.title}
+                </p>
+                <span class="material-symbols-outlined text-3xl"
+                  >content_copy</span
+                >
+              </div>
+            </clipboard-copy>
+          </div>
+          <div class="flex flex-col gap-2 pt-4 sm:flex-row">
+            <div class="flex flex-1 gap-2 flex-col sm:flex-row">
+              <div class="badge badge-lg badge-ghost bg-purple-800">
+                <p class="text-lg">{post.data.date}</p>
+              </div>
+              <div class="badge badge-lg badge-ghost bg-blue-500">
+                <p class="text-lg">{post.data.time}</p>
+              </div>
+            </div>
+            <div class="flex flex-row gap-2">
+              <div class={`badge badge-outline badge-lg border-${color}`}>
+                <p class="text-lg">{post.data.label}</p>
+              </div>
+              {
+                tags.map((tag) => (
+                  <div class={`badge badge-outline badge-lg`}>
+                    <p class="text-lg">{tag}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m-auto">
+        <article class="prose prose-dark mx-auto max-w-none my-8">
+          <Content />
+        </article>
+      </div>
+    </div>
+    <div
+      id="notification"
+      role="alert"
+      class={`flex flex-row alert fixed top-0 right-0 h-14 w-64 my-4 transition-transform ease-in duration-500 translate-x-full`}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+      >
+      <span>Link copied</span>
+    </div>
+  </body>
+</html>

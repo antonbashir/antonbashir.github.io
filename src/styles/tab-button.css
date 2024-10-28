@@ -1,0 +1,80 @@
+.tab-button {
+  width: 180px;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+
+  @apply btn;
+
+  padding-left: 0;
+  padding-right: 0;
+  gap: 0;
+  letter-spacing: .10em;
+  font-weight: 500;
+
+  &:hover {
+    .wave {
+      top: -120px;
+    }
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    mix-blend-mode: difference;
+  }
+
+  .wave {
+    width: 180px;
+    height: 180px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: -60px;
+    transition: 0.4s;
+
+    &::before, &::after {
+      width: 200%;
+      height: 200%;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%,-75%);
+    }
+
+    &::before {
+      border-radius: 45%;
+      animation: wave 5s linear infinite;
+      background-color: black;
+    }
+
+    &::after {
+      border-radius: 40%;
+      background-color: white;
+      animation: wave 10s linear infinite;
+    }
+  }
+}
+
+.tab-button-active {
+  width: 180px;
+  @apply btn;
+  @apply btn-primary;
+  letter-spacing: .10em;
+  font-weight: 500;
+  padding-left: 0;
+  padding-right: 0;
+  gap: 0;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%,-75%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%,-75%) rotate(360deg);
+  }
+}

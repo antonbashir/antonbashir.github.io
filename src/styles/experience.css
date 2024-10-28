@@ -1,0 +1,68 @@
+.wrapper {
+  filter: 
+  drop-shadow(0px 0px 25px rgba(0,0,0,0.75)) 
+  drop-shadow(0px 0px 25px rgba(0,0,0,0.75)) 
+  drop-shadow(0px 0px 25px rgba(0,0,0,0.75)) 
+  drop-shadow(0px 0px 25px rgba(0,0,0,0.75));
+}
+
+.container {
+  position: relative;
+  width: max-content;
+  @apply m-auto;
+  @apply my-8;
+  @apply flex;
+  @apply place-content-center;
+  clip-path: inset(0% round 30px);
+}
+
+.step {
+  position: absolute;
+}
+
+.step-left-line {
+  -webkit-appearance: none;
+  height: 2px;
+}
+
+.step-left-line::-webkit-progress-bar {
+  border-radius: calc(1.4em / 2);
+  background: transparent;
+}
+
+.step-left-line::-webkit-progress-value {
+  background: white;
+  box-shadow: 0 0 0.6em rgba(183,172,255,0.75), 0 0 0.8em rgba(183,172,255,0.75);
+}
+
+.step-right-line {
+  -webkit-appearance: none;
+  height: 2px;
+  width: 50px;
+  rotate: 180deg;
+}
+
+.step-right-line::-webkit-progress-bar {
+  border-radius: calc(1.4em / 2);
+  background: transparent;
+}
+
+.step-right-line::-webkit-progress-value {
+  background: white;
+  box-shadow: 0 0 0.6em rgba(183,172,255,0.75), 0 0 0.8em rgba(183,172,255,0.75);
+}
+
+@keyframes step {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes step {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.step-body {
+  box-shadow: 0px 0px 16px 1px rgba(44,35,165,0.75);
+  opacity: 0;
+}

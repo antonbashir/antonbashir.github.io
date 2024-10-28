@@ -1,0 +1,82 @@
+---
+import { FoxAnimation } from "../components/Fox";
+import { Applications, Languages } from "../components/Technologies";
+import Head from "../layouts/Head.astro";
+import Navigation from "../layouts/Navigation.astro";
+import "../styles/global.css";
+---
+
+<html lang="en" class="h-full">
+  <head><Head /></head>
+  <body class="flex flex-col h-full">
+    <Navigation />
+    <div class="flex flex-col overflow-x-hidden h-full">
+      <div
+        class="flex flex-grow lg:place-items-center lg:place-content-center m-4"
+      >
+        <div
+          class="hidden lg:flex flex-col place-content-center place-items-center"
+        >
+          <FoxAnimation client:only />
+        </div>
+        <div class="flex flex-col place-items-start">
+          <article class="prose max-h-none max-w-none">
+            <h1>👋 Greetings</h1>
+            <h1 class="text-lg xl:text-2xl font-bold">
+              🧙 My name is Anton Bashirov
+            </h1>
+            <h1 class="text-lg xl:text-2xl font-bold">
+              👤 Welcome to my personal site and blog
+            </h1>
+            <h1 class="text-lg xl:text-2xl font-bold">
+              🧑‍💻️ I am multifunctional software developer
+            </h1>
+            <h1 class="text-lg xl:text-2xl font-bold">
+              💻 Currently working with Dart and C
+            </h1>
+            <div class="flex flex-col xl:flex-row xl:gap-2">
+              <div>
+                <h1 class="text-lg xl:text-2xl font-bold">
+                  🔨 My personal toolbox:
+                </h1>
+              </div>
+              <div class="flex flex-row gap-3">
+                <a href="https://todoist.com/" target="_blank">
+                  <img class="m-0" width="32" height="32" src="/todoist.png" />
+                </a>
+                <a href="https://vscode.dev/" target="_blank">
+                  <img class="m-0" width="32" height="32" src="/vscode.png" />
+                </a>
+                <a href="https://archlinux.org/" target="_blank">
+                  <img class="m-0" width="32" height="32" src="/arch.png" />
+                </a>
+              </div>
+            </div>
+          </article>
+          <div class="py-4 lg:py-8">
+            <script
+              type="text/javascript"
+              src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+              data-name="bmc-button"
+              data-slug="antonbashir"
+              data-color="#ffffff"
+              data-emoji="🍵"
+              data-font="Inter"
+              data-text="Buy me a tea"
+              data-outline-color="#000000"
+              data-font-color="#000000"
+              data-coffee-color="#FFDD00"></script>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col py-2">
+        <div>
+          <Languages client:only />
+        </div>
+        <div class="my-4">
+          <Applications client:only />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

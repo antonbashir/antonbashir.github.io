@@ -1,0 +1,35 @@
+---
+import { SEO } from "astro-seo";
+interface Props {
+  title?: string;
+  description?: string;
+  ogTitle?: string;
+}
+const {
+  title = "🦊 Anton Bashirov",
+  description = "This is my personal site and blog",
+  ogTitle = "My name is Anton Bashirov and I am multifunctional software developer",
+} = Astro.props;
+---
+ 
+<SEO
+  title={title}
+  description={description}
+  canonical="https://antonbashir.github.io/"
+  openGraph={{
+    basic: {
+      title: ogTitle,
+      type: "website",
+      image:
+        "https://avatars.githubusercontent.com/u/33657862?s=400&u=1f33be10e786c9a2bbf012d037a3aca5a9702a11&v=4",
+    },
+  }}
+  extend={{
+    link: [{ rel: "icon", href: "/favicon.png" }],
+    meta: [],
+  }}
+/>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />

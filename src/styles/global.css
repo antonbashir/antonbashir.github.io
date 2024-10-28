@@ -1,0 +1,17 @@
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+}
+
+*::-webkit-scrollbar-thumb {
+  position: absolute;
+  inset-inline-end: 1px;
+  width: 8px;
+  background-color: rgba(255, 255, 255, .2);
+  cursor: default;
+  opacity: 0;
+  border-radius: 8px;
+}
