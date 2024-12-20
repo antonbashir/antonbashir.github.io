@@ -79,7 +79,7 @@ export const ExperienceStep = (properties: ExperienceStepProperties) => {
   const [value, setValue] = useState(0);
   const [launched, setLaunched] = useState(false);
   const [done, setDone] = useState(false);
-  const requestRef = useRef()
+  const requestRef = useRef<number | undefined>()
 
   useEffect(() => {
     if (launched) {
@@ -93,17 +93,17 @@ export const ExperienceStep = (properties: ExperienceStepProperties) => {
         counter += elapsed;
         setValue(counter);
         if (counter < maxLineProgress) {
-          requestRef.ref = window.requestAnimationFrame(step);
+          requestRef.current = window.requestAnimationFrame(step);
           return;
         }
         setDone(true);
         return;
       }
-      requestRef.ref = window.requestAnimationFrame(step);
+      requestRef.current = window.requestAnimationFrame(step);
     }
     return () => {
       setDone(true);
-      window.cancelAnimationFrame(requestRef.current);
+      window.cancelAnimationFrame(requestRef.current!);
     };
   }, [launched]);
 
