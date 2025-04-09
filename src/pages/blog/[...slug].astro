@@ -71,14 +71,14 @@ const tags: string[] = post.data.tags?.split(",")?.map((tag: string) => tag.repl
                 <p class="text-lg">{post.data.time}</p>
               </div>
             </div>
-            <div class="flex flex-row gap-2">
+            <div class="flex flex-row flex-wrap gap-2">
               <div class={`badge badge-outline badge-lg border-${color}`}>
                 <p class="text-lg">{post.data.label}</p>
               </div>
               {
                 tags.map((tag) => (
-                  <div class={`badge badge-outline badge-lg`}>
-                    <p class="text-lg">{tag}</p>
+                  <div class={`badge badge-outline badge-xl`}>
+                   <p class="text-lg">{tag}</p>
                   </div>
                 ))
               }
