@@ -228,7 +228,6 @@ object._thenAwait<dynamic>(
 Мы можем регистрировать свои `_FutureListener` через `Future.then`. 
 В случае `_SuspendState` будет вызван `_thenCallback`, который в свою очередь вызовет следующую функцию
 ```
-@pragma("vm:invisible")
 thenCallback(value) {
   suspendState._resume(value, null, null);
 }
@@ -237,10 +236,37 @@ thenCallback(value) {
 Лучше всего описана эта реализация в технической документации (ссылка на async.md). 
 Я же постараюсь кратко задекларировать ключевые моменты для формирования общей картины понимания.
 
+Забегая вперед следующей статьи, стоит сказать о таком функционале DartVM как Stub. 
+Stub это архитектурно зависимый код на языке ассемблера, который генерируется с помощью C++ кода DartVM. 
+Вот так выглядит простейшая `Stub`:
+```
+void StubCodeCompiler::GenerateInitStaticFieldStub() {
+  __ EnterStubFrame();
+  __ PushObject(NullObject());  // Make room for result.
+  __ PushRegister(InitStaticFieldABI::kFieldReg);
+  __ CallRuntime(kInitStaticFieldRuntimeEntry, /*argument_count=*/1);
+  __ Drop(1);
+  __ PopRegister(InitStaticFieldABI::kResultReg);
+  __ LeaveStubFrame();
+  __ Ret();
+}
+```
 
+Что здесь происходит ? Честно говоря, будучи JavaDartGo разработчиком, мне было не очень-то и просто в этом разобраться. Но сложно - не значит невозможно.
 
-...
+Итак, давайте разберем эту простейшую "стабу":
+1. `EnterStubFrame()` - сохраняет текущий указатель на фрейм (регистр RBP) на стек и перемещает текущий указатель на стек (регистр RSP) в регистр RBP. 
+2. `PushObject(NullObject())` - подготовка регистра для получения результата вызова последующей Runtime функции
+3. `PushRegister(InitStaticFieldABI::kFieldReg)` - передаем регистр, в котором (судя по названию) находится поле, которое нужно инициализировать
+4. `CallRuntime(kInitStaticFieldRuntimeEntry, /*argument_count=*/1)` - здесь мы вызываем runtime функцию, эта функция реализована на C++ и является частью кода DartVM
+5. `Drop(1)` - двигаем указатель на стек, чтобы добраться до результата
+6. `PopRegister(InitStaticFieldABI::kResultReg)` - вытаскиваем результат и восстанавливаем баланс стека
+7. `LeaveStubFrame()` - достаем указатель на стек из регистра RBP и вытаскиваем указатель на фрейм со стека
+8. `Ret()` - возвращаемся из функции
 
+Да, это была простейшая Stub. Голова не заболела ? :) У меня вот болела, пока я копался в этом.
+
+Но вернемся к `async-await`. 
 
 # Заглядываем под капот: Coroutine
 
