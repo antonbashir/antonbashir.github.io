@@ -216,11 +216,17 @@ Future<void> myFunction() async {}
 Поверили ? Зря :) К сожалению, между `await` и `вызовом _SuspendState._await` выполняется определенная магия, о которой пойдет разговор ниже.
 Сейчас давайте немного замедлимся здесь и посмотрим, что происходит внутри `_SuspendState`, за что он отвечает и какая связь с `Future`.
 
-Итак, в нашем случае нас интересует следующий участок кода.
+Итак, в нашем случае нас интересует следующие участки кода.
 ```
 object._thenAwait<dynamic>(
     unsafeCast<dynamic Function(dynamic)>(_thenCallback),
     unsafeCast<dynamic Function(Object, StackTrace)>(_errorCallback));
+```
+
+и
+
+```
+_awaitCompletedFuture(object);
 ```
 
 `_thenAwait` это функция у `_Future`. Вкратце, данная функция добавляет новый `_FutureListener` в наш Future.
@@ -267,6 +273,18 @@ void StubCodeCompiler::GenerateInitStaticFieldStub() {
 Да, это была простейшая Stub. Голова не заболела ? :) У меня вот болела, пока я копался в этом.
 
 Но вернемся к `async-await`. 
+
+Итак, для реализации механизма `async-await` у нас используются следующие заглушки:
+1. `GenerateAwaitStub`
+2. `GenerateResumeStub`
+2. `GenerateReturnAsyncStub`
+
+`AwaitStub`, она же `SuspendStub` генерируется в месте вызова `await` инструкции. 
+Эта заглушка отвечает за сохранение текущего контекста (фрейма) функции в определенное место (_SuspendState) и вызов асинхронной функции (в нашем случае вызов `myFunction`).
+Логика примерно следующая: 
+1. Подготовили стек и сохранили текущий фрейм в память
+2. Вызвали асинхронную функцию
+3. 
 
 # Заглядываем под капот: Coroutine
 
