@@ -164,8 +164,6 @@ after start
 Вообще текущая реализация async в Dart (как мне кажется) реализована одним человеком - Александр Марков. 
 Александр, если ты это читаешь, ну добавь корутины, ну позязя :)
 
-(сюда схему)
-
 С чего бы начать...
 
 Так как функционал там достаточно объемный, я бы хотел сфокусировать ваше внимание на одном сценарии:
@@ -177,6 +175,10 @@ Future<void> main async {
 
 Future<void> myFunction() async {}
 ```
+
+Схема выполнения кода с учетом `async-await` механизма представлена ниже.
+
+(сюда схему)
 
 И первое, что бросается в глаза - класс `Future`. Пожалуй, с чего мы и начнем.
 
@@ -213,26 +215,27 @@ Future<void> myFunction() async {}
 Эта функция находится в классе _SuspendState и она отвечает за выполнение ключевого слова `await`.
 Поверили ? Зря :) К сожалению, между `await` и `вызовом _SuspendState._await` выполняется определенная магия, о которой пойдет разговор ниже.
 Сейчас давайте немного замедлимся здесь и посмотрим, что происходит внутри `_SuspendState`, за что он отвечает и какая связь с `Future`.
+
 Итак, в нашем случае нас интересует следующий участок кода.
 ```
-        object._thenAwait<dynamic>(
-            unsafeCast<dynamic Function(dynamic)>(_thenCallback),
-            unsafeCast<dynamic Function(Object, StackTrace)>(_errorCallback));
+object._thenAwait<dynamic>(
+    unsafeCast<dynamic Function(dynamic)>(_thenCallback),
+    unsafeCast<dynamic Function(Object, StackTrace)>(_errorCallback));
 ```
+
 `_thenAwait` это функция у `_Future`. Вкратце, данная функция добавляет новый `_FutureListener` в наш Future.
 Каждый `_FutureListener` это своего рода callback, который нужно вызвать в момент завершения Future. 
 Мы можем регистрировать свои `_FutureListener` через `Future.then`. 
 В случае `_SuspendState` будет вызван `_thenCallback`, который в свою очередь вызовет следующую функцию
 ```
-    @pragma("vm:invisible")
-    thenCallback(value) {
-      suspendState._resume(value, null, null);
-    }
+@pragma("vm:invisible")
+thenCallback(value) {
+  suspendState._resume(value, null, null);
+}
 ```
-
-
-Чем тяжелее код, тем чернее пуэр... Мы подошли к финальной части обзора: Suspend/Resume Stubs. 
-Пришло время ответить на вопрос, что же происходит между ключевым словом `await` и `вызовом _SuspendState._await`.
+Чем тяжелее код, тем чернее пуэр... И тут мы подходим к двум самым увлекательным аспектам реализации `async-await` механики в DartVM. 
+Лучше всего описана эта реализация в технической документации (ссылка на async.md). 
+Я же постараюсь кратко задекларировать ключевые моменты для формирования общей картины понимания.
 
 
 
