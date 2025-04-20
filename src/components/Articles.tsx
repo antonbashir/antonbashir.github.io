@@ -48,7 +48,7 @@ const Article = (properties: Properties) => {
           <p className="text-sm font-light text-justify">{properties.date}</p>
           <p className="text-sm font-light text-justify">{properties.time}</p>
         </div>
-        <div className="flex flex-row gap-2">{tags.map(tag => <div key={tag} className={`badge badge-primary`}>{tag}</div>)}</div>
+        <div className="flex flex-row flex-wrap gap-2">{tags.map(tag => <div key={tag} className={`badge badge-primary`}>{tag}</div>)}</div>
         <div className={`badge badge-lg bg-${articleColor(properties.label)}`}>{properties.label}</div>
       </div>
     </div>
