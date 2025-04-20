@@ -15,7 +15,9 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const url = Astro.request.url;
 const color = articleColor(post.data.label);
-const tags: string[] = post.data.tags?.split(",")?.map((tag: string) => tag.replaceAll(/\s/g, '')) ?? [];
+const tags: string[] =
+  post.data.tags?.split(",")?.map((tag: string) => tag.replaceAll(/\s/g, "")) ??
+  [];
 ---
 
 <html lang="en">
@@ -50,20 +52,20 @@ const tags: string[] = post.data.tags?.split(",")?.map((tag: string) => tag.repl
     <div class="max-w-5xl py-12 px-4 m-auto">
       <div class="flex flex-row place-items-center">
         <div class="flex flex-col gap-2 flex-1">
-          <div>
-            <clipboard-copy value={url}>
-              <div class="inline-flex flex-row gap-2 items-center">
-                <p class="text-3xl md:text-5xl font-bold">
-                  {post.data.title}
-                </p>
-                <span class="material-symbols-outlined text-3xl"
-                  >content_copy</span
-                >
-              </div>
-            </clipboard-copy>
+          <div class="inline-flex flex-row gap-2 items-center">
+            <p class="text-3xl md:text-5xl font-bold">
+              {post.data.title}
+            </p>
           </div>
           <div class="flex flex-col gap-2 pt-4 sm:flex-row">
             <div class="flex flex-1 gap-2 flex-col sm:flex-row">
+              <div>
+                <clipboard-copy value={url}>
+                  <span class="material-symbols-outlined text-3xl"
+                    >content_copy</span
+                  >
+                </clipboard-copy>
+              </div>
               <div class="badge badge-lg badge-ghost bg-purple-800">
                 <p class="text-lg">{post.data.date}</p>
               </div>
@@ -78,7 +80,7 @@ const tags: string[] = post.data.tags?.split(",")?.map((tag: string) => tag.repl
               {
                 tags.map((tag) => (
                   <div class={`badge badge-outline badge-xl`}>
-                   <p class="text-lg">{tag}</p>
+                    <p class="text-lg">{tag}</p>
                   </div>
                 ))
               }
