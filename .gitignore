@@ -122,3 +122,5 @@ build/
 *.xlog
 .astro
 .env
+translate.sh
+src/content/blog/en

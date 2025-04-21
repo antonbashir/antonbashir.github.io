@@ -1,8 +1,10 @@
+import { useStore } from "@nanostores/react";
 import { getCollection } from "astro:content";
-import { atom } from 'nanostores';
-import { useStore } from '@nanostores/react';
+import Cookie from "js-cookie";
+import { atom } from "nanostores";
+import { useEffect, useState } from "react";
 
-const isRuArticles = atom(true);
+const isRuArticles = atom<boolean>(Cookie.get("is_ru_blog") == "true");
 const articles = await getCollection("blog");
 
 type Properties = {
@@ -82,7 +84,10 @@ export const ArticlesLanguageSelector = () => {
         alt="united-kingdom-emoji"
       />
     </div>
-    <input type="checkbox" className="toggle toggle-sm" checked={isRu} onChange={(event) => isRuArticles.set(event.target.checked)} />
+    <input type="checkbox" className="toggle toggle-sm" checked={isRu} onChange={(event) => {
+      isRuArticles.set(event.target.checked);
+      Cookie.set("is_ru_blog", `${event.target.checked}`);
+    }} />
     <div>
       <img
         width="24"
@@ -99,15 +104,15 @@ export const Articles = () => {
   return <div className="flex flex-col mx-2 gap-4 divide-y divide-gray-800">
     {
       articles
-        .filter((post) =>
+        .filter((post: any) =>
           isRu
             ? post.id.startsWith("ru")
             : post.id.startsWith("en"),
         )
-        .sort((first, second) => Date.parse(second.data.date) > Date.parse(first.data.date) ? 1 : -1)
-        .map((post) => (
+        .sort((first: any, second: any) => Date.parse(second.data.date) > Date.parse(first.data.date) ? 1 : -1)
+        .map((post: any) => (
           <Article
-            key={post.id}
+            key={`${post.id}-${isRu ? 'ru' : 'en'}`}
             title={post.data.title}
             description={post.data.description}
             label={post.data.label}

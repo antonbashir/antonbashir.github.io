@@ -25,9 +25,9 @@ import "../styles/global.css";
           My own thoughts
         </p>
       </div>
-      <ArticlesLanguageSelector client:load />
+      <ArticlesLanguageSelector client:load client:only="react"/>
     </div>
     <div class="divider"></div>
-    <Articles client:load/>
+    <Articles client:load client:only="react" />
   </body>
 </html>
