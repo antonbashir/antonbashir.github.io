@@ -378,43 +378,44 @@ class Coroutine : public Instance {
 
 Поступим так, я выделю N самых интересных участков кода реализации и расскажу про них, тогда тебе, читатель, будет "...понятно и очень интересно...", ну ты понял. 
 
-### coroutine, object и raw_object
+### Сущности: coroutine, object и raw_object
 
 
-### raw_object_fields, slot, runtime_offsets_list, runtime_offsets_extracted, runtime_api
+### Поля и мета: raw_object_fields, slot, runtime_offsets_list, runtime_offsets_extracted, runtime_api
 
 
-### isolate
+### Изоляты: isolate
 
 
-### recognized_method_list
+### Потоки: thread
 
 
-### il, kernel_to_il
+### Чтобы собрать правильно, собери неправильно: recognized_method_list
 
 
-### constants_x64, stub_code_List, stub_code, stub_code_compiler и stub_code_compiler_x64
+### Компилятор: il, kernel_to_il
 
 
-### stack_frame
+### Компилятор потяжелее: constants_x64, stub_code_List, stub_code, stub_code_compiler и stub_code_compiler_x64
 
 
-### thread
+### Вот уж когда лезть не хотелось: stack_frame
 
 
 # Шаг 5. Тестируем
 
-### captures
 
-### flow
+### Test Suit: captures
 
-### lifecycle
+### Test Suit: flow
 
-### state
+### Test Suit: lifecycle
 
-### exceptions
+### Test Suit: state
 
-### stress
+### Test Suit: exceptions
+
+### Test Suit: stress
 
 Этот тест оказался для меня реальным стрессом. Именно он - причина, почему я вообще решил писать эти статьи. 
 
