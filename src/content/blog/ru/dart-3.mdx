@@ -276,8 +276,130 @@ class Fiber {
 
 # Шаг 4. Пишем реализацию 
 
+"Самая сложная часть": хотел бы я сказать, но следующая статья про [как отладить корутины и не сгореть](/blog/ru/dart-4) все-таки расскажет о самом неприятном и сложном моем опыте.
+
+С чего бы начать. Давайте так. Сделаем здесь небольшую паузу, обновим чаек, и потом продолжим. Потому что сейчас будет много информации, но на отдельную статью этот раздел не тянет. 
+
+Так что, потянулись, разомнулись и скоро начнем... 
+
+[тут смешную картинку]
+
+Итак. Реализация корутин. Начинаем. 
+
+Мы знаем о том, что корутина это все же отдельный объект, который нужно создать. 
+
+Но так как этот объект должен быть оптимально доступен и в C++ коде и в Dart коде, нам нужно его задекларировать и в Dart SDK, и в Dart VM. 
+
+- Coroutine Dart SDK в `sdk/lib/_internal/vm/lib/fiber_patch.dart` (вспомогательные поля скрыты):
+```dart
+@patch
+@pragma("vm:entry-point")
+class _Coroutine {
+  external factory _Coroutine._(int size, Function trampoline);
+
+  external void Function() get _entry;
+  external set _entry(void Function() value);
+
+  external void Function() get _trampoline;
+  external set _trampoline(void Function() value);
+
+  external Object? get _argument;
+  external set _argument(Object? value);
+
+  external _Coroutine get _caller;
+  external set _caller(_Coroutine value);
+
+  external static void _initialize(_Coroutine root);
+
+  external static void _transfer(_Coroutine from, _Coroutine to);
+
+  external static void _fork(_Coroutine from, _Coroutine to);
+
+  external static _Coroutine? get _current;
+}
+```
+
+- Coroutine Dart VM в `runtimne/vm/object.h` (вспомогательные поля скрыты):
+```c++
+class Coroutine : public Instance {
+ public:
+  static CoroutinePtr New(uintptr_t size, FunctionPtr trampoline);
+
+  void HandleJumpToFrame(Thread* thread, uword stack_pointer);
+  void HandleRootEnter(Thread* thread, Zone* zone);
+  void HandleRootExit(Thread* thread, Zone* zone);
+  void HandleForkedEnter(Thread* thread, Zone* zone);
+  void HandleForkedExit(Thread* thread, Zone* zone);
+
+  void recycle(Zone* zone);
+
+  void dispose(Thread* thread, Zone* zone, bool remove_from_registry = true);
+
+  ClosurePtr entry();
+  static uword entry_offset();
+
+  intptr_t attributes();
+  void set_attributes(intptr_t value);
+  void or_attribute(intptr_t value);
+  void and_attribute(intptr_t value);
+  static uword attributes_offset();
+  void change_state(intptr_t from_value, intptr_t to_value);
+
+  ObjectPtr argument();
+  static uword argument_offset();
+
+  CoroutinePtr caller();
+  static uword caller_offset();
+
+  uword native_stack_base();
+  static uword native_stack_base_offset();
+
+  uword stack_root();
+  static uword stack_root_offset();
+
+  uword stack_base();
+  static uword stack_base_offset();
+
+  uword stack_limit();
+  static uword stack_limit_offset();
+
+  uword overflow_stack_limit();
+  static uword overflow_stack_limit_offset();
+};
+```
+
+Задекларировать - задекларировали, теперь я собираюсь рассказать вам о реализации всех основных функций.
+
+![dart-3-image-4.png](/dart-3-image-4.png)
+
+Хм, ну да, собираюсь. 59 файлов и в каждом есть свои уникальные и интересные особенности DartVM. 
+
+На 1808 результатов не смотрите, у DartVM есть встроенный генератор C++ кода в одном месте, он там всякое творит.
+
+Поступим так, я выделю N самых интересных участков кода реализации и расскажу про них, тогда тебе, читатель, будет "...понятно и очень интересно...", ну ты понял. 
+
+### coroutine, object и raw_object
 
 
+### raw_object_fields, slot, runtime_offsets_list, runtime_offsets_extracted, runtime_api
+
+
+### isolate
+
+
+### recognized_method_list
+
+
+### il, kernel_to_il
+
+
+### constants_x64, stub_code_List, stub_code, stub_code_compiler и stub_code_compiler_x64
+
+
+### stack_frame
+
+
+### thread
 
 
 # Шаг 5. Тестируем
