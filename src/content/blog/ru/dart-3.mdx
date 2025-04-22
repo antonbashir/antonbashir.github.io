@@ -164,7 +164,7 @@ import("../lib/fiber_sources.gni")
     'fiber/fiber.dart',
     categories: 'Client,Server,Embedded',
     maturity: Maturity.STABLE,
-    dart2jsPatchPath: '_internal/js_runtime/lib/fiber_patch.dart', // Про fiber_patch.dart будет чуть ниже, эту строчку можно не добавлять, если у нас не планируется платформенных особенностей. 
+    dart2jsPatchPath: '_internal/js_runtime/lib/fiber_patch.dart', // Про fiber_patch.dart будет чуть ниже, эту строчку можно не добавлять, если у нас не планируется платформенных особенностей (а у нас планируется).
   ),
 ```
 12.Вот теперь должно все работать. 
@@ -186,17 +186,96 @@ import("../lib/fiber_sources.gni")
 ## Dart VM
 
 1. Методом поиска по аналогу первым делом сходим в `runtime/vm/symbols.h` и добавим туда ```V(DartFiber, "dart:fiber")```. Это своего рода константы.
-2. Теперь сходим в `runtime/vm/
-3. 
+2. Идем в `runtime/vm/object_store.h`: добавляем туда `M(Fiber, fiber)` и `RW(Library, fiber_library)`. Здесь находится реестр объектов, который привязан к изоляту или к группе [изолят](https://habr.com/ru/articles/848166/)
+3. Теперь нам нужно нашу библиотеку в реестр положить. Нам нужен `runtime/vm/object.h`. Этот файл заслуживает отдельной... повести, потому что в нем 13595 строк. Но мы туда добавим строчку `static LibraryPtr FiberLibrary();` 
+4. И `runtime/vm/object.cc`: 
+```c++
+    lib = Library::LookupLibrary(thread, Symbols::DartFiber());
+    if (lib.IsNull()) {
+      lib = Library::NewLibraryHelper(Symbols::DartFiber(), true);
+      lib.SetLoadRequested();
+      lib.Register(thread);
+    }
+    object_store->set_bootstrap_library(ObjectStore::kFiber, lib);
+    ASSERT(!lib.IsNull());
+    ASSERT(lib.ptr() == Library::FiberLibrary());
+```
+5. Последний шаг - регистрируем NativeResolver для нашей библиотеки:
+```c++
+  library = Library::FiberLibrary();
+  ASSERT(!library.IsNull());
+  library.set_native_entry_resolver(resolver);
+  library.set_native_entry_symbol_resolver(symbol_resolver);
+```
 
+Есть парочка мест, где я зарегистрировал библиотеку, но процесс аналогичен - смотрим, как регистрируются другие и делаем также.
+
+Остался финальный шаг регистрации библиотеки. Так как у нас будут архитектурно-зависимый код нам придется использовать механизм @patch.
+
+Патчи позволяют подменять код при компиляции Dart. Для того, чтобы патчи работали и Dart собирался, нужно зарегистрировать `_patch` файл под каждую Dart платформу (знатоки, поправляйте, возможно, я что-то упустил и это не обязательно):
+* VM: `sdk/lib/_internal/vm/lib/fiber_patch.dart`
+* WASM: `sdk/lib/_internal/wasm/lib/fiber_patch.dart`
+* js_runtime: `sdk/lib/_internal/js_runtime/lib/fiber_patch.dart`
+* js_dev_runtime: `sdk/lib/_internal/js_dev_runtime/lib/fiber_patch.dart`
+
+Все, погнали моделировать Fiber API.
 
 # Шаг 3. Моделируем API
 
-...
+Мы организовали себе пространство для творчества: Dart SDK и Dart VM готовы к нашим корутинам. Пришло время замоделировать Fiber API. 
 
+На самом деле это самая приятная часть всего моего корутин-пути, потому что когда ты моделируешь интерфейс или архитектуру, это воспринимается как чистое творчество. 
 
+```dart
+class Fiber {
+  // Что нам нужно от Fiber ?
+
+  // Ну, наверное, чтобы он запускался. Эта функция отвечает за запуск основного, "нулевого" Fiber.
+  static Fiber launch(void Function() entry, { int size = _kDefaultStackSize, Object? argument}) // size здесь это размер для стека корутины
+
+  // Но одним Fiber сыт не будешь, мы же хотим "прыгать" между корутинами 
+  static Fiber spawn(void Function() entry, { bool persistent = false, int size = _kDefaultStackSize, String? name, Object? argument}) // persistent флаг планируется отвечает на вопрос "хотим ли мы переиспользовать Fiber, когда он завершился или уничтожить его ?"
+
+  // Ставить Fiber на "паузу"
+  static void suspend() // "усыпляет" Fiber, отправляя нас к caller (тот, кто нас вызвал, это может быть планировщик или родительский Fiber, который нас создал)
+
+  // Говорит планировщику - когда будет возможность, запланируй, пожалуйста, этот Fiber
+  static void schedule(Fiber fiber)
+
+  // Планирует текущий Fiber и меняет контекст (приостанавливает текущий Fiber)
+  static void reschedule()
+
+  // А ещё нам не помешает парочка getter-ов
+  
+  // Индекс Fiber
+  int get index 
+
+  // Размер стека корутины
+  int get size 
+
+  // Имя Fiber
+  String get name
+
+  // Флаги-состояние Fiber ( Created, Running, Suspended, Finished, Disposed )
+  FiberState get state 
+
+  // Атрибуты Fiber ( Nothing, Persistent )
+  FiberAttributes get attributes 
+
+  // Провайдер аргумента, который мы передали ( просто обертка, которая позволяет извлекать аргумент как единичный объект или работать с ним как с массивом или мапой )
+  FiberArgument get argument
+
+}
+```
+
+Бонус! Вообще эту функцию я добавил буквально в процессе написания статей, она врооде бы работает, но на GitHub я её не стал выкладывать
+
+`static void sleep(Duration time)` - "усыпляет" Fiber на `time` и потом его возобновляет, когда у планировщика появилось "окно". Если кому интересно, как я её сделал - пишите в комментарии, расскажу. 
+
+В целом с точки зрения публичного API это все. Этого достаточно, чтобы реализовать такие мощные абстракции как [каналы](https://www.tarantool.io/en/doc/latest/reference/reference_lua/fiber/#fiber-channel) и [условия](https://www.tarantool.io/en/doc/latest/reference/reference_lua/fiber/#fiber-cond).
 
 # Шаг 4. Пишем реализацию 
+
 
 
 
