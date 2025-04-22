@@ -383,11 +383,7 @@ class Coroutine : public Instance {
 
 ### Поля и мета: raw_object_fields, slot, runtime_offsets_list, runtime_offsets_extracted, runtime_api
 
-
-### Изоляты: isolate
-
-
-### Потоки: thread
+### Братья изоляты и потоки: isolate + thread
 
 
 ### Чтобы собрать правильно, собери неправильно: recognized_method_list
@@ -399,7 +395,10 @@ class Coroutine : public Instance {
 ### Компилятор потяжелее: constants_x64, stub_code_List, stub_code, stub_code_compiler и stub_code_compiler_x64
 
 
-### Вот уж когда лезть не хотелось: stack_frame
+### Вот уж куда лезть не хотелось: stack_frame
+
+
+### Наконец-то понятный код: runtime_entry
 
 
 # Шаг 5. Тестируем
@@ -417,7 +416,7 @@ class Coroutine : public Instance {
 
 ### Test Suit: stress
 
-Этот тест оказался для меня реальным стрессом. Именно он - причина, почему я вообще решил писать эти статьи. 
+Этот тест оказался для меня реальным стрессом. Именно он - причина, почему я назвал эту часть "история провала".
 
 Про такое обычно говорят "все нервы вымотал".
 
