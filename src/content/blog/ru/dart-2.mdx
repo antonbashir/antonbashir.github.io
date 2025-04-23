@@ -345,7 +345,7 @@ void coro_transfer (coro_context *prev, coro_context *next) {
 ```
 Вкратце, что здесь происходит:
 1. Мы передаем на вход контекст (стек) старой (в случае с tarantool fiber имеется в виду текущей корутины) и новой (следующей) корутины
-2. Сохраняем [Nonvolatile](https://learn.microsoft.com/en-us/cpp/build/x64-software-conventions?view=msvc-170) регистры на стек
+2. Сохраняем [callee-saved](https://www.uclibc.org/docs/psABI-x86_64.pdf) регистры на стек
 3. Двигаем текущий стек в контекст (сохраняем в память) старой корутины
 4. Достаем стек из новой корутины
 5. восстанавливаем основные регистры со стека
