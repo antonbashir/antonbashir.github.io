@@ -464,14 +464,131 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 
 Разница в том, что `recycle` переведт корутину в состояние `disposed`, но не уничтожить её объект и память, выделенную под стек. Вторая функция полностью уничтожает корутину и связанный с ней стек. 
 
+
 ### Поля и мета: raw_object_fields, slot, runtime_offsets_list, runtime_offsets_extracted, runtime_api
 
+Эти файлы объединяет общий факт: 
+![dart-3-image-5](/dart-3-image-5.png)
+
+Расшифрую: каждый раз, когда мне нужно изменить поля или функции в объекте Coroutine, я вынужден обновлять эти файлы.
+
+#### `raw_object_fields`
+
+В этом файле мы указываем поля наших корутин.
+
+Вот как описывает назначение файла разработчики Dart Team (я лучше не опишу):
+```
+// This file (and "raw_object_fields.cc") provide a kind of reflection that
+// allows us to identify the name of fields in hand-written "Raw..." classes
+// (from "raw_object.h") given the class and the offset within the object. This
+// is used for example by the snapshot profile writer ("v8_snapshot_writer.h")
+// to show the property names of these built-in objects in the snapshot profile.
+```
+
+#### `slot`
+
+В слотах объявляются поля в зависимости от их специфики: `TAGGED`, `UNTAGGED`, `NULLABLE`, `NONULLABLE` и не только. 
+
+Слоты используются в основном в IL компиляторе: тот, что преобразует из внутреннего представления Dart VM [Kernel](https://chromium.googlesource.com/external/github.com/dart-lang/kernel/+/8e2b2c03c2a22d9fdf581a8e3ce798f189531081/README.md) в ASM код.
+
+
+#### `runtime_offsets_list` и `runtime_offsets_extracted`
+
+О! Вот эту парочку я вообще обожаю. 
+
+Если вам нужно обратиться к полю объекта внутри Stub (ASM) кода, вам нужен offset этого поля. Вообще, на первый взгляд `slot` и `runtime_offset` дублируют друг друга. 
+
+Но, знаете, я для себя разделил так: `slot` для IL, `runtime_offset` для ASM. Пишите в комментарии, если есть более логичное разделение и я все наврал. 
+
+А и ещё, если я не ошибся, если не указать какие-то поля в `runtime_offsets_list`, могут быть проблемы при генерации [Dart Snapshot](https://github.com/dart-lang/sdk/wiki/Snapshots/6d632de97aa5711f37f7b43bd06882148ddf4720).
+
+Так вот, как с этими файлами работать. В `runtime_offsets_list` пишется что-то вроде `FIELD(Coroutine, name_offset)`, а затем запускается `./tools/run_offsets_extractor.dart` руками, чтобы сгенерировался сей ужас на 13К строчек:
+```c++ 
+...
+static constexpr dart::compiler::target::word AOT_InstructionsSection_HeaderSize = 0x40;
+static constexpr dart::compiler::target::word AOT_InstructionsTable_InstanceSize = 0x30;
+static constexpr dart::compiler::target::word AOT_Int32x4_InstanceSize = 0x18;
+static constexpr dart::compiler::target::word AOT_Integer_InstanceSize = 0x8;
+static constexpr dart::compiler::target::word AOT_KernelProgramInfo_InstanceSize = 0x60;
+static constexpr dart::compiler::target::word AOT_LanguageError_InstanceSize = 0x30;
+static constexpr dart::compiler::target::word AOT_Library_InstanceSize = 0x88;
+static constexpr dart::compiler::target::word AOT_LibraryPrefix_InstanceSize = 0x28;
+static constexpr dart::compiler::target::word AOT_LinkedHashBase_InstanceSize = 0x38;
+static constexpr dart::compiler::target::word AOT_LocalHandle_InstanceSize = 0x8;
+static constexpr dart::compiler::target::word AOT_MegamorphicCache_InstanceSize = 0x30;
+...
+```
+
+#### `runtime_api`
+
+В этом файле мы декларируем в основном offset-ы - методы, которые возвращают смещения полей.
+
+```c++
+class Coroutine : public AllStatic {
+ public:
+  ...
+  static word name_offset();
+  static word index_offset();
+  static word entry_offset();
+  static word trampoline_offset();
+  ...
+  static word InstanceSize();
+  FINAL_CLASS();
+};
+```
+
+И снова приведу описание от разработчика:
+
+```
+// This header defines the API that compiler can use to interact with the
+// underlying Dart runtime that it is embedded into.
+//
+// Compiler is not allowed to directly interact with any objects - it can only
+// use classes like dart::Object, dart::Code, dart::Function and similar as
+// opaque handles. All interactions should be done through helper methods
+// provided by this header.
+//
+// This header also provides ways to get word sizes, frame layout, field
+// offsets for the target runtime. Note that these can be different from
+// those on the host. Helpers providing access to these values live
+// in compiler::target namespace.
+```
 
 ### Братья изоляты и потоки: isolate + thread
 
 
+
 ### Чтобы собрать правильно, собери неправильно: recognized_method_list
 
+Самый смешной файлик в моем списке. Помните, выше я говорил про `vm:recognized`, так вот эти методы нужно продублировать в этот файл, но все не так просто. 
+
+Алгоритм следующий:
+
+1. Декларируешь Dart метод с `vm:recognized`
+2. Декларируешь в `recognized_method_list` строчку, вроде: `V(_Coroutine, _initialize, CoroutineInitialize, 0)`
+3. Запускаешь сборку
+4. Получаешь ошибку, в которой будет что-то вроде
+```
+...
+s/0x00000000/0x12345678/
+...
+```
+5. Копируем кусок с `s/` в файл и вызываем `sed` на этот файл и `runtime/vm/compiler/recognized_methods_list.h`
+
+Иии нет, это не я придумал, смотрите сюда: 
+```c++
+// object.cc: CheckSourceFingerprint
+if (SourceFingerprint() != fp) {
+  // This output can be copied into a file, then used with sed
+  // to replace the old values.
+  // sed -i.bak -f /tmp/newkeys \
+  //    runtime/vm/compiler/recognized_methods_list.h
+  THR_Print("s/0x%08x/0x%08x/\n", fp, SourceFingerprint());
+  return false;
+}
+```
+
+Обожаю этот файл. Особенно учитывая, что при его изменении, нужно пересобрать 1000+ файлов. 
 
 ### Компилятор: il, kernel_to_il
 
