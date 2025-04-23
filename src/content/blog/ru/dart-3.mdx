@@ -556,7 +556,67 @@ class Coroutine : public AllStatic {
 
 ### Братья изоляты и потоки: isolate + thread
 
+Самое главное и интересное, что нужно было сюда добавить - это обработку визитера сборщика мусора. В изолят:
 
+```c++
+void Isolate::VisitStackPointers(ObjectPointerVisitor* visitor,
+                                 ValidationPolicy validate_frames) {
+  if (mutator_thread_ != nullptr) {
+    if (mutator_thread_->has_coroutine()) { // Вот этот кусок
+      mutator_thread_->VisitObjectPointersCoroutine(this, visitor, validate_frames);
+      return;
+    }
+    mutator_thread_->VisitObjectPointers(visitor, validate_frames);
+  }
+}
+```
+
+А в поток в эту жесть...  
+
+```c++
+...
+visitor->set_gc_root_type("frame");
+while (frame != nullptr) {
+  frame->VisitObjectPointers(visitor);
+  frame = thread_frames_iterator.NextFrame();
+  if (frame != nullptr && StubCode::InCoroutineForkStub(frame->GetCallerPc())) {
+    frame->VisitObjectPointers(visitor);
+    break;
+  }
+  if (frame != nullptr && StubCode::InCoroutineInitializeStub(frame->GetCallerPc())) {
+    const uword stub_fp = *reinterpret_cast<uword*>(coroutine_->untag()->native_stack_base());
+    StackFrameIterator native_coroutine_frames_iterator(stub_fp, validation_policy, this, cross_thread_policy, StackFrameIterator::kStackOwnerCoroutine);
+    StackFrame* frame = native_coroutine_frames_iterator.NextFrame();
+    while (frame != nullptr) {
+      frame->VisitObjectPointers(visitor);
+      frame = native_coroutine_frames_iterator.NextFrame();
+    }
+    break;
+  }
+}
+auto coroutines = isolate->coroutines_registry().untag()->data();
+auto coroutines_count = Smi::Value(isolate->coroutines_registry().untag()->length());
+for (auto index = 0; index < coroutines_count; index++) {
+  auto item = Coroutine::RawCast(coroutines.untag()->element(index));
+  if ((item->untag()->attributes() & (Coroutine::CoroutineAttributes::suspended)) != 0) {
+    UntaggedCoroutine::VisitStack(item, visitor);
+  }
+}
+visitor->clear_gc_root_type();
+...
+```
+
+Этот код был добавлен в новую функцию `VisitObjectPointersCoroutine`, которая отвечает за обработку стека всех корутин при сборке мусора. 
+
+Аналогичный код пришлось добавить в `RestoreWriteBarrierInvariantCoroutine`, которая отвечает за восстановление [барьеров записи](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md) - Write barrier elimitation.
+
+Логика этого кода примерно следующая:
+
+1. Посетить каждый кадр основного стека (стека потока), который является текущим (на него указывает регистр `RSP`)
+2. Если доходим до функции иницализации дочерней корутины, останавливаемся 
+3. Если доходим до функции иницализации основной корутины, до выполняем обработку изначального (нативного) стека
+4. Делаем тоже самое (UntaggedCoroutine::VisitStack) для каждой "suspended" корутины
+5. Психуем, потому что этот код на самом деле не работает... точнее сказать, не всегда работает
 
 ### Чтобы собрать правильно, собери неправильно: recognized_method_list
 
