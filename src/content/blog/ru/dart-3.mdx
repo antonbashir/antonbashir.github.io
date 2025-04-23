@@ -295,26 +295,39 @@ class Fiber {
 @patch
 @pragma("vm:entry-point")
 class _Coroutine {
+  @pragma("vm:external-name", "Coroutine_factory")
   external factory _Coroutine._(int size, Function trampoline);
 
+  @pragma("vm:recognized", "other")
   external void Function() get _entry;
+  @pragma("vm:recognized", "other")
   external set _entry(void Function() value);
 
+  @pragma("vm:recognized", "other")
   external void Function() get _trampoline;
+  @pragma("vm:recognized", "other")
   external set _trampoline(void Function() value);
 
+  @pragma("vm:recognized", "other")
   external Object? get _argument;
+  @pragma("vm:recognized", "other")
   external set _argument(Object? value);
 
+  @pragma("vm:recognized", "other")
   external _Coroutine get _caller;
+  @pragma("vm:recognized", "other")
   external set _caller(_Coroutine value);
 
+  @pragma("vm:recognized", "other")
   external static void _initialize(_Coroutine root);
 
+  @pragma("vm:recognized", "other")
   external static void _transfer(_Coroutine from, _Coroutine to);
 
+  @pragma("vm:recognized", "other")
   external static void _fork(_Coroutine from, _Coroutine to);
 
+  @pragma("vm:recognized", "other")
   external static _Coroutine? get _current;
 }
 ```
@@ -375,12 +388,67 @@ class Coroutine : public Instance {
 
 На 1808 результатов не смотрите, у DartVM есть встроенный генератор C++ кода в одном месте, он там всякое творит.
 
-Поступим так, я выделю N самых интересных участков кода реализации и расскажу про них, тогда тебе, читатель, будет "...понятно и очень интересно...", ну ты понял. 
+Поступим так, я выделю N самых интересных участков кода реализации и расскажу про них, тогда тебе, читатель, будет "...понятно и очень интересно". 
 
-### Сущности: coroutine, object и raw_object
+Для начала я бы хотел кратко рассказать про основные способы реализаии "особых" функцих в Dart. Если вкратце:
+* `vm:external-name` - эти функции реализуются в C++ коде и вызываются из Dart кода. Декларируются с помощью `extern` и `vm:external-name`.
+* `RuntimeEntry` - эти функции реализуются в C++ коде и вызываются из Stub (ASM) кода. Декларируются с помощью `DEFINE_RUNTIME_ENTRY`, `DEFINE_LEAF_RUNTIME_ENTRY` и `DEFINE_RAW_LEAF_RUNTIME_ENTRY`.
+* `vm:recognized` - эти функции реализуются в скомпилированном Dart коде, но их тела описываются в C++ коде, ниже будет пример того, как выглядит реализация.
+```c++
+case MethodRecognizer::kCoroutineInitialize: {
+  body += LoadLocal(parsed_function_->RawParameterVariable(0));
+  body += CoroutineInitialize();
+  body += NullConstant();
+  break;
+}
+  ```
+* `vm:entry-point` - реализуется в Dart коде, про них хорошо описано [тут](https://mrale.ph/dartvm/compiler/aot/entry_point_pragma.html)
+* `@Native` - по идее это современная замена `vm:external-name`, которая появилась в процессе развития [FFI](https://dart.dev/interop/c-interop) функционала, но я решил использовать 'vm:external-name', так как в Dart SDK кода больше примеров с этим способом
 
+Реализация этих способов претендует на отдельную статью (может быть, в будущем я её напишу), поэтому не будем долго на них задерживаться.
+
+### Сущности: coroutine, bootstrap_natives, object и raw_object
+
+Задача: создать C++ объект корутины через Dart код. У нас уже есть функция `external factory _Coroutine._(int size, Function trampoline);`, давайте её реализуем
+
+```c++
+DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
+  GET_NON_NULL_NATIVE_ARGUMENT(Smi, size, arguments->NativeArgAt(1));
+  GET_NON_NULL_NATIVE_ARGUMENT(Closure, trampoline, arguments->NativeArgAt(2));
+  return Coroutine::New(size.Value(), trampoline.function()); // Объявлена в object.h
+}
+```
+
+Теперь про `object` и `raw_object`. Все объекты Dart, которые управляются из кода C++ определяются в этих файлах. Почему файлов два ?
+
+Дело в том, что в Dart существует два представления объектов. Это связано с тем, что Dart использует технику [тегированных указателей](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md), я бы назвал их так:
+* `Tagged` - тегированый указатель на реальный объект, по сути является реализацией Proxy паттерна, чтобы "достать" реальный объект нужно вызывать `untag()`
+* `Untagged` - "сырое" представление, реальный физический объект, с которым можно работать
+
+В `object` реализуются `Tagged` представления, в `raw_object` - `Untagged`.
+
+Теперь расскажу про основные функции наших Coroutine:
+
+#### HandleJumpToFrame
+
+
+
+#### HandleRootEnter
+
+#### HandleRootExit
+
+#### HandleForkedEnter
+
+#### HandleForkedExit
+
+#### recycle
+
+#### dispose
+
+#### dispose
 
 ### Поля и мета: raw_object_fields, slot, runtime_offsets_list, runtime_offsets_extracted, runtime_api
+
 
 ### Братья изоляты и потоки: isolate + thread
 

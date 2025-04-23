@@ -72,4 +72,4 @@ export const ExperienceMobile = () => {
   </div>;
 }
 
-export const ExperiencePath = () => (window.innerWidth > 1320 && !window.navigator.userAgent.toLocaleLowerCase().includes("linux")) ? <ExperienceDesktop /> : <ExperienceMobile />
+export const ExperiencePath = () => (window.innerWidth > 1320) ? <ExperienceDesktop /> : <ExperienceMobile />
