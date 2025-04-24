@@ -698,6 +698,7 @@ void CoroutineInitializeInstr::EmitNativeCode(FlowGraphCompiler* compiler) {
   compiler->GenerateStubCall(source(), StubCode::CoroutineInitialize(),  UntaggedPcDescriptors::kOther, locs(), deopt_id(), env());
 }
 ```
+
 По сути идея этих правок в том, чтобы реализовать вызов заглушки `StubCode::CoroutineInitialize`, обернув его в IL инструкцию. 
 
 Теперь свяжем инструкцию и наш `vm:recognized` метод `CorotineInitialize` с помощью `kernel_to_il`:
@@ -881,7 +882,6 @@ Ttrampoline функция нужна, потому что на начальны
 ```Dart
 static void _run() => _Coroutine._current!._entry();
 ```
-
 #### CoroutineFork
 
 1. Подговили аргументы и вызывали `EnterForkedCoroutineRuntimeEntry` + заранее сохранили `kForkedCoroutine`, если вдруг регистр будет перезаписан.
@@ -902,7 +902,6 @@ static void _run() => _Coroutine._current!._entry();
 10. Достали стек из нашего "caller"
 11. Восстановили RBP
 12. Подговили аргументы и вызывали `ExitForkedCoroutineRuntimeEntry`
-
 
 #### CoroutineTransfer
 
