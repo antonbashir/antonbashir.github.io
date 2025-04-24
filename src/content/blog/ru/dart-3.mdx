@@ -945,6 +945,8 @@ void coro_transfer (coro_context *prev, coro_context *next) {
 Чуть не забыл про `stub_code_compiler_x64`. Даже в Stub ASM коде могут быть архитектурные особенности. В нашем случае это обработка JumpToFrame заглушки:
 
 ```c++
+void StubCodeCompiler::GenerateJumpToFrameStub() {
+  ...
   Label no_coroutine;
   __ Load(TMP, compiler::Address(THR, compiler::target::Thread::coroutine_offset()));
   __ CompareObject(TMP, NullObject());
@@ -958,6 +960,8 @@ void coro_transfer (coro_context *prev, coro_context *next) {
   __ Drop(2);
   __ PopRegister(CallingConventions::kArg1Reg);
   __ Bind(&no_coroutine);
+  ...
+}
 ```
 
 Этот сложный код делает простую вещь: вызывает `JumpToFrameCoroutineRuntimeEntry`, если у нас есть корутина в потоке.
@@ -989,7 +993,6 @@ DEFINE_RUNTIME_ENTRY(JumpToFrameCoroutine, 1) {
 ```
 
 По сути это просто прокси-фунции, которые делегируют вызов в `object.cc`.
-
 
 # Шаг 5. Тестируем
 
