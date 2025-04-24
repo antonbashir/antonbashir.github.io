@@ -942,6 +942,26 @@ void coro_transfer (coro_context *prev, coro_context *next) {
 
 Внимание, вопрос: почему я не сохраняю явно регистры на стек ? Пишите в комментарии ваши догадки.
 
+Чуть не забыл про `stub_code_compiler_x64`. Даже в Stub ASM коде могут быть архитектурные особенности. В нашем случае это обработка JumpToFrame заглушки:
+
+```c++
+  Label no_coroutine;
+  __ Load(TMP, compiler::Address(THR, compiler::target::Thread::coroutine_offset()));
+  __ CompareObject(TMP, NullObject());
+  __ BranchIf(EQUAL, &no_coroutine);
+  __ MoveRegister(TMP, RSP);
+  __ SmiTag(TMP);
+  __ PushRegister(CallingConventions::kArg1Reg);
+  __ PushObject(NullObject());
+  __ PushRegister(TMP);
+  __ CallRuntime(kJumpToFrameCoroutineRuntimeEntry, 1);
+  __ Drop(2);
+  __ PopRegister(CallingConventions::kArg1Reg);
+  __ Bind(&no_coroutine);
+```
+
+Этот сложный код делает простую вещь: вызывает `JumpToFrameCoroutineRuntimeEntry`, если у нас есть корутина в потоке.
+
 ### И напоследок: runtime_entry
 
 Последняя интересная часть: наши RuntimeEntry. Выглядят они вот так:
