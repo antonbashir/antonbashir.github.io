@@ -655,7 +655,73 @@ if (SourceFingerprint() != fp) {
 
 ### Компилятор: il, kernel_to_il
 
+В моей реализации корутин существует три основные функции, три столпа (прям как у джедаев):
+* CoroutineInitialize - отвечает за инициализацию стека корневой корутины и вызов входящей (entry) функции 
+* CoroutineFork - отвечает за инициализацию стека дочерней корутины, переход на дочернюю корутину и обработку выхода из нее
+* CoroutineTransfer - отвечает за смену контекста (переключение стека) между корутинами
 
+Эти функции реализуются на уровне Dart Stubs, а вызываются через Dart IL. Я постараюсь на примере CoroutineInitialize описать, как выглядит добавление такого функционала в Dart.
+
+В `il.h` мы добавляем инструкцию:
+```c++
+class CoroutineInitializeInstr : public TemplateDefinition<1, Throws> {
+ public:
+  CoroutineInitializeInstr(Value* root, intptr_t deopt_id) : TemplateDefinition(InstructionSource(TokenPosition::kNoSource), deopt_id) {
+    SetInputAt(0, root);
+  }
+  Value* root() const { return inputs_[0]; }
+  virtual bool CanCallDart() const { return true; }
+  virtual bool ComputeCanDeoptimize() const { return false; }
+  virtual bool ComputeCanDeoptimizeAfterCall() const { return !CompilerState::Current().is_aot(); }
+  virtual bool HasUnknownSideEffects() const { return true; }
+  virtual intptr_t NumberOfInputsConsumedBeforeCall() const { return InputCount(); }
+  virtual bool MayCreateUnsafeUntaggedPointer() const { return true; }
+  DECLARE_INSTRUCTION(CoroutineInitialize);
+  PRINT_OPERANDS_TO_SUPPORT
+  DECLARE_EMPTY_SERIALIZATION(CoroutineInitializeInstr, TemplateDefinition)
+ private:
+  DISALLOW_COPY_AND_ASSIGN(CoroutineInitializeInstr);
+};
+```
+
+В `il.cc` мы добавляем парочку нужных функций:
+```c++
+LocationSummary* CoroutineInitializeInstr::MakeLocationSummary(Zone* zone, bool opt) const {
+  const intptr_t kNumInputs = 1;
+  const intptr_t kNumTemps = 0;
+  LocationSummary* locs = new (zone)LocationSummary(zone, kNumInputs, kNumTemps, LocationSummary::kCall);
+  locs->set_in(0, Location::RegisterLocation(CoroutineInitializeABI::kCoroutineReg));
+  return locs;
+}
+
+void CoroutineInitializeInstr::EmitNativeCode(FlowGraphCompiler* compiler) {
+  compiler->GenerateStubCall(source(), StubCode::CoroutineInitialize(),  UntaggedPcDescriptors::kOther, locs(), deopt_id(), env());
+}
+```
+
+По сути идея этих правок в том, чтобы реализовать вызов заглушки `StubCode::CoroutineInitialize`, обернув его в IL инструкцию. 
+
+Теперь свяжем инструкцию и наш `vm:recognized` метод `CorotineInitialize` с помощью `kernel_to_il`:
+
+```c++
+Fragment FlowGraphBuilder::CoroutineInitialize() {
+  CoroutineInitializeInstr* instr = new (Z) CoroutineInitializeInstr(Pop(), GetNextDeoptId());
+  return Fragment(instr);
+}
+
+...
+case MethodRecognizer::kCoroutineInitialize: {
+  body += LoadLocal(parsed_function_->RawParameterVariable(0));
+  body += CoroutineInitialize();
+  body += NullConstant();
+  break;
+}
+...
+```
+
+Таким образом в место вызова CoroutineInitialize в Dart коде будет подставлен вызов заглушки `CoroutineInitialize`. 
+
+Далее я вам расскажу про все три столпа-заглушки подробно. 
 
 ### Компилятор потяжелее: constants_x64, stub_code_List, stub_code, stub_code_compiler и stub_code_compiler_x64
 
