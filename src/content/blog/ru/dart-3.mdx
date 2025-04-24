@@ -698,7 +698,6 @@ void CoroutineInitializeInstr::EmitNativeCode(FlowGraphCompiler* compiler) {
   compiler->GenerateStubCall(source(), StubCode::CoroutineInitialize(),  UntaggedPcDescriptors::kOther, locs(), deopt_id(), env());
 }
 ```
-
 По сути идея этих правок в том, чтобы реализовать вызов заглушки `StubCode::CoroutineInitialize`, обернув его в IL инструкцию. 
 
 Теперь свяжем инструкцию и наш `vm:recognized` метод `CorotineInitialize` с помощью `kernel_to_il`:
@@ -723,11 +722,228 @@ case MethodRecognizer::kCoroutineInitialize: {
 
 Далее я вам расскажу про все три столпа-заглушки подробно. 
 
-### Компилятор потяжелее: constants_x64, stub_code_List, stub_code, stub_code_compiler и stub_code_compiler_x64
+### Компилятор потяжелее: constants_x64, stub_code_List, stub_code_compiler и stub_code_compiler_x64
+
+Что нужно, чтобы в Dart выполнить вставку на языке ассемблера ? Нужен простой советский... `stub_code_compiler`.
+
+Но для начала, напомню, как выглядит сигнатура наших функций:
+```Dart
+  external static void _initialize(_Coroutine root); // Один аргумент
+  external static void _transfer(_Coroutine from, _Coroutine to); // Два аргумента
+  external static void _fork(_Coroutine from, _Coroutine to); // Тоже два аргумента
+```
+
+Определим регистры для наших функций в `constants_x64`:
+```c++
+struct CoroutineInitializeABI {
+  static constexpr Register kCoroutineReg = RDI; // Один аргумент
+};
+
+struct CoroutineForkABI {
+  static constexpr Register kCallerCoroutineReg = RSI; // Первый аргумент
+  static constexpr Register kForkedCoroutineReg = RDI; // Второй аргумент
+};
+
+struct CoroutineTransferABI {
+  static constexpr Register kFromCoroutineReg = RDI; // Первый аргумент
+  static constexpr Register kToCoroutineReg = RSI; // Второй аргумент
+  static constexpr Register kToStackLimitReg = RDX; // Потребуется для реализации
+};
+```
+
+Укажем имена наших заглушек в `stub_code_List`:
+```c++
+  V(CoroutineTransfer)
+  V(CoroutineInitialize)
+  V(CoroutineFork)
+```
+
+И теперь реализация в `stub_code_compiler`:
+```c++
+void StubCodeCompiler::GenerateCoroutineInitializeStub() {
+   const Register kCoroutine = CoroutineInitializeABI::kCoroutineReg;
+  __ EnterStubFrame();
+  __ PushObject(compiler::NullObject());
+  __ PushRegister(kCoroutine);
+  __ CallRuntime(kEnterCoroutineRuntimeEntry, 1);
+  __ PopRegister(kCoroutine);
+  __ Drop(1);
+  __ PushRegister(FPREG);
+  __ StoreCompressedIntoObjectOffset(kCoroutine, Coroutine::native_stack_base_offset(), SPREG);
+  __ LoadFieldFromOffset(SPREG, kCoroutine, Coroutine::stack_base_offset());
+  __ PushRegister(kCoroutine);
+  __ LoadCompressedFieldFromOffset(FUNCTION_REG, kCoroutine, Coroutine::trampoline_offset());
+  __ Call(compiler::FieldAddress(FUNCTION_REG, Function::entry_point_offset()));
+  __ PopRegister(kCoroutine);
+  __ StoreCompressedIntoObjectOffset(kCoroutine, Coroutine::stack_base_offset(), SPREG);
+  __ LoadFieldFromOffset(SPREG, kCoroutine, Coroutine::native_stack_base_offset());
+  __ PopRegister(FPREG);
+  __ PushObject(compiler::NullObject());
+  __ CallRuntime(kExitCoroutineRuntimeEntry, 0);
+  __ Drop(1);
+  __ LeaveStubFrame();
+  __ Ret();
+}
+
+void StubCodeCompiler::GenerateCoroutineForkStub() {
+  const Register kCallerCoroutine = CoroutineForkABI::kCallerCoroutineReg;
+  const Register kForkedCoroutine = CoroutineForkABI::kForkedCoroutineReg;
+  __ EnterStubFrame();
+  __ PushObject(compiler::NullObject());
+  __ PushRegister(kForkedCoroutine);
+  __ CallRuntime(kEnterForkedCoroutineRuntimeEntry, 1);
+  __ PopRegister(kForkedCoroutine);
+  __ Drop(1);
+  __ LoadCompressedFieldFromOffset(kCallerCoroutine, kForkedCoroutine, Coroutine::caller_offset());
+  __ PushRegister(FPREG);
+  __ StoreCompressedIntoObjectOffset(kCallerCoroutine, Coroutine::stack_base_offset(), SPREG);
+  __ LoadFieldFromOffset(SPREG, kForkedCoroutine, Coroutine::stack_base_offset());
+  __ PushRegister(kForkedCoroutine);
+  __ LoadCompressedFieldFromOffset(FUNCTION_REG, kForkedCoroutine, Coroutine::trampoline_offset());
+  __ LoadCompressedField(TMP, compiler::FieldAddress(FUNCTION_REG, Function::entry_point_offset()));
+  __ call(TMP);
+  __ PopRegister(kForkedCoroutine);
+  __ StoreCompressedIntoObjectOffset(kForkedCoroutine, Coroutine::stack_base_offset(), SPREG);
+  __ LoadCompressedFieldFromOffset(kCallerCoroutine, kForkedCoroutine, Coroutine::caller_offset());
+  __ LoadFieldFromOffset(SPREG, kCallerCoroutine, Coroutine::stack_base_offset());
+  __ PopRegister(FPREG);
+  __ PushObject(compiler::NullObject());
+  __ CallRuntime(kExitForkedCoroutineRuntimeEntry, 0);
+  __ Drop(1);
+  __ LeaveStubFrame();
+  __ Ret();
+}
+
+void StubCodeCompiler::GenerateCoroutineTransferStub() {
+  const Register kFromCoroutine = CoroutineTransferABI::kFromCoroutineReg;
+  const Register kToCoroutine = CoroutineTransferABI::kToCoroutineReg;
+  const Register kToStackLimit = CoroutineTransferABI::kToStackLimitReg;
+  __ EnterStubFrame();
+  __ LoadFieldFromOffset(TMP, kFromCoroutine, Coroutine::attributes_offset());
+  __ AndImmediate(TMP, ~Coroutine::CoroutineAttributes::running);
+  __ OrImmediate(TMP, Coroutine::CoroutineAttributes::suspended);
+  __ StoreFieldToOffset(TMP, kFromCoroutine, Coroutine::attributes_offset());
+  __ LoadFieldFromOffset(TMP, kToCoroutine, Coroutine::attributes_offset());
+  __ AndImmediate(TMP, ~Coroutine::CoroutineAttributes::suspended);
+  __ OrImmediate(TMP, Coroutine::CoroutineAttributes::running);
+  __ StoreFieldToOffset(TMP, kToCoroutine, Coroutine::attributes_offset());
+  __ PushRegister(FPREG);
+  __ StoreCompressedIntoObjectOffset(kFromCoroutine, Coroutine::stack_base_offset(), SPREG);
+  __ LoadFieldFromOffset(SPREG, kToCoroutine, Coroutine::stack_base_offset());
+  __ PopRegister(FPREG);
+  __ LoadFieldFromOffset(kToStackLimit, kToCoroutine,  Coroutine::overflow_stack_limit_offset());
+  __ StoreToOffset(kToCoroutine, THR, Thread::coroutine_offset());
+  __ StoreToOffset(kToStackLimit, THR, Thread::saved_stack_limit_offset());
+  compiler::Label scheduled_interrupts;
+  __ LoadFromOffset(TMP, THR, Thread::stack_limit_offset());
+  __ testq(TMP, compiler::Immediate(Thread::kInterruptsMask));
+  __ BranchIf(ZERO, &scheduled_interrupts);
+  __ StoreToOffset(kToStackLimit, THR, Thread::stack_limit_offset());
+  __ Bind(&scheduled_interrupts);
+  __ LeaveStubFrame();
+  __ Ret();
+}
+```
+
+Страшно ? Мне вот очень. Давайте вкратце расскажу, что происходит в каждой функции и зачем. 
+
+Для начала про два ключевых регистра: RBP и RSP. 
+
+RSP (SPREG в нейминге Dart) - актуальный указатель на текущий стек. 
+RBP (FPREG в нейминге Dart) - указатель на текущий стек на момент вызова функции (указатель на "кадр" стека).
+
+Для начала общие части:
+
+```c++
+  __ EnterStubFrame(); // Пролог функций-заглушек, сохраняет текущий регистр RBP на стек и меняет этот регистр на RSP StackPointer
+  __ LeaveStubFrame(); // Восстанавливает стек из RBP регистра и достает RBP из стека
+  __ Ret(); // Возврат к тому, кто нас вызывал
+```
+
+#### CoroutineInitialize
+
+1. Подговили аргументы и вызывали `EnterCoroutineRuntimeEntry`
+2. Сохранили текущий RBP на стек и положили текущий RSP в поле native_stack_base
+3. Загрузили "пустой" стек из stack_base поля в RSP
+4. Сохранили указатель на корутину на стек
+5. Загрузили функцию-trampoline и вызывали ее 
+
+Фактически здесь у нас началя "мир" корутин. Из этой функции мы выйдем тогда, когда все корутины завершат свою работу.
+
+6. Взяли указатель на корутину из стека
+7. "Обнулили" указатель на стек в stack_base
+8. Загрузили RSP из ранее сохраненного native_stack_base
+9. Вытащили (восстановили) RBP
+10.  Подговили аргументы и вызывали `ExitCoroutineRuntimeEntry`
+
+Про функцию-trampoline. 
+Ttrampoline функция нужна, потому что на начальных этапах реализации у меня не получилось прокинут аргументы, поэтому в качестве "трамплина" я испольую:
+```Dart
+static void _run() => _Coroutine._current!._entry();
+```
+
+#### CoroutineFork
+
+1. Подговили аргументы и вызывали `EnterForkedCoroutineRuntimeEntry` + заранее сохранили `kForkedCoroutine`, если вдруг регистр будет перезаписан.
+2. Достали `kForkedCoroutine` и взяли из нее `kCallerCoroutine`
+
+Вообще, я сейчас думаю, что можно же было использовать `callee-saved` регистры, но я решил подстраховаться, все же `RuntimeEntry` это сложный C++ скомпилированный код, всякое там может произойти.
+
+3. Сохранили RBP на стек
+4. Взяли из новой корутины stack_base и положили в RSP
+5. Сохранили kForkedCoroutine на новый стек
+6. По аналогии с CoroutineInitialize вызывали trampoline
+
+Здесь у нас ситуация, что сюда мы вернемся только тогда, когда наша "дочерняя" корутина завершится.
+
+7. Достали kForkedCoroutine со стека
+8. "Обнулили" stack_base в нашей корутине
+9. Достали kCallerCoroutine
+10. Достали стек из нашего "caller"
+11. Восстановили RBP
+12. Подговили аргументы и вызывали `ExitForkedCoroutineRuntimeEntry`
 
 
+#### CoroutineTransfer
+
+Эта функция вызывается довольно часто и я очень хотел, чтобы в ней не было RuntimeEntry вызовов. 
+
+1. Обновляем атрибуты состояния текущей корутины - running -> suspended
+2. Обновляем атрибуты состояния следующей корутины - suspended -> running
+3. Сохраняет RBP на стек
+4. Сохраняем RSP в stack_base текущей корутины
+5. Загружаем RSP из stabk_base следующей корутины
+6. Достаем RBP
+7. Обновляем saved_tack_limit и coroutine поля в Thread
+8. Обрабатываем прерывания (если поле stack_limit потока соответствует маске-прерываний, то мы не должны менять stack_limit поле, чтобы Thread смог правильно обработать прерывание)
+
+Здесь стоит заметить вот какую особенность. В Tarantool корутинах у нас было вот так:
+
+```c++
+void coro_transfer (coro_context *prev, coro_context *next) {
+  pushq %rbp
+  pushq %rbx
+  pushq %r12
+  pushq %r13
+  pushq %r14
+  pushq %r15
+  movq %rsp, (%rdi)
+  movq (%rsi), %rsp
+  popq %r15
+  popq %r14
+  popq %r13
+  popq %r12
+  popq %rbx
+  popq %rbp
+  popq %rcx
+  jmpq *%rcx
+}
+```
+
+Внимание, вопрос: почему я не сохраняю явно регистры на стек ? Пишите в комментарии ваши догадки.
 
 ### И напоследок: runtime_entry
+
 
 
 # Шаг 5. Тестируем
