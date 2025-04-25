@@ -6,12 +6,13 @@ label: Article
 tags: IT, Dart, DartVM, ASM, Coroutines, Habr
 time: 10 min
 ---
+> [!NOTE]
+>Приветствую тебя читатель. Для начала я рекомендую тебе ознакомиться с первой частью моего цикла статей.
+>В этом цикле я пишу о балансе, состояниях разработчика, корутинах и Dart.
+>В предыдущих сериях:
+>Часть 1: общее про эти статьи, зачем, кому и почему
+>Часть 2: осмотр пацииента, Dart, корутины, асинхронные функции и что к чему
 
-Приветствую тебя читатель. Для начала я рекомендую тебе ознакомиться с первой частью моего цикла статей.
-В этом цикле я пишу о балансе, состояниях разработчика, корутинах и Dart.
-В предыдущих сериях:
-Часть 1: общее про эти статьи, зачем, кому и почему
-Часть 2: осмотр пацииента, Dart, корутины, асинхронные функции и что к чему
 
 # Об авторе
 
@@ -35,12 +36,7 @@ time: 10 min
 make: *** No targets specified and no makefile found.  Stop.
 10:45:21 anton@anton-lin arch-x86_64 ~/development/laboratory/dart main
 (🦊) cmake .
-CMake Warning:
-  Ignoring extra path from command line:
-
-   "."
-
-
+CMake Warning: Ignoring extra path from command line: "."
 CMake Error: The source directory "/home/anton/development/laboratory/dart" does not appear to contain CMakeLists.txt.
 Specify --help for usage, or press the help button on the CMake GUI.
 10:45:24 anton@anton-lin arch-x86_64 ~/development/laboratory/dart main
@@ -82,7 +78,7 @@ bash: ./build.sh: No such file or directory
 
 Так вот, что нужно было запустить, а я всё `make` да `ninja`... 
 
-> `./tools/build.py --mode release --arch x64 create_sdk`
+> ./tools/build.py --mode release --arch x64 create_sdk
 
 Небольшая ремарка, вот статы моего компьютера, на котором я собирал и пересобирал (огромное множество раз) Dart:
 ```bash
@@ -190,22 +186,22 @@ import("../lib/fiber_sources.gni")
 3. Теперь нам нужно нашу библиотеку в реестр положить. Нам нужен `runtime/vm/object.h`. Этот файл заслуживает отдельной... повести, потому что в нем 13595 строк. Но мы туда добавим строчку `static LibraryPtr FiberLibrary();` 
 4. И `runtime/vm/object.cc`: 
 ```c++
-    lib = Library::LookupLibrary(thread, Symbols::DartFiber());
-    if (lib.IsNull()) {
-      lib = Library::NewLibraryHelper(Symbols::DartFiber(), true);
-      lib.SetLoadRequested();
-      lib.Register(thread);
-    }
-    object_store->set_bootstrap_library(ObjectStore::kFiber, lib);
-    ASSERT(!lib.IsNull());
-    ASSERT(lib.ptr() == Library::FiberLibrary());
+lib = Library::LookupLibrary(thread, Symbols::DartFiber());
+if (lib.IsNull()) {
+    lib = Library::NewLibraryHelper(Symbols::DartFiber(), true);
+    lib.SetLoadRequested();
+    lib.Register(thread);
+}
+object_store->set_bootstrap_library(ObjectStore::kFiber, lib);
+ASSERT(!lib.IsNull());
+ASSERT(lib.ptr() == Library::FiberLibrary());
 ```
 5. Последний шаг - регистрируем NativeResolver для нашей библиотеки:
 ```c++
-  library = Library::FiberLibrary();
-  ASSERT(!library.IsNull());
-  library.set_native_entry_resolver(resolver);
-  library.set_native_entry_symbol_resolver(symbol_resolver);
+library = Library::FiberLibrary();
+ASSERT(!library.IsNull());
+library.set_native_entry_resolver(resolver);
+library.set_native_entry_symbol_resolver(symbol_resolver);
 ```
 
 Есть парочка мест, где я зарегистрировал библиотеку, но процесс аналогичен - смотрим, как регистрируются другие и делаем также.
@@ -449,7 +445,7 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 
 Дополнительно, в Dart VM в некоторых местах выполняется проверка длины стека через поле `stack_limit_` объекта потока, а значит нам нужно это поле изменять при назначении стека корутины в роли текущего.
 
-#### HandleRootExit HandleForkedExit
+#### HandleRootExit и HandleForkedExit
 
 Первая функция выполняется в тот момент, когда мы завершили все наши корутины и планируем вернутся к обычному выполнению потока в обычный "нативный" стек. 
 
@@ -466,7 +462,9 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 Разница в том, что `recycle` переведт корутину в состояние `disposed`, но не уничтожить её объект и память, выделенную под стек. Вторая функция полностью уничтожает корутину и связанный с ней стек. 
 
 
-### Поля и мета: raw_object_fields, slot, runtime_offsets_list, runtime_offsets_extracted, runtime_api
+### Поля и мета
+
+Файлы: `raw_object_fields`, `slot`, `runtime_offsets_list`, `runtime_offsets_extracted`, `runtime_api`.
 
 Эти файлы объединяет общий факт: 
 ![dart-3-image-5](/dart-3-image-5.png)
@@ -723,7 +721,9 @@ case MethodRecognizer::kCoroutineInitialize: {
 
 Далее я вам расскажу про все три столпа-заглушки подробно. 
 
-### Компилятор потяжелее: constants_x64, stub_code_List, stub_code_compiler и stub_code_compiler_x64
+### Компилятор потяжелее
+
+Здесь рассмотрим: `constants_x64`, `stub_code_List`, `stub_code_compiler` и `stub_code_compiler_x64`.
 
 Что нужно, чтобы в Dart выполнить вставку на языке ассемблера ? Нужен простой советский... `stub_code_compiler`.
 

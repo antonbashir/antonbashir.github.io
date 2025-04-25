@@ -8,6 +8,7 @@ import { h } from 'hastscript'
 import autolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import rehyptToc from 'rehype-toc'
+import { remarkAlert } from "remark-github-blockquote-alert";
 
 const anchorLinkSizes = {
   'h1': 32,
@@ -38,7 +39,11 @@ const anchorLinkIcon = (element) => {
 
 export default defineConfig({
   site: 'https://antonbashir.github.io',
+  markdown: {
+    remarkPlugins: [remarkAlert],
+  },
   integrations: [tailwind(), react(), robotsTxt(), sitemap(), mdx({
+    extendMarkdownConfig: true,
     rehypePlugins: [
       rehypeSlug,
       [
