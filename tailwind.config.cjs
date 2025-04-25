@@ -90,7 +90,6 @@ module.exports = withMT({
                 borderRadius: "8px",
               },
               p: {
-                fontSize: '1em',
                 fontFamily: 'Inter',
                 lineHeight: '1.8em',
               },
@@ -108,14 +107,12 @@ module.exports = withMT({
                 color: theme("colors.gray.200"),
                 fontFamily: 'InterDisplay',
                 fontWeight: 'normal',
-                fontSize: '1.8em',
                 marginTop: '1px !important',
               },
               h2: {
                 color: theme("colors.gray.200"),
                 fontFamily: 'InterDisplay',
                 fontWeight: 'normal',
-                fontSize: '1.7em',
                 marginTop: '1px !important',
               },
               h3: {
@@ -129,14 +126,12 @@ module.exports = withMT({
                 color: theme("colors.gray.200"),
                 fontFamily: 'InterDisplay',
                 fontWeight: 'normal',
-                fontSize: '1.3em',
                 marginTop: '1px !important',
               },
               h5: {
                 color: theme("colors.gray.200"),
                 fontFamily: 'InterDisplay',
                 fontWeight: 'normal',
-                fontSize: '1.2em',
                 marginTop: '1px !important',
               },
               code: {
