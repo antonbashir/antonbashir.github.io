@@ -52,6 +52,7 @@ export const Languages = () => <Technologies
   technologies={[
     "Dart",
     "Java",
+    "Groovy",
     "Kotlin",
     "Python",
     "TS",
@@ -59,6 +60,7 @@ export const Languages = () => <Technologies
     "C",
     "C++",
     "Scala",
+    "Go",
     "Lua",
   ]}
 />
@@ -121,6 +123,11 @@ export const Applications = () => <Technologies
     "Prometheus",
     "Rive",
     "Lottie",
+    "Mercure",
+    "Hyprland",
+    "VLLM",
+    "Temporal",
+    "DevSpace",
   ]}
   slidesPerView={8}
   spaceBetween={16}
