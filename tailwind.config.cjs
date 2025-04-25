@@ -15,7 +15,7 @@ module.exports = withMT({
         }
       }
     ),
-    require('@tailwindcss/typography'),
+    require('@tailwindcss/typography')
   ],
   daisyui: {
     themes: [{
@@ -36,8 +36,8 @@ module.exports = withMT({
         'neutral-focus': '#4d4d4d',
         'neutral-content': '#ffffff',
 
-        'base-100': '#17181C',
-        'base-200': '#0F0F0F',
+        'base-100': '#0F0F0F',
+        'base-200': '#17181C',
         'base-300': '#ffffff',
         'base-content': '#ffffff',
 
@@ -86,42 +86,62 @@ module.exports = withMT({
         return {
           dark: {
             css: {
-
-              color: theme("colors.gray.300"),
-
+              p: {
+                fontSize: '16px',
+                fontFamily: 'Inter',
+                lineHeight: '1.8em',
+              },
+              color: theme("colors.gray.200"),
               '[class~="lead"]': { color: theme("colors.gray.400") },
-
-              a: { color: theme("colors.gray.100") },
-
-              strong: { color: theme("colors.gray.100") },
-
+              a: { color: theme("colors.gray.200") },
+              strong: { color: theme("colors.gray.200") },
               "ul > li::before": { backgroundColor: theme("colors.gray.700") },
-
               hr: { borderColor: theme("colors.gray.800") },
-
               blockquote: {
-                color: theme("colors.gray.100"),
+                color: theme("colors.gray.200"),
                 borderLeftColor: theme("colors.gray.800"),
               },
-
-              h1: { color: theme("colors.gray.100") },
-              h2: { color: theme("colors.gray.100") },
-              h3: { color: theme("colors.gray.100") },
-              h4: { color: theme("colors.gray.100") },
-
-              code: { color: theme("colors.gray.100") },
-              "a code": { color: theme("colors.gray.100") },
-
+              h1: {
+                color: theme("colors.gray.200"),
+                fontFamily: 'InterDisplay',
+                fontWeight: 'normal',
+                fontSize: '1.8em',
+              },
+              h2: {
+                color: theme("colors.gray.200"),
+                fontFamily: 'InterDisplay',
+                fontWeight: 'normal',
+              },
+              h3: {
+                color: theme("colors.gray.200"),
+                fontFamily: 'InterDisplay',
+                fontWeight: 'normal',
+              },
+              h4: {
+                color: theme("colors.gray.200"),
+                fontFamily: 'InterDisplay',
+                fontWeight: 'normal',
+              },
+              h5: {
+                color: theme("colors.gray.200"),
+                fontFamily: 'InterDisplay',
+                fontWeight: 'normal',
+              },
+              code: {
+                color: theme("colors.gray.200"),
+                fontWeight: 'normal',
+                padding: '4px',
+                borderRadius: '8px',
+              },
+              "a code": { color: theme("colors.gray.200") },
               pre: {
                 color: theme("colors.gray.200"),
-                backgroundColor: theme("colors.gray.800"),
+                backgroundColor: theme("colors.white"),
               },
-
               thead: {
-                color: theme("colors.gray.100"),
+                color: theme("colors.gray.200"),
                 borderBottomColor: theme("colors.gray.700"),
               },
-
               "tbody tr": { borderBottomColor: theme("colors.gray.800") },
             },
           },

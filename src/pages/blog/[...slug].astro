@@ -53,7 +53,7 @@ const tags: string[] =
       <div class="flex flex-row place-items-center">
         <div class="flex flex-col gap-2 flex-1">
           <div class="inline-flex flex-row gap-2 items-center">
-            <p class="text-3xl md:text-5xl font-bold">
+            <p class="text-3xl md:text-5xl">
               {post.data.title}
             </p>
           </div>
@@ -66,10 +66,13 @@ const tags: string[] =
                   >
                 </clipboard-copy>
               </div>
-              <div class="badge badge-lg badge-ghost bg-purple-800">
+              <div class="px-2">
                 <p class="text-lg">{post.data.date}</p>
               </div>
-              <div class="badge badge-lg badge-ghost bg-blue-500">
+              <div class="hidden sm:flex text-gray-300 self-center">
+                <p class="text-xs">●</p>
+              </div>
+              <div class="px-2">
                 <p class="text-lg">{post.data.time}</p>
               </div>
             </div>
