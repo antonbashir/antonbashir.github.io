@@ -130,13 +130,13 @@ bash: ./build.sh: No such file or directory
 1. Идем в `sdk/lib` и создаем директорию `fiber`.
 2. Добавляем туда файл `fiber_sources.gni`
 3. В него пишем 
-```
+```python
 fiber_sdk_sources = [
   "fiber.dart",
 ]
 ```
 4. Добавляем `fiber.dart` и пишем туда что-нибудь, например 
-```
+```dart
 library dart.fiber; // Это обязательно
 
 class Fiber { }
@@ -145,7 +145,7 @@ class Fiber { }
 5. Идем в `runtime/tests/vm/dart` и создаем директорию `fiber` с файлом `fiber_test.dart`
 7. Пытаемся создать объект нашего класса `Fiber` иии, у нас не собирается. 
 8. Идем в `runtime/vm/BUILD.gn` и добавляем туда:
-```
+```python
 import("../../sdk/lib/fiber/fiber_sources.gni")
 ...
 import("../lib/fiber_sources.gni")
@@ -155,13 +155,13 @@ import("../lib/fiber_sources.gni")
 9. Идем в `sdk/BUILD.gn` и в `_fiber_runtime_cc_files` добавляем `"fiber"`
 10. Теперь должно собраться. Но могут быть проблемы с подсветкой синтаксиса, для исправления идем в `sdk/lib/_internal/sdk_library_metadata/lib/libraries.dart`
 11. Ищем `const Map<String, LibraryInfo> libraries = const {` и добавляем 
-```
-  'fiber': const LibraryInfo(
-    'fiber/fiber.dart',
-    categories: 'Client,Server,Embedded',
-    maturity: Maturity.STABLE,
-    dart2jsPatchPath: '_internal/js_runtime/lib/fiber_patch.dart', // Про fiber_patch.dart будет чуть ниже, эту строчку можно не добавлять, если у нас не планируется платформенных особенностей (а у нас планируется).
-  ),
+```dart
+'fiber': const LibraryInfo(
+  'fiber/fiber.dart',
+  categories: 'Client,Server,Embedded',
+  maturity: Maturity.STABLE,
+  dart2jsPatchPath: '_internal/js_runtime/lib/fiber_patch.dart', // Про fiber_patch.dart будет чуть ниже, эту строчку можно не добавлять, если у нас не планируется платформенных особенностей (а у нас планируется).
+),
 ```
 12.Вот теперь должно все работать. 
 
@@ -734,7 +734,7 @@ case MethodRecognizer::kCoroutineInitialize: {
 Что нужно, чтобы в Dart выполнить вставку на языке ассемблера ? Нужен простой советский... `stub_code_compiler`.
 
 Но для начала, напомню, как выглядит сигнатура наших функций:
-```Dart
+```dart
   external static void _initialize(_Coroutine root); // Один аргумент
   external static void _transfer(_Coroutine from, _Coroutine to); // Два аргумента
   external static void _fork(_Coroutine from, _Coroutine to); // Тоже два аргумента
@@ -867,7 +867,7 @@ RBP (FPREG в нейминге Dart) - указатель на текущий с
   __ Ret(); // Возврат к тому, кто нас вызывал
 ```
 
-#### CoroutineInitialize
+#### `CoroutineInitialize`
 
 1. Подговили аргументы и вызывали `EnterCoroutineRuntimeEntry`
 2. Сохранили текущий RBP на стек и положили текущий RSP в поле native_stack_base
@@ -885,10 +885,10 @@ RBP (FPREG в нейминге Dart) - указатель на текущий с
 
 Про функцию-trampoline. 
 Ttrampoline функция нужна, потому что на начальных этапах реализации у меня не получилось прокинут аргументы, поэтому в качестве "трамплина" я испольую:
-```Dart
+```dart
 static void _run() => _Coroutine._current!._entry();
 ```
-#### CoroutineFork
+#### `CoroutineFork`
 
 1. Подговили аргументы и вызывали `EnterForkedCoroutineRuntimeEntry` + заранее сохранили `kForkedCoroutine`, если вдруг регистр будет перезаписан.
 2. Достали `kForkedCoroutine` и взяли из нее `kCallerCoroutine`
@@ -909,7 +909,7 @@ static void _run() => _Coroutine._current!._entry();
 11. Восстановили RBP
 12. Подговили аргументы и вызывали `ExitForkedCoroutineRuntimeEntry`
 
-#### CoroutineTransfer
+#### `CoroutineTransfer`
 
 Эта функция вызывается довольно часто и я очень хотел, чтобы в ней не было RuntimeEntry вызовов. 
 
