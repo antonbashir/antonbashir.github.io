@@ -14,8 +14,8 @@ const ProjectCard = (props: Properties) =>
     <div className="card-body">
       <div className="flex flex-col gap-4 flex-1">
         <h1 className="card-title text-2xl font-bold">{props.name}</h1>
-        <div>
-          <p className="py-4 text-xl">
+        <div className={`${props.todo && 'flex place-items-center h-full w-full'}`}>
+          <p className={`py-4 text-xl ${props.todo && 'text-center'}`}>
             {props.description}
           </p>
         </div>
@@ -39,7 +39,7 @@ const ProjectCard = (props: Properties) =>
         }
       </div>
     </div>
-  </div>
+  </div >
 
 export const ProjectList = () => <>
   <ProjectCard
@@ -145,8 +145,26 @@ export const ProjectList = () => <>
     }
   />
   <ProjectCard
+    name="Dart Coroutines"
+    description="Dart ❤️ Coroutines"
+    documentation="https://antonbashir.github.io/dart-fibers/"
+    code="https://github.com/antonbashir/dart-fibers/"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Dart</div>
+          <div className="badge badge-lg badge-outline">Dart Stubs</div>
+          <div className="badge badge-lg badge-outline">Dart Internals</div>
+          <div className="badge badge-lg badge-outline">Fibers</div>
+          <div className="badge badge-lg badge-outline">Coroutines</div>
+          <div className="badge badge-lg badge-outline">ASM</div>
+        </div>
+      </>
+    }
+  />
+  <ProjectCard
     name="Personal Site"
-    description="If you see this page then you already know my site"
+    description="This site"
     code="https://github.com/antonbashir/antonbashir.github.io"
     tags={
       <>
@@ -162,6 +180,22 @@ export const ProjectList = () => <>
           <div className="badge badge-lg badge-outline">JS animations</div>
           <div className="badge badge-lg badge-outline">Lottie</div>
           <div className="badge badge-lg badge-outline">Rive</div>
+        </div>
+      </>
+    }
+  />
+  <ProjectCard
+    name="Design Framework"
+    description="Flutter Material alternative"
+    code="https://github.com/antonbashir/source"
+    tags={
+      <>
+        <div className="flex flex-wrap gap-2">
+          <div className="badge badge-lg badge-outline">Dart</div>
+          <div className="badge badge-lg badge-outline">Flutter</div>
+          <div className="badge badge-lg badge-outline">Material</div>
+          <div className="badge badge-lg badge-outline">Design</div>
+          <div className="badge badge-lg badge-outline">UI/UX</div>
         </div>
       </>
     }
