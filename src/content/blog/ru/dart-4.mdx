@@ -185,7 +185,7 @@ case MethodRecognizer::kCoroutine_setAttributes: {
 }
 ```
 
-Так ведь веселее, правда ? Мы получаем `Boxed` представление `int` (по сути как Integer в Java), делаем из него `Unboxed`, а потом этот `Unboxed приводим к `Untagged` (указатель на C++ объект). 
+Так ведь веселее, правда ? Мы получаем `Boxed` представление `int` (по сути как Integer в Java), делаем из него `Unboxed`, а потом этот `Unboxed` приводим к `Untagged` (указатель на C++ объект). 
 
 И просто по указателю + смещению (`Slot::Coroutine_attributes`) берем нужное нам поле. Аналогично с `_Coroutine_setAttributes`, но там больше операций. 
 
