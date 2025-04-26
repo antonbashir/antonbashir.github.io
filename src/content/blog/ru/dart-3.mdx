@@ -636,7 +636,7 @@ visitor->clear_gc_root_type();
 Алгоритм следующий:
 
 1. Декларируешь Dart метод с `vm:recognized`
-2. Декларируешь в `recognized_method_list` строчку, вроде: `V(_Coroutine, _initialize, CoroutineInitialize, 0)`
+2. Декларируешь в `recognized_method_list` строчку: `V(_Coroutine, _initialize, CoroutineInitialize, 0)`
 3. Запускаешь сборку
 4. Получаешь ошибку, в которой будет что-то вроде
 ```
