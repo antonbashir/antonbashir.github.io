@@ -202,7 +202,7 @@ object_store->set_bootstrap_library(ObjectStore::kFiber, lib);
 ASSERT(!lib.IsNull());
 ASSERT(lib.ptr() == Library::FiberLibrary());
 ```
-5. Последний шаг - регистрируем NativeResolver для нашей библиотеки:
+5. Последний шаг - регистрируем `NativeResolver` для нашей библиотеки:
 ```c++
 library = Library::FiberLibrary();
 ASSERT(!library.IsNull());
