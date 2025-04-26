@@ -28,7 +28,7 @@ time: 45 min
 
 ```Receiving objects:  27% (437439/1610641)``` - это больше 1Gib для VM+SDK. 
 
-Я помню времена, когда столько нужно было для 3D игру с ассетами.
+Я помню времена, когда столько нужно было для 3D игру со всеми ресурсами.
 
 Как уверенный в себе программист, я подумал: "Документация, чтобы собрать ? Неее, зачем, я и так знаю все сборщики". 
 
@@ -79,45 +79,46 @@ bash: ./build.sh: No such file or directory
 
 > **IMPORTANT: You must follow instructions for [Getting the source](#source) before attempting to build. Just cloning a GitHub repo or downloading and unpacking a ZIP of the SDK repository would not work.**
 
-Окей, зависимости скачали, уже можно собирать ? 
-
-Так вот, что нужно было запустить, а я всё `make` да `ninja`... 
+Окей, зависимости скачали, уже можно собирать ? Так вот, что нужно было запустить, а я всё `make` да `ninja`...
 
 > ./tools/build.py --mode release --arch x64 create_sdk
 
-Небольшая ремарка, вот статы моего компьютера, на котором я собирал и пересобирал (огромное множество раз) Dart:
-```bash
-                   -`                    anton@anton-lin 
-                  .o+`                   --------------- 
-                 `ooo/                   OS: Arch Linux x86_64 
-                `+oooo:                  Host: ASUSTeK COMPUTER INC. ROG STRIX B650E-I GAMING WIFI 
-               `+oooooo:                 Kernel: 6.14.0-3-cachyos 
-               -+oooooo+:                Uptime: 1 hour, 2 mins 
-             `/:-:++oooo+:               Packages: 1279 (pacman) 
-            `/++++/+++++++:              Shell: bash 5.2.37 
-           `/++++++++++++++:             Resolution: 3840x2160, 3840x2160, 3840x2160 
-          `/+++ooooooooooooo/`           WM: Hyprland 
-         ./ooosssso++osssssso+`          Theme: Colloid-Dark [GTK2/3] 
-        .oossssso-````/ossssss+`         Icons: Colloid-Dark [GTK2/3] 
-       -osssssso.      :ssssssso.        Terminal: kitty 
-      :osssssss/        osssso+++.       Terminal Font: CaskaydiaCove Nerd Font Mono 15.0 
-     /ossssssss/        +ssssooo/-       CPU: AMD Ryzen 9 7950X3D (32) @ 5.763GHz 
-   `/ossssso+/:-        -:/+osssso+-     GPU: AMD ATI Raphael 
-  `+sso+:-`                 `.-/+oso:    GPU: NVIDIA GeForce RTX 4090 
- `++:.                           `-/+/   Memory: 15602MiB / 63425MiB 
- .`                                 `/
-```
+> [!NOTE]
+>Небольшая ремарка, вот статы моего компьютера, на котором я собирал и пересобирал (огромное множество раз) Dart:
+>```bash
+>                   -`                    anton@anton-lin 
+>                  .o+`                   --------------- 
+>                 `ooo/                   OS: Arch Linux x86_64 
+>                `+oooo:                  Host: ASUSTeK COMPUTER INC. ROG STRIX B650E-I GAMING WIFI 
+>               `+oooooo:                 Kernel: 6.14.0-3-cachyos 
+>               -+oooooo+:                Uptime: 1 hour, 2 mins 
+>             `/:-:++oooo+:               Packages: 1279 (pacman) 
+>            `/++++/+++++++:              Shell: bash 5.2.37 
+>           `/++++++++++++++:             Resolution: 3840x2160, 3840x2160, 3840x2160 
+>          `/+++ooooooooooooo/`           WM: Hyprland 
+>         ./ooosssso++osssssso+`          Theme: Colloid-Dark [GTK2/3] 
+>        .oossssso-````/ossssss+`         Icons: Colloid-Dark [GTK2/3] 
+>       -osssssso.      :ssssssso.        Terminal: kitty 
+>      :osssssss/        osssso+++.       Terminal Font: CaskaydiaCove Nerd Font Mono 15.0 
+>     /ossssssss/        +ssssooo/-       CPU: AMD Ryzen 9 7950X3D (32) @ 5.763GHz 
+>   `/ossssso+/:-        -:/+osssso+-     GPU: AMD ATI Raphael 
+>  `+sso+:-`                 `.-/+oso:    GPU: NVIDIA GeForce RTX 4090 
+> `++:.                           `-/+/   Memory: 15602MiB / 63425MiB 
+> .`                                 `/
+>```
+> Не калькулятор вроде бы.
 
-Не калькулятор вроде бы. Но тем не менее давайте посмотрим, сколько ушло времени на полную пересборку в Release режиме:
+Давайте посмотрим, сколько ушло времени на полную пересборку в Release режиме:
 ![dart-3-image-3](/dart-3-image-3.png)
 
-А вот сколько уходило на пересборку одного изменения в C++ header файле в Debug режиме:
+А вот сколько уходило на пересборку одного изменения в C++ header файле в debug режиме:
 ![dart-3-image-1](/dart-3-image-1.png)
 
-Почти 10 минут, если ты в Debug режиме поменяешь что-то в одном из базовых заголовках в Dart VM C++ коде. 
-Кстати, во втором случае дольше, потому что при сборке Dart как бы собирает самого себя (частично), поэтому Debug режим НАМНОГО дольше, чем Release сборка.
+Почти 10 минут жди, если ты в debug режиме поменяешь что-то в одном из базовых заголовках в Dart VM C++ коде.
 
-Каждый раз. Для понимания, компьютер во время сборки находится вот в таким состоянии:
+Кстати, во втором случае дольше по той причине, что при сборке Dart собирает самого себя (частично). Разумеется, debug Dart дольше будет собирать сам себя, чем release Dart.
+
+Каждая пересборка Dart. Прости меня, мой верный Ryzen:
 ![dart-3-image-2](/dart-3-image-2.png)
 
 # Шаг 2. Пробуем добавить свой код в Dart. 
@@ -126,7 +127,7 @@ bash: ./build.sh: No such file or directory
 
 Но хочу заметить, здесь это будет выглядеть последовательно и аккуратно. В реальности же каждый шаг приходилось выявлять опытным путем.
 
-Вообще это было не так уж сложно, мне очень помогли существующие примеры, я просто смотрел, как, где и что находится у текущих библиотек и пылатся сделать аналогично.
+Вообще, это было не так уж сложно, мне очень помогли существующие примеры, я просто смотрел, как, где и что находится у текущих библиотек и пытался сделать аналогично.
 
 Итак, наша библиотека называется `dart:fibers`, давайте её добавим во все нужные места.
 
@@ -148,7 +149,7 @@ class Fiber { }
 ```
 6. Идем в `sdk/lib/core/core.dart` и добавляем `export "dart:fiber" show Fiber;`
 5. Идем в `runtime/tests/vm/dart` и создаем директорию `fiber` с файлом `fiber_test.dart`
-7. Пытаемся создать объект нашего класса `Fiber` иии, у нас не собирается. 
+7. Пытаемся создать объект нашего класса `Fiber`
 8. Идем в `runtime/vm/BUILD.gn` и добавляем туда:
 ```python
 import("../../sdk/lib/fiber/fiber_sources.gni")
@@ -172,9 +173,9 @@ import("../lib/fiber_sources.gni")
 
 Честно говоря, эта схема собрана на основе уже работающей библиотеки, поэтому не судите строго, может быть что-то упустил.
 
-На этом с `Dart SDK` мы закончили, давайте сделаем паузу и подумаем над вот таком вопросом. Хватит ли нам `Dart SDK` кода, чтобы реализовать корутины ?
+На этом с Dart SDK мы закончили, давайте сделаем паузу и подумаем над вот таком вопросом. Хватит ли нам Dart SDK кода, чтобы реализовать корутины ?
 
-Я думаю, можно придумать такую реализацию, чтобы это было возможно. Что-нибудь из контексте [stackless](https://habr.com/ru/articles/850970/) корутин и state-machine.
+Я думаю, можно придумать такую реализацию, чтобы это было возможно. Что-нибудь из контекста [stackless](https://habr.com/ru/articles/850970/) корутин и state-machine.
 
 Но я решил пойти по пути stackfull корутин и сурового переключения контекста на уровне Dart ASM. 
 
