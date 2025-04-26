@@ -238,7 +238,7 @@ class Fiber { // Вообще-то extension type, но не суть
   static Fiber launch(void Function() entry, { int size = _kDefaultStackSize, Object? argument}) // size здесь это размер для стека корутины
 
   // Но одним Fiber сыт не будешь, мы же хотим "прыгать" между корутинами 
-  static Fiber spawn(void Function() entry, { bool persistent = false, int size = _kDefaultStackSize, String? name, Object? argument}) // `persistent` флаг планирует отвечает на вопрос: "Хотим ли мы переиспользовать Fiber, когда он завершился, или уничтожить его ?"
+  static Fiber spawn(void Function() entry, { bool persistent = false, int size = _kDefaultStackSize, String? name, Object? argument}) // persistent флаг планирует отвечает на вопрос: "Хотим ли мы переиспользовать Fiber, когда он завершился, или уничтожить его ?"
 
   // Ставить Fiber на "паузу"
   static void suspend() // "усыпляет" Fiber, отправляя нас к caller (тот, кто нас вызвал - это может быть планировщик или родительский Fiber, который нас создал)
