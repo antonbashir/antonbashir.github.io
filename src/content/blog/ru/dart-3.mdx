@@ -616,7 +616,7 @@ visitor->clear_gc_root_type();
 
 Этот код был добавлен в новую функцию `VisitObjectPointersCoroutine`, которая отвечает за обработку стека всех корутин при сборке мусора. 
 
-Аналогичный код пришлось добавить в `RestoreWriteBarrierInvariantCoroutine`, которая отвечает за восстановление [барьеров записи](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md) - Write barrier elimination.
+Аналогичный код пришлось добавить в `RestoreWriteBarrierInvariantCoroutine`, которая отвечает за восстановление [барьеров записи](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md#write-barrier-elimination).
 
 Логика этого кода примерно следующая:
 
