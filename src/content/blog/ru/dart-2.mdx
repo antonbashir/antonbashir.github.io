@@ -248,27 +248,27 @@ Future<String> myFunction() async { return "Hello, World!"; }
 Я вам сейчас расскажу, даже покажу. Вот оно:
 
 ```dart
-  @pragma("vm:entry-point", "call")
-  @pragma("vm:invisible")
-  Object? _await(Object? object) {
-    if (_thenCallback == null) {
-      _createAsyncCallbacks();
-    }
-    if (object is _Future) {
-      if (object._isComplete) {
-        _awaitCompletedFuture(object);
-      } else {
-        object._thenAwait<dynamic>(
-            unsafeCast<dynamic Function(dynamic)>(_thenCallback),
-            unsafeCast<dynamic Function(Object, StackTrace)>(_errorCallback));
-      }
-    } else if (object is! Future) {
-      _awaitNotFuture(object);
-    } else {
-      _awaitUserDefinedFuture(object);
-    }
-    return _functionData;
+@pragma("vm:entry-point", "call")
+@pragma("vm:invisible")
+Object? _await(Object? object) {
+  if (_thenCallback == null) {
+    _createAsyncCallbacks();
   }
+  if (object is _Future) {
+    if (object._isComplete) {
+      _awaitCompletedFuture(object);
+    } else {
+      object._thenAwait<dynamic>(
+          unsafeCast<dynamic Function(dynamic)>(_thenCallback),
+          unsafeCast<dynamic Function(Object, StackTrace)>(_errorCallback));
+    }
+  } else if (object is! Future) {
+    _awaitNotFuture(object);
+  } else {
+    _awaitUserDefinedFuture(object);
+  }
+  return _functionData;
+}
 ```
 
 Эта функция находится в классе `_SuspendState` и ее достаточно для реализации ключевого слова `await`. Поверили ? Зря, зря... 
