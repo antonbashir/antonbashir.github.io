@@ -71,7 +71,7 @@ bash: ./build.sh: No such file or directory
 
 > Install Chromium's [depot tools](https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_setting_up):
 
-Собственно, в этом и причина и Python, и Chromium depot tools. Dart использует "гугловое" управление зависимостями, а также "гугловую" систему сборки GN, которая используется в Chromium.
+А вот, собственно, причина необходимости Python и Chromium depot tools. Dart использует "гугловое" управление зависимостями, а также "гугловую" систему сборки GN, которая используется в Chromium.
 
 > Dart SDK uses `gclient` to manage dependencies which are described in the `DEPS` file. If you switch branches or update `sdk` checkout you need to run `gclient sync` to bring dependencies in sync with the SDK version.
 
