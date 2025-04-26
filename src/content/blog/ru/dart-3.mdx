@@ -401,7 +401,7 @@ class Coroutine : public Instance {
 Для начала я бы хотел кратко пояснить про основные способы реализаии "особых" функцих в Dart. Если вкратце:
 * `vm:external-name` - эти функции реализуются в C++ коде и вызываются из Dart кода. Декларируются с помощью `extern` и `vm:external-name`.
 * `RuntimeEntry` - эти функции реализуются в C++ коде и вызываются из заглушек. Декларируются с помощью `DEFINE_RUNTIME_ENTRY`, `DEFINE_LEAF_RUNTIME_ENTRY` и `DEFINE_RAW_LEAF_RUNTIME_ENTRY`.
-* `vm:recognized` - эти функции реализуются в скомпилированном Dart коде, но их тела описываются в C++ коде, ниже будет пример того, как выглядит реализация.
+* `vm:recognized` - эти функции реализуются в скомпилированном Dart коде, но их тела описываются в C++ коде. Ниже будет пример того, как выглядит реализация.
 ```c++
 case MethodRecognizer::kCoroutineInitialize: {
   body += LoadLocal(parsed_function_->RawParameterVariable(0));
