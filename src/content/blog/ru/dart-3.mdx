@@ -159,7 +159,7 @@ import("../lib/fiber_sources.gni")
 + fiber_runtime_cc_files # там где делается allsources = ...
 ```
 9. Идем в `sdk/BUILD.gn` и в `_fiber_runtime_cc_files` добавляем `"fiber"`
-10. Теперь должно собраться. Но могут быть проблемы с подсветкой синтаксиса, для исправления идем в `sdk/.../sdk_library_metadata/lib/libraries.dart`
+10. Теперь должно собраться. Но могут быть проблемы с подсветкой синтаксиса, для исправления идем в `sdk/lib/_internal/sdk_library_metadata/lib/libraries.dart`
 11. Ищем `const Map<String, LibraryInfo> libraries = const {` и добавляем 
 ```dart
 'fiber': const LibraryInfo(
