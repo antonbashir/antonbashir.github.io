@@ -391,7 +391,7 @@ class Coroutine : public Instance {
 
 Для начала я бы хотел кратко рассказать про основные способы реализаии "особых" функцих в Dart. Если вкратце:
 * `vm:external-name` - эти функции реализуются в C++ коде и вызываются из Dart кода. Декларируются с помощью `extern` и `vm:external-name`.
-* `RuntimeEntry` - эти функции реализуются в C++ коде и вызываются из Stub (ASM) кода. Декларируются с помощью `DEFINE_RUNTIME_ENTRY`, `DEFINE_LEAF_RUNTIME_ENTRY` и `DEFINE_RAW_LEAF_RUNTIME_ENTRY`.
+* `RuntimeEntry` - эти функции реализуются в C++ коде и вызываются из заглушек. Декларируются с помощью `DEFINE_RUNTIME_ENTRY`, `DEFINE_LEAF_RUNTIME_ENTRY` и `DEFINE_RAW_LEAF_RUNTIME_ENTRY`.
 * `vm:recognized` - эти функции реализуются в скомпилированном Dart коде, но их тела описываются в C++ коде, ниже будет пример того, как выглядит реализация.
 ```c++
 case MethodRecognizer::kCoroutineInitialize: {
@@ -498,7 +498,7 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 
 О! Вот эту парочку я вообще обожаю. 
 
-Если вам нужно обратиться к полю объекта внутри Stub (ASM) кода, вам нужен offset этого поля. Вообще, на первый взгляд `slot` и `runtime_offset` дублируют друг друга. 
+Если вам нужно обратиться к полю объекта внутри заглушки, вам нужен offset этого поля. Вообще, на первый взгляд `slot` и `runtime_offset` дублируют друг друга. 
 
 Но, знаете, я для себя разделил так: `slot` для IL, `runtime_offset` для ASM. Пишите в комментарии, если есть более логичное разделение и я все наврал. 
 
@@ -946,7 +946,7 @@ void coro_transfer (coro_context *prev, coro_context *next) {
 
 Внимание, вопрос: почему я не сохраняю явно регистры на стек ? Пишите в комментарии ваши догадки.
 
-Чуть не забыл про `stub_code_compiler_x64`. Даже в Stub ASM коде могут быть архитектурные особенности. В нашем случае это обработка JumpToFrame заглушки:
+Чуть не забыл про `stub_code_compiler_x64`. Даже в заглушках могут быть архитектурные особенности. В нашем случае это обработка JumpToFrame заглушки:
 
 ```c++
 void StubCodeCompiler::GenerateJumpToFrameStub() {
