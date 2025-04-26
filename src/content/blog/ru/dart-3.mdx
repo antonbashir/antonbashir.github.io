@@ -952,7 +952,7 @@ void coro_transfer (coro_context *prev, coro_context *next) {
 
 Внимание, вопрос: почему я не сохраняю явно регистры на стек ? Пишите в комментарии ваши догадки.
 
-Чуть не забыл про `stub_code_compiler_x64`. Даже в заглушках могут быть архитектурные особенности. В нашем случае это обработка JumpToFrame заглушки:
+Чуть не забыл про `stub_code_compiler_x64`. Даже в заглушках могут быть архитектурные особенности. В нашем случае это обработка `JumpToFrame` заглушки:
 
 ```c++
 void StubCodeCompiler::GenerateJumpToFrameStub() {
