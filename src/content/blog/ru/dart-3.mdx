@@ -900,18 +900,18 @@ static void _run() => _Coroutine._current!._entry();
 
 Вообще, я сейчас думаю, что можно же было использовать `callee-saved` регистры, но я решил подстраховаться, все же `RuntimeEntry` это сложный C++ скомпилированный код, всякое там может произойти.
 
-3. Сохранили RBP на стек
-4. Взяли из новой корутины stack_base и положили в RSP
-5. Сохранили kForkedCoroutine на новый стек
-6. По аналогии с CoroutineInitialize вызвали trampoline
+3. Сохранили `RBP` на стек
+4. Взяли из новой корутины `stack_base` и положили в `RSP`
+5. Сохранили `kForkedCoroutine` на новый стек
+6. По аналогии с `CoroutineInitialize` вызвали `trampoline`
 
 Здесь у нас ситуация, что сюда мы вернемся только тогда, когда наша "дочерняя" корутина завершится.
 
-7. Достали kForkedCoroutine со стека
-8. "Обнулили" stack_base в нашей корутине
-9. Достали kCallerCoroutine
-10. Достали стек из нашего "caller"
-11. Восстановили RBP
+7. Достали `kForkedCoroutine` со стека
+8. "Обнулили" `stack_base` в нашей корутине
+9. Достали `kCallerCoroutine`
+10. Достали стек из нашего `caller`
+11. Восстановили `RBP`
 12. Подговили аргументы и вызвали `ExitForkedCoroutineRuntimeEntry`
 
 #### `CoroutineTransfer`
