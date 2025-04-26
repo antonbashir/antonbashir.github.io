@@ -159,7 +159,7 @@ import("../lib/fiber_sources.gni")
 + fiber_runtime_cc_files # там где делается allsources = ...
 ```
 9. Идем в `sdk/BUILD.gn` и в `_fiber_runtime_cc_files` добавляем `"fiber"`
-10. Теперь должно собраться. Но могут быть проблемы с подсветкой синтаксиса, для исправления идем в `sdk/lib/_internal/sdk_library_metadata/lib/libraries.dart`
+10. Теперь должно собраться. Но могут быть проблемы с подсветкой синтаксиса, для исправления идем в `sdk/.../sdk_library_metadata/lib/libraries.dart`
 11. Ищем `const Map<String, LibraryInfo> libraries = const {` и добавляем 
 ```dart
 'fiber': const LibraryInfo(
@@ -439,7 +439,7 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 
 Теперь расскажу про основные функции наших корутин.
 
-#### `HandleJumpToFrame`
+#### HandleJumpToFrame
 
 Данная фунцкия вызывается в момент, когда Dart VM захочет "прыгнуть" в другой кадр стека. 
 
@@ -452,13 +452,13 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 * мы "прыгаем" в рамках текущего стека - ничего не делаем
 * мы "прыгнули" в другую корутину - следовательно, текущую корутину мы уничтожаем (либо идем в `recycle`, либо в `dispose`), а новую корутину "пробуждаем" и выполняем в неё вход
 
-#### `HandleRootEnter` и `HandleForkedEnter`
+#### HandleRootEnter и HandleForkedEnter
 
 Для некоторых операций (например, обработки исключений) требуется хранить в объекте потока (Thread) указатель на текущую корутину. 
 
 Дополнительно, в Dart VM в некоторых местах выполняется проверка длины стека через поле `stack_limit_` объекта потока, а значит, нам нужно это поле изменять при назначении стека корутины в роли текущего.
 
-#### `HandleRootExit` и `HandleForkedExit`
+#### HandleRootExit и HandleForkedExit
 
 Первая функция выполняется в тот момент, когда мы завершили все наши корутины и планируем вернутся к обычному выполнению потока в обычный "нативный" стек. 
 
@@ -468,7 +468,7 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 
 Дополнительно, нам нужно восстановить поле, связанное с проверкой длины стека, в объекте потока. 
 
-#### `recycle` и `dispose`
+#### recycle и dispose
 
 Обе функции отвечают за обработку корутины, когда корутина уже не нужна. 
 
@@ -482,7 +482,7 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 
 Расшифрую: каждый раз, когда мне нужно изменить поля или функции в объекте корутинры, я вынужден обновлять эти файлы. 
 
-#### `raw_object_fields`
+#### raw_object_fields
 
 В этом файле мы указываем поля наших корутин.
 
@@ -495,13 +495,13 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 // to show the property names of these built-in objects in the snapshot profile.
 ```
 
-#### `slot`
+#### slot
 
 В слотах объявляются поля в зависимости от их специфики: `TAGGED`, `UNTAGGED`, `NULLABLE`, `NONULLABLE` и другие. 
 
 Слоты используются в основном в IL компиляторе: он преобразует из внутреннего представления Dart VM [Kernel](https://chromium.googlesource.com/external/github.com/dart-lang/kernel/+/8e2b2c03c2a22d9fdf581a8e3ce798f189531081/README.md) в ASM код.
 
-#### `runtime_offsets_list` и `runtime_offsets_extracted`
+#### runtime_offsets_list и runtime_offsets_extracted
 
 О! Вот эту парочку я вообще обожаю. 
 
