@@ -298,7 +298,7 @@ class Fiber { // Вообще-то extension type, но не суть
 
 Но так как этот объект должен быть оптимально доступен и в C++ коде, и в Dart коде, нам нужно его задекларировать и в Dart SDK, и в Dart VM. 
 
-- Coroutine Dart SDK в `sdk/lib/_internal/vm/lib/fiber_patch.dart` (вспомогательные поля скрыты):
+- Класс Coroutine в `sdk/lib/_internal/vm/lib/fiber_patch.dart` (вспомогательные поля скрыты):
 ```dart
 @patch
 @pragma("vm:entry-point")
