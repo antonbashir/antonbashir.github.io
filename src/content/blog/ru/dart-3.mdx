@@ -568,8 +568,7 @@ class Coroutine : public AllStatic {
 Самое главное и интересное, что нужно было сюда добавить - это обработку сборщика мусора. В изолят:
 
 ```c++
-void Isolate::VisitStackPointers(ObjectPointerVisitor* visitor,
-                                 ValidationPolicy validate_frames) {
+void Isolate::VisitStackPointers(ObjectPointerVisitor* visitor, ValidationPolicy validate_frames) {
   if (mutator_thread_ != nullptr) {
     if (mutator_thread_->has_coroutine()) { // Вот этот кусок
       mutator_thread_->VisitObjectPointersCoroutine(this, visitor, validate_frames);
