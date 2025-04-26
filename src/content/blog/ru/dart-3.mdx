@@ -260,13 +260,13 @@ class Fiber { // Вообще-то extension type, но не суть
   // Имя Fiber
   String get name
 
-  // Флаги-состояние Fiber ( Created, Running, Suspended, Finished, Disposed )
+  // Флаги-состояние Fiber (Created, Running, Suspended, Finished, Disposed)
   FiberState get state 
 
-  // Атрибуты Fiber ( Nothing, Persistent )
+  // Атрибуты Fiber (Nothing, Persistent)
   FiberAttributes get attributes 
 
-  // Провайдер аргумента, который мы передали ( просто обертка, которая позволяет извлекать аргумент как единичный объект или работать с ним как с массивом или мапой )
+  // Провайдер аргумента, который мы передали (просто обертка с удобными функциями для извлечения значений аргумента)
   FiberArgument get argument
 
 }
