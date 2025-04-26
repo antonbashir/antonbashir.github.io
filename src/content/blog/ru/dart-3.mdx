@@ -189,7 +189,7 @@ import("../lib/fiber_sources.gni")
 
 1. Первым делом сходим в `runtime/vm/symbols.h` и добавим туда ```V(DartFiber, "dart:fiber")```. Это своего рода константы.
 2. Идем в `runtime/vm/object_store.h` и добавляем туда `M(Fiber, fiber)` и `RW(Library, fiber_library)`. Здесь находится реестр объектов, который привязан к изоляту или к группе [изолят](https://habr.com/ru/articles/848166/)
-3. Теперь нам нужно нашу библиотеку в реестр положить. Нам нужен `runtime/vm/object.h`. Этот файл заслуживает отдельной... повести, потому что в нем 13595 строк. Но мы туда добавим строчку `static LibraryPtr FiberLibrary();` 
+3. Теперь нам нужно нашу библиотеку в реестр положить. Находим `runtime/vm/object.h`. Этот файл заслуживает отдельной... повести, потому что в нем 13595 строк. Но мы туда добавим строчку `static LibraryPtr FiberLibrary();` 
 4. И `runtime/vm/object.cc`: 
 ```c++
 lib = Library::LookupLibrary(thread, Symbols::DartFiber());
