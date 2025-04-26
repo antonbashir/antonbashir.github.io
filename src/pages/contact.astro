@@ -1,0 +1,30 @@
+---
+import Head from "../layouts/Head.astro";
+import Navigation from "../layouts/Navigation.astro";
+import "../styles/global.css";
+import { ContactForm } from "../components/Contact.tsx";
+---
+
+<html lang="en">
+  <head>
+    <Head title="🦊 Anton Bashirov | Contact" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <Navigation page="contact" />
+    <div class="flex place-items-center">
+      <div class="flex place-items-center flex-1 px-4 pt-4">
+        <span
+          class="material-symbols-outlined text-3xl drop-shadow-glow-orange text-orange-300"
+          >contact_page</span
+        >
+        <p class="text-xl lg:text-3xl font-bold mx-4">Contact me</p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <ContactForm client:load client:only="react" />
+  </body>
+</html>
