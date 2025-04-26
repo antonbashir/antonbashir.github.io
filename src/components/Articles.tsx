@@ -24,7 +24,7 @@ const Article = (properties: Properties) => {
     href={properties.reference}
   >
     <div
-      className="hero-content card flex flex-row"
+      className="hero-content card flex flex-row p-2"
     >
       <div className="card-body place-items-start p-2">
         <div className="card-title flex-row -ml-2">
