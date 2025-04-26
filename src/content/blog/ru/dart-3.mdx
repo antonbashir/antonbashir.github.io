@@ -1,9 +1,9 @@
 ---
 title: "О времени, сложности и мотивации: история поражения"
-description: Мои приключения в мире DartVM. Часть 3. 
+description: Мои приключения в мире Dart VM. Часть 3. 
 date: "2025-04-20"
 label: Article
-tags: IT, Dart, DartVM, ASM, Coroutines, Habr
+tags: IT, Dart, Dart VM, ASM, Coroutines, Habr
 time: 45 min
 ---
 > [!NOTE]
@@ -383,9 +383,9 @@ class Coroutine : public Instance {
 
 ![dart-3-image-4.png](/dart-3-image-4.png)
 
-Хм, ну да, собираюсь. 59 файлов и в каждом есть свои уникальные и интересные особенности DartVM. 
+Хм, ну да, собираюсь. 59 файлов и в каждом есть свои уникальные и интересные особенности Dart VM. 
 
-На 1808 результатов не смотрите, у DartVM есть встроенный генератор C++ кода в одном месте, он там всякое творит.
+На 1808 результатов не смотрите, у Dart VM есть встроенный генератор C++ кода в одном месте, он там всякое творит.
 
 Поступим так, я выделю 7 самых интересных участков кода реализации и расскажу про них.
 
@@ -401,7 +401,7 @@ case MethodRecognizer::kCoroutineInitialize: {
   break;
 }
   ```
-* `vm:entry-point` - реализуется в Dart коде, про них хорошо описано [тут](https://mrale.ph/dartvm/compiler/aot/entry_point_pragma.html)
+* `vm:entry-point` - реализуется в Dart коде, про них хорошо описано [тут](https://mrale.ph/Dart VM/compiler/aot/entry_point_pragma.html)
 * `@Native` - по идее это современная замена `vm:external-name`, которая появилась в процессе развития [FFI](https://dart.dev/interop/c-interop) функционала, но я решил использовать 'vm:external-name', так как в Dart SDK кода больше примеров с этим способом
 
 Реализация этих способов претендует на отдельную статью (может быть, в будущем я её напишу), поэтому не будем долго на них задерживаться.
