@@ -511,7 +511,7 @@ DEFINE_NATIVE_ENTRY(Coroutine_factory, 0, 3) {
 
 А и ещё, если я не ошибся, если не указать какие-то поля в `runtime_offsets_list`, могут быть проблемы при генерации [Dart Snapshot](https://github.com/dart-lang/sdk/wiki/Snapshots/6d632de97aa5711f37f7b43bd06882148ddf4720).
 
-Так вот, как с этими файлами работать. В `runtime_offsets_list` пишется что-то вроде `FIELD(Coroutine, name_offset)`, а затем запускается `./tools/run_offsets_extractor.dart` руками, чтобы сгенерировался сей ужас на 13К строчек:
+Как с этими файлами работать ? В `runtime_offsets_list` пишется что-то вроде `FIELD(Coroutine, name_offset)`, а затем запускается `./tools/run_offsets_extractor.dart` руками, чтобы сгенерировался сей ужас на 13К строчек:
 ```c++ 
 ...
 static constexpr dart::compiler::target::word AOT_InstructionsSection_HeaderSize = 0x40;
