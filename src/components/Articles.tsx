@@ -27,7 +27,7 @@ const Article = (properties: Properties) => {
       className="hero-content card flex flex-row"
     >
       <div className="card-body place-items-start p-2">
-        <div className="card-title flex-row">
+        <div className="card-title flex-row -ml-2">
           <div>
             <svg
               className="fill-current"
