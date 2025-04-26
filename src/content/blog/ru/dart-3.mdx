@@ -709,7 +709,7 @@ void CoroutineInitializeInstr::EmitNativeCode(FlowGraphCompiler* compiler) {
 }
 ```
 
-По сути идея этих правок в том, чтобы реализовать вызов заглушки `StubCode::CoroutineInitialize`, обернув его в IL инструкцию. 
+Идея этих правок в том, чтобы реализовать вызов заглушки `StubCode::CoroutineInitialize`, обернув его в IL инструкцию. 
 
 Теперь свяжем инструкцию и наш `vm:recognized` метод `CorotineInitialize` с помощью `kernel_to_il`:
 
