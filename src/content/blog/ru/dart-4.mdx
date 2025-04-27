@@ -94,7 +94,7 @@ P(concurrent_sweep, bool, true, "Concurrent sweep for old generation.")
 // marking stack.
 ```
 
-Кратко, что эта функция вообще делает: восстанавливает инварианты для [барьеров записи](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md#write-barrier-elimination) для того, чтобы после некоторых фаз сборки мусора барьеры правильно работали и GC ничего не упустил. 
+Кратко, что эта функция вообще делает: восстанавливает инварианты для [барьеров записи](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md#write-barrier-elimination) для того, чтобы после некоторых фаз сборки мусора барьеры правильно работали, и GC ничего бы не упустил. 
 
 Я бы мог на этом шаге сходить к ИИ и попросить: "Вот тебе код, дай мне описание для статьи". 
 
