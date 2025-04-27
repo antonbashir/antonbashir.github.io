@@ -229,7 +229,7 @@ final _pool = _FiberPool();
 
 Допустим, последовательная сборка мусора без параллельности работает. Но как быть с параллельной ? Какие вообще есть способы обезопасить выполнение кода при наличии сборки мусора ? 
 
-Dart VM предлагает нам использовать [SafePoint](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md#safepoints), но ещё есть классические Mutex-ы. Я выбрал комбинацию.
+Dart VM предлагает нам использовать [SafePoint](https://github.com/dart-lang/sdk/blob/main/runtime/docs/gc.md#safepoints), но ещё есть старые добрые классические Mutex-ы. Я выбрал комбинацию.
 
 Вот так выглядит использование SafePoint в `CoroutineFork`:
 
