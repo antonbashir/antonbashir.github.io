@@ -2,9 +2,8 @@ import { useStore } from "@nanostores/react";
 import { getCollection } from "astro:content";
 import Cookie from "js-cookie";
 import { atom } from "nanostores";
-import { useEffect, useState } from "react";
 
-const isRuArticles = atom<boolean>(Cookie.get("is_ru_blog") == "true");
+const isEnArticles = atom<boolean>(Cookie.get("is_en_blog") == "true");
 const articles = await getCollection("blog");
 
 type Properties = {
@@ -76,7 +75,7 @@ export const articleColor = (label: string) => {
 }
 
 export const ArticlesLanguageSelector = () => {
-  const isRu = useStore(isRuArticles);
+  const isEn = useStore(isEnArticles);
   return <div className="flex flex-row gap-2 mx-4 place-items-center">
     <div>
       <img
@@ -86,9 +85,9 @@ export const ArticlesLanguageSelector = () => {
         alt="united-kingdom-emoji"
       />
     </div>
-    <input type="checkbox" className="toggle toggle-sm" checked={isRu} onChange={(event) => {
-      isRuArticles.set(event.target.checked);
-      Cookie.set("is_ru_blog", `${event.target.checked}`);
+    <input type="checkbox" className="toggle toggle-sm" checked={!isEn} onChange={(event) => {
+      isEnArticles.set(!event.target.checked);
+      Cookie.set("is_en_blog", `${!event.target.checked}`);
     }} />
     <div>
       <img
@@ -102,19 +101,19 @@ export const ArticlesLanguageSelector = () => {
 }
 
 export const Articles = () => {
-  const isRu = useStore(isRuArticles);
+  const isEn = useStore(isEnArticles);
   return <div className="flex flex-col mx-2 gap-4 divide-y divide-gray-800">
     {
       articles
         .filter((post: any) =>
-          isRu
-            ? post.id.startsWith("ru")
-            : post.id.startsWith("en"),
+          isEn
+            ? post.id.startsWith("en")
+            : post.id.startsWith("ru"),
         )
         .sort((first: any, second: any) => Date.parse(second.data.date) > Date.parse(first.data.date) ? 1 : -1)
         .map((post: any) => (
           <Article
-            key={`${post.id}-${isRu ? 'ru' : 'en'}`}
+            key={`${post.id}-${isEn ? 'en' : 'ru'}`}
             title={post.data.title}
             description={post.data.description}
             label={post.data.label}
