@@ -21,7 +21,9 @@
 }
 
 .step-left-line {
+  background: transparent;
   -webkit-appearance: none;
+  -moz-appearance: none;
   height: 2px;
 }
 
@@ -35,8 +37,16 @@
   box-shadow: 0 0 0.6em rgba(183,172,255,0.75), 0 0 0.8em rgba(183,172,255,0.75);
 }
 
+.step-left-line::-moz-progress-bar {
+  background: white;
+  box-shadow: 0 0 0.6em rgba(183,172,255,0.75), 0 0 0.8em rgba(183,172,255,0.75);
+}
+
 .step-right-line {
+  background: transparent;
+  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
   height: 2px;
   width: 50px;
   rotate: 180deg;
@@ -51,6 +61,12 @@
   background: white;
   box-shadow: 0 0 0.6em rgba(183,172,255,0.75), 0 0 0.8em rgba(183,172,255,0.75);
 }
+
+.step-right-line::-moz-progress-bar {
+  background: white;
+  box-shadow: 0 0 0.6em rgba(183,172,255,0.75), 0 0 0.8em rgba(183,172,255,0.75);
+}
+
 
 @keyframes step {
   0%   { opacity: 0; }
